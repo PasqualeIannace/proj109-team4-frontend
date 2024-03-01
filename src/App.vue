@@ -14,10 +14,10 @@ export default {
 		}
 	},
 	mounted() {
-		this.getEventList();
+		this.getFoods();
 	},
 	methods: {
-		getEventList() {
+		getFoods() {
 			let url = this.store.apiUrl + this.store.apiEventEndpoint;
 
 			axios.get(url).then(risultato => {
