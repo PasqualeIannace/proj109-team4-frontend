@@ -3,10 +3,12 @@
 import axios from 'axios'; //importo Axios
 import { store } from "./store.js" //state management
 import TheHeader from "./components/TheHeader.vue"
+import Footer from "./components/Footer.vue"
 
 export default {
 	components: {
-		TheHeader
+		TheHeader,
+		Footer
 	},
 	data() {
 		return {
@@ -41,6 +43,8 @@ export default {
 	<TheHeader />
 
 	<router-view></router-view>
+
+	<Footer />
 </template>
 
 <style lang="scss">
