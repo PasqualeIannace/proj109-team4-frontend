@@ -13,7 +13,7 @@ export default {
 	data() {
 		return {
 			store,
-			foodList:[],
+			foodList: [],
 		}
 	},
 	mounted() {
@@ -22,10 +22,10 @@ export default {
 	methods: {
 		getFoods() {
 			// let url = this.store.apiUrl + this.store.apiEndpoint;
-			let url = "http://127.0.0.1:8000/api/foods";
+			// let url = "http://127.0.0.1:8000/api/foods";
 
-			axios.get(`${this.store.apiUrl + this.store.apiEndpoint}`).then(risultato => {
-				console.log(url);
+			axios.get(`${this.store.apiUrl + this.store.apiEndpoint}`).then((risultato) => {
+				console.log(risultato);
 				if (risultato.status === 200 && risultato.data.success) {
 					console.log(risultato.data.results);
 					this.store.foodList = risultato.data.results;
@@ -44,9 +44,7 @@ export default {
 </script>
 
 <template>
-
-
-	<TheHeader />   
+	<TheHeader />
 	<router-view></router-view>
 
 	<Footer />
