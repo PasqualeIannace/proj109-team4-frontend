@@ -1,49 +1,61 @@
 <script>
 export default {
-    name: "TheHeader",
-    data() {
-        return {
-            menuItems: [
-                {
-                    routeName: "home",
-                    label: "Homepage"
-                },
-                {
-                    routeName: "about",
-                    label: "Chi siamo"
-                },
-                {
-                    routeName: "events",
-                    label: "Eventi"
-                }
-            ]
-        }
-    },
-}
+	name: "TheHeader",
+	data() {
+		return {
+			menuItems: [
+				{
+					routeName: "home",
+					label: "Homepage",
+				},
+				{
+					routeName: "about",
+					label: "Chi siamo",
+				},
+				{
+					routeName: "foods",
+					label: "Eventi",
+				},
+			],
+		};
+	},
+};
 </script>
 
 <template>
-    <header>
-        <nav class="navbar navbar-expand-lg bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#"> <img src="/logo.png" class="logo" alt=""></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item" v-for="(item, index) in menuItems" :key="index">
-                            <router-link :to="{ name: item.routeName }" class="nav-link">
-                                {{ item.label }}
-                            </router-link>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+	<header>
+		<nav class="navbar navbar-expand-lg bg-light">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#">
+					<img src="/logo.png" class="logo" alt=""
+				/></a>
+				<button
+					class="navbar-toggler"
+					type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li
+							class="nav-item"
+							v-for="(item, index) in menuItems"
+							:key="index"
+						>
+							<router-link :to="{ name: item.routeName }" class="nav-link">
+								{{ item.label }}
+							</router-link>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
 </template>
 
 <style scoped></style>

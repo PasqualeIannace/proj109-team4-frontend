@@ -20,7 +20,7 @@ const router = createRouter({
         },
         {
             path: '/eventi',
-            name: 'events',
+            name: 'foods',
             component: EventList
         },
         {

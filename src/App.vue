@@ -8,11 +8,12 @@ import Footer from "./components/Footer.vue"
 export default {
 	components: {
 		TheHeader,
-		Footer
+		Footer,
 	},
 	data() {
 		return {
 			store,
+			foodList:[],
 		}
 	},
 	mounted() {
@@ -20,12 +21,15 @@ export default {
 	},
 	methods: {
 		getFoods() {
-			let url = this.store.apiUrl + this.store.apiEventEndpoint;
+			// let url = this.store.apiUrl + this.store.apiEndpoint;
+			let url = "http://127.0.0.1:8000/api/foods";
 
-			axios.get(url).then(risultato => {
+			axios.get(`${this.store.apiUrl + this.store.apiEndpoint}`).then(risultato => {
+				console.log(url);
 				if (risultato.status === 200 && risultato.data.success) {
 					console.log(risultato.data.results);
-					this.store.eventList = risultato.data.results;
+					this.store.foodList = risultato.data.results;
+					console.log(risultato);
 				} else {
 					//ToDo: distinguere il motivo dell'else.
 					//es. controllare statusCode, presenza e veridicità di data.success
@@ -40,8 +44,9 @@ export default {
 </script>
 
 <template>
-	<TheHeader />
 
+
+	<TheHeader />   
 	<router-view></router-view>
 
 	<Footer />
