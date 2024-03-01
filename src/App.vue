@@ -1,44 +1,46 @@
 <script>
-import AppComponent from "./components/AppComponent.vue"
 
 import axios from 'axios'; //importo Axios
 import { store } from "./store.js" //state management
+import TheHeader from "./components/TheHeader.vue"
 
 export default {
 	components: {
-		AppComponent
+		TheHeader
 	},
 	data() {
 		return {
-			store
+			store,
 		}
 	},
 	mounted() {
-		this.doThings();
-
-		// axios.get("indirizzo").then(risultato => {
-		// 	console.log(risultato);
-		// }).catch(errore => {
-		// 	console.error(errore);
-		// });
+		this.getEventList();
 	},
 	methods: {
-		doThings() {
-			console.log("App.vue does things");
+		getEventList() {
+			let url = this.store.apiUrl + this.store.apiEventEndpoint;
+
+			axios.get(url).then(risultato => {
+				if (risultato.status === 200 && risultato.data.success) {
+					console.log(risultato.data.results);
+					this.store.eventList = risultato.data.results;
+				} else {
+					//ToDo: distinguere il motivo dell'else.
+					//es. controllare statusCode, presenza e veridicità di data.success
+					console.error("Ops... qualcosa è andato storto");
+				}
+			}).catch(errore => {
+				console.error(errore);
+			});
 		}
 	}
 }
 </script>
 
 <template>
-	<main>
-		<AppComponent />
+	<TheHeader />
 
-		<button class="btn btn-primary">
-			<font-awesome-icon icon="fa-solid fa-home" class="me-1" />
-			<span>Primary button</span>
-		</button>
-	</main>
+	<router-view></router-view>
 </template>
 
 <style lang="scss">
@@ -51,7 +53,8 @@ export default {
 // @use './styles/partials/variables' as *;
 
 // ...qui eventuale SCSS di App.vue
-main {
-	padding: 1rem;
+
+header {
+	background-color: orangered;
 }
 </style>
