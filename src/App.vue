@@ -14,10 +14,12 @@ export default {
 		return {
 			store,
 			foodList: [],
+			userList: []
 		}
 	},
 	mounted() {
 		this.getFoods();
+		this.getUsers();
 	},
 	methods: {
 		getFoods() {
@@ -28,8 +30,26 @@ export default {
 				console.log(risultato);
 				if (risultato.status === 200 && risultato.data.success) {
 					console.log(risultato.data.results);
-					this.store.foodList = risultato.data.results;
-					console.log(risultato);
+					this.store.foodList = risultato.data.payload;
+					//console.log(risultato.data.payload, "il mio array");
+				} else {
+					//ToDo: distinguere il motivo dell'else.
+					//es. controllare statusCode, presenza e veridicità di data.success
+					console.error("Ops... qualcosa è andato storto");
+				}
+			}).catch(errore => {
+				console.error(errore);
+			});
+		},
+
+		getUsers() {
+
+			axios.get(`${this.store.apiUrl + this.store.apiUserEndpoint}`).then((risultato) => {
+				//console.log(risultato);
+				if (risultato.status === 200 && risultato.data.success) {
+					//console.log(risultato.data.results);
+					this.store.userList = risultato.data.payload;
+					console.log(risultato.data.payload, "il mio array");
 				} else {
 					//ToDo: distinguere il motivo dell'else.
 					//es. controllare statusCode, presenza e veridicità di data.success
@@ -46,7 +66,6 @@ export default {
 <template>
 	<TheHeader />
 	<router-view></router-view>
-
 	<Footer />
 </template>
 

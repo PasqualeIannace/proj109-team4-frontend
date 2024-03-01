@@ -2,7 +2,7 @@
 import { store } from "../store.js" //state management
 
 export default {
-    name: "AppEvent",
+    name: "AppFood",
     data() {
         return {
             store
@@ -13,23 +13,23 @@ export default {
 
 <template>
     <div>
-        <h1 class="text-center">Eventi</h1>
+        <h1 class="text-center">Food</h1>
 
         <div class="container">
             <div class="row">
 
-                <div class="col-md-4 gy-4" v-for="evento in store.eventList">
+                <div class="col-md-4 gy-4" v-for="food in store.foodList">
                     <div class="card h-100">
-                        <div class="card-header">{{ evento.date }}</div>
+                        <div class="card-header">{{ food.name }}</div>
                         <div class="card-body">
-                            <h5 class="card-title text-center">{{ evento.name }}</h5>
+                            <!-- <h5 class="card-title text-center">{{ food.name }}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">
-                                {{ evento.user ? evento.user.name : "Utente sconosciuto" }}
+                                {{ food.user ? food.user.name : "Utente sconosciuto" }}
                             </h6>
-                            <p class="card-text">{{ evento.description }}</p>
-                            <p class="card-text text-center fs-5">Rimangono <b>{{ evento.available_tickets }}</b> biglietti
+                            <p class="card-text">{{ food.description }}</p>
+                            <p class="card-text text-center fs-5">Rimangono <b>{{ food.available_tickets }}</b> biglietti
                                 disponibili.
-                            </p>
+                            </p> -->
                         </div>
                         <div class="card-footer text-center">
                             <a href="#" class="btn btn-primary">
@@ -39,7 +39,6 @@ export default {
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
 

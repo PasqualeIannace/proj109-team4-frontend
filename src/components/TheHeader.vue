@@ -14,7 +14,11 @@ export default {
 				},
 				{
 					routeName: "foods",
-					label: "Eventi",
+					label: "Food",
+				},
+				{
+					routeName: "users",
+					label: "Ristoranti",
 				},
 			],
 		};
