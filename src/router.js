@@ -4,7 +4,7 @@ import AppHome from './pages/AppHome.vue';
 import AppAbout from './pages/AppAbout.vue';
 import AppFood from './pages/AppFood.vue';
 import AppUser from "./pages/AppUser.vue";
-import EventDetail from './pages/EventDetail.vue';
+import AppFoodDetail from './pages/AppFoodDetail.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -30,9 +30,9 @@ const router = createRouter({
             component: AppUser
         },
         {
-            path: '/eventi/:id',
-            name: 'event-detail',
-            component: EventDetail,
+            path: '/foods:id',
+            name: 'details',
+            component: AppFoodDetail,
             props: true
         },
     ]

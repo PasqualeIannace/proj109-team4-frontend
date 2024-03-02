@@ -6,28 +6,30 @@ import Swiper from 'swiper';
 export default {
   name: "AppUser",
   components: {
+    Swiper,
     SwiperComponent
   },
   data() {
     return {
-      store
+      store,
+      userList: [],
     }
   },
-  mounted() {
-    var swiper = new Swiper(".mySwiper", {
-      slidesPerView: 1,
-      spaceBetween: 30,
-      loop: true,
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-    });
-  }   
+//   mounted() {
+//     var swiper = new Swiper(".mySwiper", {
+//       slidesPerView: 1,
+//       spaceBetween: 30,
+//       loop: true,
+//       pagination: {
+//         el: ".swiper-pagination",
+//         clickable: true,
+//       },
+//       navigation: {
+//         nextEl: ".swiper-button-next",
+//         prevEl: ".swiper-button-prev",
+//       },
+//     });
+//   }   
 }
 </script>
 
@@ -49,7 +51,7 @@ export default {
 </template> -->
 <template>
 <div>
-    <SwiperComponent :store="store" />
+    <SwiperComponent />
   </div>
   <div>
         <h1 class="text-center">Ristoranti</h1>
@@ -89,7 +91,7 @@ export default {
 
 <style scoped>
 
-.swiper {
+/* .swiper {
   width: 1000px;
   height: 450px;
 }
@@ -113,5 +115,5 @@ export default {
 .swiper {
   margin-left: auto;
   margin-right: auto;
-}
+} */
 </style>

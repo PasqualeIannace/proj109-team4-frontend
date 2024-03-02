@@ -1,46 +1,231 @@
 <script>
-import { store } from "../store.js" //state management
+import { store } from "../store.js"; //state management
 
 export default {
-    name: "AppFood",
-    data() {
-        return {
-            store
-        }
-    }
-}
+	name: "AppFood",
+	data() {
+		return {
+			store,
+		};
+	},
+};
 </script>
 
 <template>
-    <div>
-        <h1 class="text-center">Food</h1>
+	<div class="myMargin">
+		<h1 class="text-center">Food</h1>
 
-        <div class="container">
-            <div class="row">
+		<div class="container d-flex flex-wrap text-decoration-none">
+			<!-- <h1 class="mt-5 mb-3 text-center">Dettaglio evento {{ $route.params.id }}</h1> -->
+			<div class="ag-format-container" v-for="food in store.foodList">
+				<div class="ag-courses_box">
+					<div class="ag-courses_item">
+						<a href="#" class="ag-courses-item_link">
+							<div class="ag-courses-item_bg"></div>
 
-                <div class="col-md-4 gy-4" v-for="food in store.foodList">
-                    <div class="card h-100">
-                        <div class="card-header">{{ food.name }}</div>
-                        <div class="card-body">
-                            <!-- <h5 class="card-title text-center">{{ food.name }}</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">
-                                {{ food.user ? food.user.name : "Utente sconosciuto" }}
-                            </h6>
-                            <p class="card-text">{{ food.description }}</p>
-                            <p class="card-text text-center fs-5">Rimangono <b>{{ food.available_tickets }}</b> biglietti
-                                disponibili.
-                            </p> -->
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="#" class="btn btn-primary">
-                                <font-awesome-icon icon="fa-solid fa-circle-info" class="me-2" />
-                                <span>Mostra dettagli</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+							<div class="ag-courses-item_title">
+								<h5>{{ food.name }}</h5>
+								<img :src="food.image" class="w-100" />
+							</div>
 
-    </div>
+							<div class="ag-courses-item_date-box">
+								<!-- <p>{{ food.ingredients }}</p> -->
+								<!-- <p class="card-text">{{ food.description }}</p> -->
+								<p class="card-text text-center fs-5">
+									<b>{{ food.price }}</b>
+								</p>
+
+								<div class="card-footer text-center ag-courses-item_date">
+									<router-link
+										:to="{ name: 'details', params: { id: food.id } }"
+									>
+										<p class="ag-courses-item_date fs-5">dettagli piatto</p>
+									</router-link>
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+			<!-- <div class="card-footer text-center">
+                <router-link :to="{ name: 'details', params: { id: food.id } }">
+                    <span class="button-49 p-1">dettagli piatto</span>
+                </router-link>
+            </div> -->
+		</div>
+	</div>
+
+	<!-- <div class="container">
+			<div class="row">
+				<div class="col-md-4 gy-4" v-for="food in store.foodList">
+					<div class="card h-100">
+						<div class="card-header">{{ food.name }}</div>
+						<div class="card-body">
+							<img :src="food.image" class="w-100" />
+							<p>{{ food.ingredients }}</p>
+							<p class="card-text">{{ food.description }}</p>
+							<p class="card-text text-center fs-5">
+								<b>{{ food.price }}</b>
+							</p>
+						</div>
+						<div class="card-footer text-center">
+							<div class="card-footer text-center">
+								<router-link :to="{ name: 'details', params: { id: food.id } }">
+									<span class="button-49 p-1">dettagli piatto</span>
+								</router-link>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> -->
 </template>
+
+<style scoped>
+
+h1{
+    color:#f9b234;
+}
+.ag-format-container {
+	width: calc(100% / 4);
+	/* margin: 0 auto; */
+}
+
+body {
+	background-color: #000;
+}
+.ag-courses_box {
+	/* display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: start;
+	-ms-flex-align: start; */
+	align-items: flex-start;
+	/* -ms-flex-wrap: wrap; */
+	flex-wrap: wrap;
+	width: 100%;
+	/* height: 300px; */
+	padding: 10px 0;
+}
+.ag-courses_item {
+	/* width:100%; */
+	flex-basis: calc(33.33333% - 30px);
+
+	margin: 0 15px 30px;
+
+	overflow: hidden;
+
+	border-radius: 28px;
+}
+.ag-courses-item_link {
+	display: block;
+	padding: 30px 20px;
+	background-color: #121212;
+	overflow: hidden;
+	text-decoration: none;
+	position: relative;
+}
+.ag-courses-item_link:hover,
+.ag-courses-item_link:hover .ag-courses-item_date {
+	text-decoration: none;
+	color: #fff;
+}
+.ag-courses-item_link:hover .ag-courses-item_bg {
+	-webkit-transform: scale(10);
+	-ms-transform: scale(10);
+	transform: scale(10);
+}
+.ag-courses-item_title {
+	max-height: 270px;
+	margin: 0 0 25px;
+
+	overflow: hidden;
+
+	font-weight: bold;
+	font-size: 30px;
+	color: #fff;
+
+	z-index: 2;
+	position: relative;
+}
+.ag-courses-item_date-box {
+	/* height: 15rem; */
+	font-size: 16px;
+	color: #fff;
+	z-index: 2;
+	position: relative;
+}
+.ag-courses-item_date {
+	font-weight: bold;
+	color: #f9b234;
+	text-decoration: none;
+	-webkit-transition: color 0.5s ease;
+	-o-transition: color 0.5s ease;
+	transition: color 0.5s ease;
+}
+.ag-courses-item_bg {
+	height: 128px;
+	width: 128px;
+	background-color: #f9b234;
+
+	z-index: 1;
+	position: absolute;
+	top: -75px;
+	right: -75px;
+
+	border-radius: 50%;
+
+	-webkit-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+}
+.ag-courses_item:nth-child(2n) .ag-courses-item_bg {
+	background-color: #3ecd5e;
+}
+.ag-courses_item:nth-child(3n) .ag-courses-item_bg {
+	background-color: #e44002;
+}
+.ag-courses_item:nth-child(4n) .ag-courses-item_bg {
+	background-color: #952aff;
+}
+.ag-courses_item:nth-child(5n) .ag-courses-item_bg {
+	background-color: #cd3e94;
+}
+.ag-courses_item:nth-child(6n) .ag-courses-item_bg {
+	background-color: #4c49ea;
+}
+
+/* @media only screen and (max-width: 979px) {
+	.ag-courses_item {
+		-ms-flex-preferred-size: calc(50% - 30px);
+		flex-basis: calc(50% - 30px);
+	}
+	.ag-courses-item_title {
+		font-size: 24px;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.ag-format-container {
+		width: 96%;
+	}
+}
+@media only screen and (max-width: 639px) {
+	.ag-courses_item {
+		-ms-flex-preferred-size: 100%;
+		flex-basis: 100%;
+	}
+	.ag-courses-item_title {
+		min-height: 72px;
+		line-height: 1;
+
+		font-size: 24px;
+	}
+	.ag-courses-item_link {
+		padding: 22px 40px;
+	}
+	.ag-courses-item_date-box {
+		font-size: 16px;
+	}
+} */
+</style>
