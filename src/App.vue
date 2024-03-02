@@ -1,11 +1,13 @@
 <script>
 import axios from "axios"; //importo Axios
 import { store } from "./store.js"; //state management
+// import AppSearch from "./pages/AppSearch.vue";
 import TheHeader from "./components/TheHeader.vue";
 import Footer from "./components/Footer.vue";
 
 export default {
 	components: {
+		// AppSearch,
 		TheHeader,
 		Footer,
 	},
@@ -68,6 +70,7 @@ export default {
 </script>
 
 <template>
+	<!-- <AppSearch @search="getUsers()" /> -->
 	<TheHeader />
 	<router-view></router-view>
 	<Footer />

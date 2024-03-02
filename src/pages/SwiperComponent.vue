@@ -82,10 +82,10 @@ export default {
 				<img src="/public/logo_activity/cinese.png" class="w-50 object-fit-contain" />
 			</swiper-slide>
 			<swiper-slide>
-				<img src="/public/logo_activity/japan.png" class="w-50 object-fit-contain" />
+				<img src="/public/logo_activity/pub.png" class="w-50 object-fit-contain" />
 			</swiper-slide>
 			<swiper-slide>
-				<img src="/public/logo_activity/bar.png" class="w-50 object-fit-contain" />
+				<img src="/public/logo_activity/pizza.png" class="w-50 object-fit-contain" />
 			</swiper-slide>
 			<swiper-slide>
 				<img src="/public/logo_activity/osteria.png" class="w-50 object-fit-contain" />
