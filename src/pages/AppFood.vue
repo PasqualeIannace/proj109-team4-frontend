@@ -186,7 +186,7 @@ body {
 	background-color: #e44002;
 }
 .ag-courses_item:nth-child(4n) .ag-courses-item_bg {
-	background-color: #952aff;
+	background-color:#492a84db;
 }
 .ag-courses_item:nth-child(5n) .ag-courses-item_bg {
 	background-color: #cd3e94;

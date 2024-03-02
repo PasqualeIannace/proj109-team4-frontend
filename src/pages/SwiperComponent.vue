@@ -1,12 +1,12 @@
 <script>
 import { ref } from "vue";
 import { store } from "../store.js";
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import '../styles/general.scss';
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from "swiper/vue";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import "../styles/general.scss";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 export default {
 	components: {
@@ -14,10 +14,10 @@ export default {
 		SwiperSlide,
 	},
 	setup() {
-    return {
-      modules: [Autoplay, Pagination, Navigation],
-    };
-  },
+		return {
+			modules: [Autoplay, Pagination, Navigation],
+		};
+	},
 };
 </script>
 
@@ -57,58 +57,60 @@ export default {
 		<div class="swiper-button-prev"></div>
 		<div class="swiper-pagination"></div>
 	</div> -->
-
-	<swiper
-
-    :slidesPerView="4"
-    :loop="true"
-    :spaceBetween="30"
-    :centeredSlides="true"
-    :autoplay="{
-      delay: 2500,
-      disableOnInteraction: false,
-    }"
-    :pagination="{
-      type: 'fraction',
-    }"
-    :navigation="true"
-    :modules="modules"
-    class="mySwiper"
-  >
-  <div class="wrapper">
-	
-  </div>
-    <!-- <swiper-slide v-for="user in userList"  :key="index">
-        <img :src="user.logo_activity">
-    </swiper-slide> -->
-    <swiper-slide>
-        <img src="../../public/img/02.png">
-    </swiper-slide>
-    <swiper-slide>
-        <img src="../../public/img/03.png">
-    </swiper-slide>
-    <swiper-slide>
-        <img src="../../public/img/04.png">
-    </swiper-slide>
-    <swiper-slide>
-        <img src="../../public/img/05.png">
-    </swiper-slide>
-  </swiper>
+	<div class="swiperContainer">
+		<swiper
+			:slidesPerView="1"
+			:centeredSlides="true"
+			:loop="true"
+			:spaceBetween="30"
+			:autoplay="{
+				delay: 2500,
+				disableOnInteraction: false,
+			}"
+			:pagination="{
+				type: 'fraction',
+			}"
+			:navigation="false"
+			:modules="modules"
+			class="mySwiper"
+		>
+			<div class="wrapper"></div>
+			<!-- <swiper-slide v-for="user in userList"  :key="index">
+	<img :src="user.logo_activity">
+</swiper-slide> -->
+			<swiper-slide>
+				<img src="/public/logo_activity/cinese.png" class="w-50 object-fit-contain" />
+			</swiper-slide>
+			<swiper-slide>
+				<img src="/public/logo_activity/japan.png" class="w-50 object-fit-contain" />
+			</swiper-slide>
+			<swiper-slide>
+				<img src="/public/logo_activity/bar.png" class="w-50 object-fit-contain" />
+			</swiper-slide>
+			<swiper-slide>
+				<img src="/public/logo_activity/osteria.png" class="w-50 object-fit-contain" />
+			</swiper-slide>
+		</swiper>
+	</div>
 </template>
 
 <style>
-.mySwiper{
-    height: 40vh;
-    background-image: url("../../public/img/Parallax-03.jpg");
-    min-height: 30vh;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin-top: 3rem;
+.swiperContainer{
+	width: 1000px;
+	height: 600px;
+	margin-left: auto;
 }
-img{
-  margin-top: 27%;
+.swiper-slide img {
+	/* display: block; */
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+	margin-top: 10vh;
+}
+.mySwiper {
+	max-height: 65vh;
+	margin-top: 10rem;
 }
 /* .swiper {
 	width: 1000px;

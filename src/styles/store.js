@@ -6,5 +6,5 @@ export const store = reactive({
     apiUserEndpoint: "users",
     foodList : [],
     userList:[],
-
+    search: encodeURI(""),
 });

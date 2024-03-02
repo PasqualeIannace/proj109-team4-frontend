@@ -53,7 +53,6 @@ export default {
 <div>
     <SwiperComponent />
   </div>
-  <div>
         <h1 class="text-center">Ristoranti</h1>
 
         <div class="container">
@@ -85,8 +84,6 @@ export default {
                 </div>
             </div>
         </div>
-
-    </div>
 </template>
 
 <style scoped>
