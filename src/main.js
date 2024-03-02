@@ -1,6 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import { router } from "./router";
+import Swiper from 'swiper';
+
 
 // importo bootstrap (js)
 import * as bootstrap from 'bootstrap'

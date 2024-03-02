@@ -4,12 +4,6 @@ import { store } from "./store.js"; //state management
 import TheHeader from "./components/TheHeader.vue";
 import Footer from "./components/Footer.vue";
 
-import Swiper from "swiper";
-import "swiper/css"; // Importa gli stili di Swiper
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-
-
 export default {
 	components: {
 		TheHeader,
@@ -25,24 +19,6 @@ export default {
 	mounted() {
 		this.getFoods();
 		this.getUsers();
-		// swiper
-		// Inizializza Swiper qui
-
-    var swiper = new Swiper(".mySwiper", {
-      slidesPerView: 1,
-      spaceBetween: 30,
-      loop: true,
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-	  modules: [Navigation, Pagination],
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-    });
-
 	},
 	methods: {
 		getFoods() {
