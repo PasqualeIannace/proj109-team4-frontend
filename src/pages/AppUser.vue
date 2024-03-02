@@ -20,9 +20,12 @@ export default {
 
                 <div class="col-md-4 gy-4" v-for="user in store.userList">
                     <div class="card h-100">
-                        <div class="card-header">{{ user.name }}</div>
+                        <div class="card-header text-center">
+                            <b>{{ user.activity_name }}</b>
+                            <img :src="user.logo_activity" alt="Logo attività">
+                        </div>
                         <div class="card-body">
-                            <!-- <h5 class="card-title text-center">{{ food.name }}</h5>
+                            <!-- <h5 class="card-title text-center">{{ food.n }}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">
                                 {{ food.user ? food.user.name : "Utente sconosciuto" }}
                             </h6>
