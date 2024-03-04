@@ -75,10 +75,10 @@ export default {
                             </p>  -->
                         </div>
                         <div class="card-footer text-center">
-                            <a href="#" class="btn btn-primary">
+                          <router-link :to="{ name: 'user-details', params: { id: user.id } }" class="btn btn-primary">
                                 <font-awesome-icon icon="fa-solid fa-circle-info" class="me-2" />
                                 <span>Mostra dettagli</span>
-                            </a>
+                          </router-link>
                         </div>
                     </div>
                 </div>

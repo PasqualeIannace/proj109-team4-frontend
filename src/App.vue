@@ -65,6 +65,26 @@ export default {
 					console.error(errore);
 				});
 		},
+
+		/* getFoodsByUser() {
+			axios
+				.get(`${this.store.apiUrl + this.store.apiFoodsByUserEndpoint}`)
+				.then((risultato) => {
+					//console.log(risultato);
+					if (risultato.status === 200 && risultato.data.success) {
+						//console.log(risultato.data.results);
+						this.store.userList = risultato.data.payload;
+						//console.log(risultato.data.payload, "il mio array");
+					} else {
+						//ToDo: distinguere il motivo dell'else.
+						//es. controllare statusCode, presenza e veridicità di data.success
+						console.error("Ops... qualcosa è andato storto");
+					}
+				})
+				.catch((errore) => {
+					console.error(errore);
+				});
+		}, */
 	},
 };
 </script>

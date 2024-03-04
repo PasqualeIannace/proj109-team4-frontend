@@ -1,14 +1,35 @@
 <script>
-import { store } from "../store.js"; //state management
+import axios from "axios";
+import { store } from "../store.js"; // Import the store
 
 export default {
-	name: "AppFood",
-	data() {
-		return {
-			store,
-		};
-	},
-	
+  name: "AppUserDetail",
+  data() {
+    return {
+      store,
+    };
+  },
+  mounted() {
+    this.getFoodsByUser();
+  },
+  methods: {
+    getFoodsByUser() {
+      const userId = this.$route.params.id;
+
+      axios
+        .get(`${store.apiUrl}foods/user/${userId}`)
+        .then((response) => {
+          if (response.status === 200 && response.data.success) {
+            store.foodListByUser = response.data.payload;
+          } else {
+            console.error("Error fetching foods by user:", response);
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching foods by user:", error);
+        });
+    },
+  },
 };
 </script>
 
@@ -18,7 +39,7 @@ export default {
 
 		<div class="container d-flex flex-wrap text-decoration-none">
 			<!-- <h1 class="mt-5 mb-3 text-center">Dettaglio evento {{ $route.params.id }}</h1> -->
-			<div class="ag-format-container" v-for="food in store.foodList">
+			<div class="ag-format-container" v-for="food in store.foodListByUser">
 				<div class="ag-courses_box">
 					<div class="ag-courses_item">
 						<a href="#" class="ag-courses-item_link">

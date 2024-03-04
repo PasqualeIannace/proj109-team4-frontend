@@ -5,6 +5,8 @@ import AppAbout from './pages/AppAbout.vue';
 import AppFood from './pages/AppFood.vue';
 import AppUser from "./pages/AppUser.vue";
 import AppFoodDetail from './pages/AppFoodDetail.vue';
+import AppUserDetail from './pages/AppUserDetail.vue';
+
 
 const router = createRouter({
     history: createWebHistory(),
@@ -33,6 +35,12 @@ const router = createRouter({
             path: '/foods:id',
             name: 'details',
             component: AppFoodDetail,
+            props: true
+        },
+        {
+            path: '/users/:id',
+            name: 'user-details',
+            component: AppUserDetail,
             props: true
         },
     ]
