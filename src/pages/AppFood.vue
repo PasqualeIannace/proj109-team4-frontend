@@ -1,8 +1,10 @@
 <script>
 import { store } from "../store.js"; //state management
+import CartBTN from '../components/CartBTN.vue'
 
 export default {
 	name: "AppFood",
+	components:{CartBTN},
 	data() {
 		return {
 			store,
@@ -33,7 +35,7 @@ export default {
 								<!-- <p>{{ food.ingredients }}</p> -->
 								<!-- <p class="card-text">{{ food.description }}</p> -->
 								<p class="card-text text-center fs-5">
-									<b>{{ food.price }}</b>
+									<b>€ {{ food.price }}</b>
 								</p>
 
 								<div class="card-footer text-center ag-courses-item_date">
@@ -42,6 +44,9 @@ export default {
 									>
 										<p class="ag-courses-item_date fs-5">dettagli piatto</p>
 									</router-link>
+									<div class="d-flex justify-content-between align-items-center">
+                                    	<CartBTN :food="food"/>
+                            		</div>
 								</div>
 							</div>
 						</a>
@@ -240,4 +245,7 @@ body {
 		font-size: 16px;
 	}
 } */
+i{
+	color: white;
+}
 </style>
