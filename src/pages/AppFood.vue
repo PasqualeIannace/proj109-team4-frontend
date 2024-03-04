@@ -125,6 +125,7 @@ body {
 	overflow: hidden;
 	text-decoration: none;
 	position: relative;
+	height: 24rem;
 }
 .ag-courses-item_link:hover,
 .ag-courses-item_link:hover .ag-courses-item_date {
@@ -148,6 +149,16 @@ body {
 
 	z-index: 2;
 	position: relative;
+
+	h5{
+		height: 3rem;
+	}
+
+	img{
+		height: 5.7em;
+    object-fit: cover;
+    border-radius: 1em;
+	}
 }
 .ag-courses-item_date-box {
 	/* height: 15rem; */
