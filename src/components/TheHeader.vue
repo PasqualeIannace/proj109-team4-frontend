@@ -66,7 +66,7 @@ export default {
 		<div id="mainNavigation">
 			<nav role="navigation">
 				<div class="py-5 text-center myborder">
-					<!-- <img src="" alt="" class="logo "> -->
+					 <img src="" alt="" class="logo "> 
 					<div class="">
 						<div class="row d-flex justify-content-center">
 							<div class="col-4">
@@ -121,9 +121,43 @@ export default {
 							</ul>
 						</li>
 					</ul>
+					<router-link class="nav-link" :class="$route.name == 'cart'? 'active':''" aria-current="page" :to="{ name: 'cart'}">
+						<i class="bi bi-cart3 h4"></i>
+						<span v-if=" $store.state.cart.length > 0" class="align-items-center justify-content-center translate-middle badge rounded-pill bg-secondary">
+						{{ $store.state.cart.length }}
+						</span>
+					</router-link>
 				</div>
 			</div>
 		</div>
+	<!-- <header>
+		<div class="collapse bg-dark" id="navbarHeader">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-8 col-md-7 py-4">
+						<h4 class="text-white">About</h4>
+						<p class="text-muted">Add some information about the food</p>
+					</div>
+					<div class="col-sm-4 offset-md-1 py-4">
+						<h4 class="text-white">Contact</h4>
+						<ul class="list-unstyled">
+							<li><a href="#" class="text-white">Follow on Instagram</a></li>
+							<li><a href="#" class="text-white">Like on Facebook</a></li>
+							<li><a href="#" class="text-white">Email me</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div> -->
+				<!-- <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+					<li class="nav-item me-3">
+						
+					</li>
+				</ul>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader">
+					<span class="navbar-toggler-icon"></span>
+				</button> -->
+		
 	</header>
 </template>
 

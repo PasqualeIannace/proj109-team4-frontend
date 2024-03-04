@@ -3,6 +3,7 @@ import App from './App.vue'
 import { router } from "./router";
 import Swiper from 'swiper';
 import 'swiper/swiper-bundle.css';
+import store from './store'
 
 
 // importo bootstrap (js)
@@ -26,5 +27,6 @@ library.add(brandIcons.fab);
 window.vue = {};
 window.vue.App = createApp(App)
     .use(router)
+    .use(store)
     .component('font-awesome-icon', FontAwesomeIcon)
     .mount('#app');
