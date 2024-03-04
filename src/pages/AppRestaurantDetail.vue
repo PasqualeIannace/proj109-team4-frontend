@@ -38,11 +38,10 @@ export default {
 		<h1 class="text-center">Food</h1>
 
 		<div class="container d-flex flex-wrap text-decoration-none">
-			<!-- <h1 class="mt-5 mb-3 text-center">Dettaglio evento {{ $route.params.id }}</h1> -->
-			<div class="ag-format-container" v-for="food in store.foodListByUser">
-				<div class="ag-courses_box">
-					<div class="ag-courses_item">
-						<a href="#" class="ag-courses-item_link">
+    <div class="ag-format-container" v-for="(food, index) in store.foodListByUser" :key="index">
+        <div class="ag-courses_box">
+            <div class="ag-courses_item">
+                <a href="" @click="openModal(index)" class="ag-courses-item_link" data-bs-toggle="modal" :data-bs-target="'#exampleModal' + index">
 							<div class="ag-courses-item_bg"></div>
 
 							<div class="ag-courses-item_title">
@@ -58,49 +57,35 @@ export default {
 								</p>
 
 								<div class="card-footer text-center ag-courses-item_date">
-									<router-link
-										:to="{ name: 'details', params: { id: food.id } }"
-									>
-										<p class="ag-courses-item_date fs-5">dettagli piatto</p>
-									</router-link>
+
 								</div>
 							</div>
 						</a>
 					</div>
 				</div>
-			</div>
-			<!-- <div class="card-footer text-center">
-                <router-link :to="{ name: 'details', params: { id: food.id } }">
-                    <span class="button-49 p-1">dettagli piatto</span>
-                </router-link>
-            </div> -->
-		</div>
-	</div>
 
-	<!-- <div class="container">
-			<div class="row">
-				<div class="col-md-4 gy-4" v-for="food in store.foodList">
-					<div class="card h-100">
-						<div class="card-header">{{ food.name }}</div>
-						<div class="card-body">
-							<img :src="food.image" class="w-100" />
-							<p>{{ food.ingredients }}</p>
-							<p class="card-text">{{ food.description }}</p>
-							<p class="card-text text-center fs-5">
-								<b>{{ food.price }}</b>
-							</p>
-						</div>
-						<div class="card-footer text-center">
-							<div class="card-footer text-center">
-								<router-link :to="{ name: 'details', params: { id: food.id } }">
-									<span class="button-49 p-1">dettagli piatto</span>
-								</router-link>
+					<!-- Modal info cibo-->
+					<div class="modal fade text-black" :id="'exampleModal' + index" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">{{ food.name }}</h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+								</div>
+								<div class="modal-body">
+									<p>{{ food.ingredients }}</p>
+									<p>{{ food.description }}</p>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+									<button type="button" class="btn btn-primary">Save changes</button>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div> -->
+		</div>
 </template>
 
 <style scoped>
