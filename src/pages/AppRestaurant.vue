@@ -4,7 +4,7 @@ import SwiperComponent from "./SwiperComponent.vue";
 import Swiper from 'swiper';
 
 export default {
-  name: "AppUser",
+  name: "AppRestaurant",
   components: {
     Swiper,
     SwiperComponent

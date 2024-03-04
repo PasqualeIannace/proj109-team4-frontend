@@ -3,7 +3,7 @@ import axios from "axios";
 import { store } from "../store.js"; // Import the store
 
 export default {
-  name: "AppUserDetail",
+  name: "AppRestaurantDetail",
   data() {
     return {
       store,
