@@ -5,7 +5,7 @@ export default {
 </script>
 
 <template>
-    <section>
+    <section class="myMargin">
         <h1 class="mt-5 mb-3 text-center">About</h1>
         <div class="container">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae assumenda unde cumque quaerat nisi magnam

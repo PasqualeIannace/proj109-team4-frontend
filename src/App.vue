@@ -1,51 +1,84 @@
 <script>
-
-import axios from 'axios'; //importo Axios
-import { store } from "./store.js" //state management
-import TheHeader from "./components/TheHeader.vue"
+import axios from "axios"; //importo Axios
+import { store } from "./store.js"; //state management
+// import AppSearch from "./pages/AppSearch.vue";
+import TheHeader from "./components/TheHeader.vue";
+import Footer from "./components/Footer.vue";
 
 export default {
 	components: {
-		TheHeader
+		// AppSearch,
+		TheHeader,
+		Footer,
 	},
 	data() {
 		return {
 			store,
-		}
+			foodList: [],
+			userList: [],
+		};
 	},
 	mounted() {
-		this.getEventList();
+		this.getFoods();
+		this.getUsers();
 	},
 	methods: {
-		getEventList() {
-			let url = this.store.apiUrl + this.store.apiEventEndpoint;
+		getFoods() {
+			// let url = this.store.apiUrl + this.store.apiEndpoint;
+			// let url = "http://127.0.0.1:8000/api/foods";
 
-			axios.get(url).then(risultato => {
-				if (risultato.status === 200 && risultato.data.success) {
-					console.log(risultato.data.results);
-					this.store.eventList = risultato.data.results;
-				} else {
-					//ToDo: distinguere il motivo dell'else.
-					//es. controllare statusCode, presenza e veridicità di data.success
-					console.error("Ops... qualcosa è andato storto");
-				}
-			}).catch(errore => {
-				console.error(errore);
-			});
-		}
-	}
-}
+			axios
+				.get(`${this.store.apiUrl + this.store.apiEndpoint}`)
+				.then((risultato) => {
+					console.log(risultato);
+					if (risultato.status === 200 && risultato.data.success) {
+						console.log(risultato.data.results);
+						this.store.foodList = risultato.data.payload;
+						//console.log(risultato.data.payload, "il mio array");
+					} else {
+						//ToDo: distinguere il motivo dell'else.
+						//es. controllare statusCode, presenza e veridicità di data.success
+						console.error("Ops... qualcosa è andato storto");
+					}
+				})
+				.catch((errore) => {
+					console.error(errore);
+				});
+		},
+
+		getUsers() {
+			axios
+				.get(`${this.store.apiUrl + this.store.apiUserEndpoint}`)
+				.then((risultato) => {
+					//console.log(risultato);
+					if (risultato.status === 200 && risultato.data.success) {
+						//console.log(risultato.data.results);
+						this.store.userList = risultato.data.payload;
+						//console.log(risultato.data.payload, "il mio array");
+					} else {
+						//ToDo: distinguere il motivo dell'else.
+						//es. controllare statusCode, presenza e veridicità di data.success
+						console.error("Ops... qualcosa è andato storto");
+					}
+				})
+				.catch((errore) => {
+					console.error(errore);
+				});
+		},
+	},
+};
 </script>
 
 <template>
+	<!-- <AppSearch @search="getUsers()" /> -->
 	<TheHeader />
-
 	<router-view></router-view>
+	<Footer />
 </template>
 
 <style lang="scss">
 // importo il foglio di stile generale dell'applicazione, non-scoped
-@use './styles/general.scss';
+@use "./styles/general.scss";
 </style>
 
 <style scoped lang="scss">
