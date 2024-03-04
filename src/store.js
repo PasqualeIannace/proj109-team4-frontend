@@ -10,6 +10,7 @@ export const store = reactive({
     foodList: [],
     userList: [],
     searched: encodeURI(""),
+    foodListByUser: [],
 });
 
 export default createStore({
