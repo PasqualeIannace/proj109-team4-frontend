@@ -83,8 +83,7 @@ export default {
 						</div>
 					</div>
 				</div>
-			</nav>
-			<div class="navbar-expand-md">
+				<div class="navbar-expand-md">
 				<div class="navbar-dark text-center my-2">
 					<button class="navbar-toggler w-75" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
@@ -121,14 +120,16 @@ export default {
 							</ul>
 						</li>
 					</ul>
-					<router-link class="nav-link" :class="$route.name == 'cart'? 'active':''" aria-current="page" :to="{ name: 'cart'}">
-						<i class="bi bi-cart3 h4"></i>
+					<router-link class="nav-link me-5" :class="$route.name == 'cart'? 'active':''" aria-current="page" :to="{ name: 'cart'}">
+						<i class="fa-solid fa-cart-shopping"></i>
 						<span v-if=" $store.state.cart.length > 0" class="align-items-center justify-content-center translate-middle badge rounded-pill bg-secondary">
 						{{ $store.state.cart.length }}
 						</span>
 					</router-link>
 				</div>
 			</div>
+			</nav>
+			
 		</div>
 	<!-- <header>
 		<div class="collapse bg-dark" id="navbarHeader">
@@ -221,6 +222,7 @@ router-link.dropdown-item:hover {
 	/* max-height: 10vh; */
 }
 #mainNavigation {
+	padding-bottom: 15px;
 	position: fixed;
 	top: 0;
 	/* left:0; */
@@ -228,22 +230,23 @@ router-link.dropdown-item:hover {
 	z-index: 123;
 	/* padding-bottom:120px; */
 	/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+100&0.65+0,0+100;Neutral+Density */
-	background: -moz-linear-gradient(
+	/* background: -moz-linear-gradient(
 		top,
 		rgba(0, 0, 0, 0.65) 0%,
 		rgba(0, 0, 0, 0) 100%
 	); /* FF3.6-15 */
-	background: -webkit-linear-gradient(
+	/* background: -webkit-linear-gradient(
 		top,
 		rgba(0, 0, 0, 0.65) 0%,
 		rgba(0, 0, 0, 0) 100%
-	); /* Chrome10-25,Safari5.1-6 */
+	); Chrome10-25,Safari5.1-6
 	background: linear-gradient(
 		to bottom,
 		rgba(0, 0, 0, 0.65) 0%,
 		rgba(0, 0, 0, 0) 100%
 	); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+	/* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); IE6-9  */
+	background-color: #224;
 }
 #navbarNavDropdown.collapsing .navbar-nav,
 #navbarNavDropdown.show .navbar-nav {

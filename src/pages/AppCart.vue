@@ -11,7 +11,7 @@ export default{
 </script>
 
 <template>
-    <section class="h-100 h-custom">
+    <section class="myMargin">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col">
@@ -19,7 +19,7 @@ export default{
                         <div class="card-body p-4">
                             <div class="row">
                                 <div class="col-lg-7">
-                                    <h5 class="mb-3"><router-link :to="{name:'Home'}" class="text-body">
+                                    <h5 class="mb-3"><router-link :to="{name:'foods'}" class="text-body">
                                     <i class="fas fa-long-arrow-alt-left me-2"></i>Continue shopping</router-link></h5>
                                     <hr>
                                     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -45,7 +45,7 @@ export default{
                                                 </div>
                                                 <div class="d-flex flex-row align-items-center">
                                                     <div>
-                                                        <h5 class="mb-0"><i class="bi bi-currency-dollar"></i>{{ food.price * food.qty }}</h5>
+                                                        <h5 class="mb-0"><i class="bi bi-currency-dollar"></i>€ {{ food.price * food.qty }}</h5>
                                                         <small v-if="food.hasDiscount" class="text-muted text-decoration-line-through"><i class="bi bi-currency-dollar"></i></small>
                                                     </div>
                                                     <a role="button" @click="$event => removeItem(item)" class="ms-4" style="color: #cecece;"><i class=""></i></a>
@@ -64,11 +64,11 @@ export default{
                                             <hr class="my-4">
                                             <div class="d-flex justify-content-between">
                                                 <p class="mb-2">Subtotal</p>
-                                                <p class="mb-2"><i class="bi bi-currency-dollar"></i>{{ $store.state.cartTotal }}</p>
+                                                <p class="mb-2"><i class="bi bi-currency-dollar"></i>€ {{ $store.state.cartTotal }}</p>
                                             </div>
                                             <div class="d-flex justify-content-between mb-4">
                                                 <p class="mb-2">Total</p>
-                                                <p class="mb-2"><i class="bi bi-currency-dollar"></i>{{ $store.state.cartTotal }}</p>
+                                                <p class="mb-2"><i class="bi bi-currency-dollar"></i>€ {{ $store.state.cartTotal }}</p>
                                             </div>
                                             <button type="button" class="btn btn-info btn-block btn-lg">
                                                 Checkout
