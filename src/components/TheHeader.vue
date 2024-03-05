@@ -29,46 +29,12 @@ export default {
 </script>
 
 <template>
-	<!-- <header>
-		<nav class="navbar navbar-expand-lg bg-light">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="#">
-					<img src="/logo.png" class="logo" alt=""
-				/></a>
-				<button
-					class="navbar-toggler"
-					type="button"
-					data-bs-toggle="collapse"
-					data-bs-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent"
-					aria-expanded="false"
-					aria-label="Toggle navigation"
-				>
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<li
-							class="nav-item"
-							v-for="(item, index) in menuItems"
-							:key="index"
-						>
-							<router-link :to="{ name: item.routeName }" class="nav-link">
-								{{ item.label }}
-							</router-link>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-	</header> -->
 	<header>
 		<div id="mainNavigation">
 			<nav role="navigation">
-				<div class="text-center myborder">
-					 <img src="" alt="" class="logo "> 
 					<div class="">
-						<div class="row d-flex justify-content-center">
+						
+						<div class="row d-flex justify-content-center ">
 							<div class="col-4">
 								<!-- <div class="input-group mb-3">
 									<input type="text" class="form-control input-text myInput" placeholder="Search products...." aria-label="Recipient's username" aria-describedby="basic-addon2" v-model="store.searched"  @keyup.enter="$emit('search')"/>
@@ -82,7 +48,6 @@ export default {
 							</div>
 						</div>
 					</div>
-				</div>
 				<div class="navbar-expand-md">
 				<div class="navbar-dark text-center my-2">
 					<button class="navbar-toggler w-75" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -222,7 +187,6 @@ router-link.dropdown-item:hover {
 	/* max-height: 10vh; */
 }
 #mainNavigation {
-	height: 35vh;
 	padding-bottom: 15px;
 	position: fixed;
 	top: 0;
