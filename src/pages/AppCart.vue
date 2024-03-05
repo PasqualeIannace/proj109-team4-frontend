@@ -19,7 +19,7 @@ export default{
                         <div class="card-body p-4">
                             <div class="row">
                                 <div class="col-lg-7">
-                                    <h5 class="mb-3"><router-link :to="{name:'foods'}" class="text-body">
+                                    <h5 class="mb-3"><router-link :to="{name:'home'}" class="text-body">
                                     <i class="fas fa-long-arrow-alt-left me-2"></i>Continue shopping</router-link></h5>
                                     <hr>
                                     <div class="d-flex justify-content-between align-items-center mb-4">

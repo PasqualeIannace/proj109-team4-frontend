@@ -40,7 +40,7 @@ export default {
 </script>
 
 <template>
-        <button type="button" @click="$event => addOrRemove()" class="btn btn-sm me-2">
+        <button type="button" @click="$event => addOrRemove()" class="btn me-2">
         <i class="fa-solid fa-cart-shopping"></i>
         </button>
         <CartAddRemove v-if="!toAdd" :food="item"/>
