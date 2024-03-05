@@ -41,7 +41,7 @@ export default {
     <div class="ag-format-container" v-for="(food, index) in store.foodListByUser" :key="index">
         <div class="ag-courses_box">
             <div class="ag-courses_item">
-                <a href="" @click="openModal(index)" class="ag-courses-item_link" data-bs-toggle="modal" :data-bs-target="'#exampleModal' + index">
+                <a href="" class="ag-courses-item_link" data-bs-toggle="modal" :data-bs-target="'#exampleModal' + index">
 							<div class="ag-courses-item_bg"></div>
 
 							<div class="ag-courses-item_title">
