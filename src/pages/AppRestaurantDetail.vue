@@ -1,9 +1,11 @@
 <script>
 import axios from "axios";
 import { store } from "../store.js"; // Import the store
+import CartBTN from '../components/CartBTN.vue';
 
 export default {
   name: "AppRestaurantDetail",
+  components:{CartBTN},
   data() {
     return {
       store,
@@ -41,26 +43,32 @@ export default {
     <div class="ag-format-container" v-for="(food, index) in store.foodListByUser" :key="index">
         <div class="ag-courses_box">
             <div class="ag-courses_item">
-                <a href="" class="ag-courses-item_link" data-bs-toggle="modal" :data-bs-target="'#exampleModal' + index">
-							<div class="ag-courses-item_bg"></div>
+                <a href="" @click="openModal(index)" class="ag-courses-item_link" data-bs-toggle="modal" :data-bs-target="'#exampleModal' + index">
+						<div class="ag-courses-item_bg"></div>
 
-							<div class="ag-courses-item_title">
-								<h5>{{ food.name }}</h5>
-								<img :src="food.image" class="w-100" />
+						<div class="ag-courses-item_title">
+							<h5>{{ food.name }}</h5>
+							<img :src="food.image" class="w-100" />
+						</div>
+
+						<div class="ag-courses-item_date-box">
+							<!-- <p>{{ food.ingredients }}</p> -->
+							<!-- <p class="card-text">{{ food.description }}</p> -->
+							<p class="card-text text-center fs-5">
+								<b>€ {{ food.price }}</b>
+							</p>
+
+							<div class="card-footer text-center ag-courses-item_date">
+								
 							</div>
-
-							<div class="ag-courses-item_date-box">
-								<!-- <p>{{ food.ingredients }}</p> -->
-								<!-- <p class="card-text">{{ food.description }}</p> -->
-								<p class="card-text text-center fs-5">
-									<b>{{ food.price }}</b>
-								</p>
-
-								<div class="card-footer text-center ag-courses-item_date">
-
-								</div>
-							</div>
-						</a>
+						</div>
+				</a>
+				<div class="bg-white">
+					<div class="d-flex justify-content-between align-items-center cart">
+                        <CartBTN :food="food"/>
+                    </div>
+				</div>
+					
 					</div>
 				</div>
 
@@ -210,6 +218,10 @@ body {
 }
 .ag-courses_item:nth-child(6n) .ag-courses-item_bg {
 	background-color: #4c49ea;
+}
+
+.cart :hover{
+	color: black;
 }
 
 /* @media only screen and (max-width: 979px) {
