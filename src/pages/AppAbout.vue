@@ -5,8 +5,7 @@ export default {
 </script>
 
 <template>
-    <section class="myMargin">
-        <h1 class="mt-5 mb-3 text-center">About</h1>
+    <section class="">
         <div class="container">
             <div class="row">
                 <div class="col-6">
@@ -15,7 +14,8 @@ export default {
                     <span><strong>La nostra mission</strong></span>
                     <p>La nostra mission è quella di rendere il cibo d'asporto un'esperienza facile, veloce e conveniente. Vogliamo che i nostri clienti possano gustare i piatti dei loro ristoranti preferiti comodamente a casa propria, senza doversi preoccupare di cucinare o di uscire.</p>
                     <span><strong>Come funziona</strong></span>
-                    <ol>Ordinare con Deliveboo è semplicissimo:
+                    <p>Ordinare con Deliveboo è semplicissimo:</p>
+                    <ol>
 
                     <li>Seleziona il tuo ristorante preferito</li>
                     <li>Scegli i piatti che vuoi ordinare</li>
@@ -35,15 +35,19 @@ export default {
                     <p>Deliveboo è la scelta ideale per chi desidera gustare un pasto delizioso senza doversi preoccupare di cucinare o di uscire.</p>
                     <hr>
                     <span>Grazie per averci scelto!</span>
-                    <strong>Deliveboo</strong>
+                    <p><strong>Deliveboo</strong></p>
                     <span>Il tuo food delivery di fiducia!</span>
                 </div>
-                <div class="col-6">
-                    <img src="logo.png" alt="Logo">
+                <div class="col-6 d-flex justify-content-center align-items-center">
+                    <img class="w-500" src="logo.png" alt="Logo">
                 </div>
             </div>
         </div>
     </section>
 </template>
 
-<style scoped></style>
+<style scoped>
+.w-500{
+    width: 500px;
+}
+</style>
