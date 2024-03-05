@@ -64,9 +64,25 @@ export default {
         });
     },
 
-        getDebug() {
-            console.log("selected types: ", this.selectedTypes);
-        }
+    fetchData() {
+    //console.log('sei nel fetch');
+    axios
+        .get(`${this.store.apiUrl}${this.store.apiTypesEndpoint}`)
+        // Correggi l'utilizzo delle virgolette per l'interpolazione della stringa
+        .then((risposta) => {
+            if (risposta.status === 200 && risposta.data.success) {
+                this.store.types = risposta.data.payload;
+                //this.store.selectedTypes.push(types);
+                //console.log(this.store.selectedTypes, "il mio array di tipi");
+                console.log(this.store.types);
+            } else {
+                console.error("Ops... qualcosa è andato storto con i tipi");
+            }
+        })
+        .catch((error) => {
+            console.error("Errore durante il recupero dei tipi:", error);
+        });
+},
     
 	},
 
