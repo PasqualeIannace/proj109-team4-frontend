@@ -21,10 +21,6 @@ export default {
 					routeName: "foods",
 					label: "Food",
 				},
-				{
-					routeName: "users",
-					label: "Ristoranti",
-				},
 			],
 			store,
 		};

@@ -3,7 +3,6 @@ import { createRouter, createWebHistory } from 'vue-router';
 import AppHome from './pages/AppHome.vue';
 import AppAbout from './pages/AppAbout.vue';
 import AppFood from './pages/AppFood.vue';
-import AppRestaurant from "./pages/AppRestaurant.vue";
 import AppFoodDetail from './pages/AppFoodDetail.vue';
 import AppRestaurantDetail from './pages/AppRestaurantDetail.vue';
 import AppCart from './pages/AppCart.vue';
@@ -28,11 +27,6 @@ const router = createRouter({
             component: AppFood
         },
         {
-            path: '/restaurants',
-            name: 'users',
-            component: AppRestaurant
-        },
-        {
             path: '/restaurant/:id',
             name: 'user-details',
             component: AppRestaurantDetail,
@@ -54,7 +48,7 @@ const router = createRouter({
             name: 'restaurant_types',
             component: AppSearch,
         },
-        
+
     ]
 });
 
