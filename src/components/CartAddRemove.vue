@@ -37,9 +37,11 @@ export default {
             this.loading = false
         }
     },
-    mounted(){
-        this.qty = this.food
+    mounted() {
+    if (this.food && this.food.qty) {
+        this.qty = this.food.qty;
     }
+}
 }
 </script>
 
