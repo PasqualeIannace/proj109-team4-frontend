@@ -1,10 +1,9 @@
 <script>
 import { store } from "../store.js";
-import AppSearch from "../pages/AppSearch.vue";
+
 export default {
 	name: "TheHeader",
 	components: {
-           AppSearch,
 	},
 	data() {
 		return {
