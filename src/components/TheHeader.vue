@@ -70,7 +70,6 @@ export default {
 					<div class="">
 						<div class="row d-flex justify-content-center">
 							<div class="col-4">
-								<AppSearch />
 								<!-- <div class="input-group mb-3">
 									<input type="text" class="form-control input-text myInput" placeholder="Search products...." aria-label="Recipient's username" aria-describedby="basic-addon2" v-model="store.searched"  @keyup.enter="$emit('search')"/>
 									<div class="input-group-append">
