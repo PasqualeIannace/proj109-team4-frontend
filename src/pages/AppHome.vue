@@ -20,7 +20,7 @@ export default {
   },
 
   mounted() {
-    this.getTypes();
+    this.getTypes();  
   },
 
   methods: {
@@ -44,6 +44,7 @@ export default {
 					console.error(errore);
 				});
 		},
+    
 	},
 
 }
@@ -66,7 +67,7 @@ export default {
 				<div class="row d-flex justify-content-center">
 					<div class="col-4 d-flex justify-content-center">
 						<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group" v-for="SingleType in store.types">
-                        <input type="checkbox" class="btn-check" :id="'btncheck_' + SingleType.id" autocomplete="off" v-model="selectedTypes">
+                        <input type="checkbox" @click="getUsers()"  class="btn-check" :id="'btncheck_' + SingleType.id" autocomplete="off" v-model="selectedTypes">
                         <label class="btn btn-outline-primary" :for="'btncheck_' + SingleType.id">{{SingleType.name}}</label>
                         </div>
 
