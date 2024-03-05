@@ -20,23 +20,22 @@ export default {
   },
 
   mounted() {
-    this.getTypes();  
+    this.getUsers();
+	this.fetchData();
   },
 
   methods: {
-		getTypes() {
-			axios
-				.get(`${this.store.apiUrl + this.store.apiTypesEndpoint}`)
-				.then((risultato) => {
-                    // console.log(this.types , "ecco")
-					console.log(risultato);
+        getUsers(selectedTypes) {
+			axios.get(`${this.store.apiUrl + this.store.apiUserEndpoint}`, {params: { types: selectedTypes } // Passa gli ID dei tipi selezionati come parametro
+                }).then((risultato) => {
+					//console.log(risultato);
 					if (risultato.status === 200 && risultato.data.success) {
-						// console.log(risultato.data.payload);
-                        //this.setTypes(risultato.data.payload); // Aggiorna lo stato utilizzando la mutazione
-						//console.log(risultato.data.payload, "ecco")
-                        this.store.types = risultato.data.payload;
-						console.log(risultato.data.payload, "il mio array");
+						//console.log(risultato.data.results);
+						this.store.userList = risultato.data.payload;
+						//console.log(risultato.data.payload, "il mio array");
 					} else {
+						//ToDo: distinguere il motivo dell'else.
+						//es. controllare statusCode, presenza e veridicità di data.success
 						console.error("Ops... qualcosa è andato storto");
 					}
 				})
@@ -44,6 +43,20 @@ export default {
 					console.error(errore);
 				});
 		},
+		fetchData() {
+			//console.log('sei nel fetch');
+            axios.get(`${this.store.apiUrl + this.store.apiTypesEndpoint}`).then((risposta) => {
+                if (risposta.status === 200 && risposta.data.success) {
+                    this.store.types = risposta.data.payload;
+                    console.log(risposta.data.payload, "il mio array di tipi");
+                 } else {
+                    console.error("Ops... qualcosa è andato storto con i tipi");
+                 }
+			})
+                .catch((error) => {
+                console.error("Errore durante il recupero dei tipi:", error);
+                });
+	    },
 
         getDebug() {
             console.log("selected types: ", this.selectedTypes);
@@ -73,7 +86,7 @@ export default {
         <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
             <!-- Itera sugli elementi e crea una casella di controllo per ciascuno -->
             <template v-for="tipo in store.types">
-                <input type="checkbox" class="btn-check" :id="'btncheck_' + tipo.id" autocomplete="off" v-model="selectedTypes" :value="tipo.id">
+                <input type="checkbox" @click="getUsers()" class="btn-check" :id="'btncheck_' + tipo.id" autocomplete="off" v-model="selectedTypes" :value="tipo.id">
                 <label class="btn btn-outline-primary" :for="'btncheck_' + tipo.id">{{ tipo.name }}</label>
             </template>
         </div>
