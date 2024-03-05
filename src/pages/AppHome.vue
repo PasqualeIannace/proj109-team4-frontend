@@ -18,7 +18,17 @@ export default {
 
   mounted() {
     // console.log("user contiene: ", userList);
-  }
+  },
+//   computed: {
+//     filteredUsers() {
+//         if (!this.selectedTypes.length) {
+//             return this.store.userList; // Restituisce tutti gli utenti se non ci sono tipi selezionati
+//         } else {
+//             // Filtra gli utenti in base agli ID dei tipi selezionati
+//             return this.store.userList.filter(user => this.selectedTypes.includes(user.restaurant_type_id));
+//         }
+//     }
+// }
 
 }
 </script>

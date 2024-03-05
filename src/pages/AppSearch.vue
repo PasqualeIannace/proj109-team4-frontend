@@ -8,12 +8,16 @@ export default {
 		return {
 			store,
 			selectedTypes:[],
+			userList: [],
 		};
 	},
 	mounted() {
 		this.getTypes();
 	},
 	methods: {
+		getConsole(){
+        console.log('hai cliccato' , this.selectedTypes);
+		},
 		getTypes() {
 			axios
 				.get(`${this.store.apiUrl + this.store.apiTypesEndpoint}`)
@@ -25,6 +29,8 @@ export default {
                         //this.setTypes(risultato.data.payload); // Aggiorna lo stato utilizzando la mutazione
 						//console.log(risultato.data.payload, "ecco")
                         this.store.types = risultato.data.payload;
+						this.store.types.id.users = risultato.data.payload;
+                        console.log(risultato.data.payload, "PRIMOARRAY")
 						console.log(risultato.data.payload, "il mio array");
 					} else {
 						console.error("Ops... qualcosa è andato storto");
@@ -45,10 +51,12 @@ export default {
 			<div class="">
 				<div class="row d-flex justify-content-center">
 					<div class="col-4 d-flex justify-content-center">
-						<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group" v-for="SingleType in store.types">
-                        <input type="checkbox" class="btn-check" :id="'btncheck_' + SingleType.id" autocomplete="off" v-model="selectedTypes">
-                        <label class="btn btn-outline-primary" :for="'btncheck_' + SingleType.id">{{SingleType.name}}</label>
-                        </div>
+						<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group" v-for="SingleType in store.types" :key="SingleType.id">
+                        <input type="checkbox" class="btn-check" :id="'btncheck_' + SingleType.id" autocomplete="off" v-model="selectedTypes" :value="SingleType.id">
+                        <label class="btn btn-outline-primary" :for="'btncheck_' + SingleType.id">{{ SingleType.name }}</label>
+                    </div>
+
+						<button @click="getConsole()">DEBUG</button>
 
 						<!-- <input type="text" class="form-control input-text myInput" placeholder="Search products...." aria-label="Recipient's username" aria-describedby="basic-addon2" v-model="store.searched" @keyup.enter="$emit('search')"/>
 						<div class="input-group-append">
