@@ -44,6 +44,10 @@ export default {
 					console.error(errore);
 				});
 		},
+
+        getDebug() {
+            console.log("selected types: ", this.selectedTypes);
+        }
     
 	},
 
@@ -65,21 +69,17 @@ export default {
 			<!-- <img src="" alt="" class="logo "> -->
 			<div class="">
 				<div class="row d-flex justify-content-center">
-					<div class="col-4 d-flex justify-content-center">
-						<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group" v-for="SingleType in store.types">
-                        <input type="checkbox" @click="getUsers()"  class="btn-check" :id="'btncheck_' + SingleType.id" autocomplete="off" v-model="selectedTypes">
-                        <label class="btn btn-outline-primary" :for="'btncheck_' + SingleType.id">{{SingleType.name}}</label>
-                        </div>
-
-						<!-- <input type="text" class="form-control input-text myInput" placeholder="Search products...." aria-label="Recipient's username" aria-describedby="basic-addon2" v-model="store.searched" @keyup.enter="$emit('search')"/>
-						<div class="input-group-append">
-							<button @click="$emit('search')" class="btn btn-outline-warning" type="button">
-								cerca
-								<i class="fa-solid fa-magnifying-glass" style="color: #dea917"></i>
-							</button>
-						</div> -->
-					</div>
-				</div>
+    <div class="col-4 d-flex justify-content-center">
+        <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+            <!-- Itera sugli elementi e crea una casella di controllo per ciascuno -->
+            <template v-for="tipo in store.types">
+                <input type="checkbox" class="btn-check" :id="'btncheck_' + tipo.id" autocomplete="off" v-model="selectedTypes" :value="tipo.id">
+                <label class="btn btn-outline-primary" :for="'btncheck_' + tipo.id">{{ tipo.name }}</label>
+            </template>
+        </div>
+        <button @click="getDebug()">DEBUG</button>
+    </div>
+</div>
 			</div>
 		</div>
 	</nav>
