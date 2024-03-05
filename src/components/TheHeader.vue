@@ -222,7 +222,6 @@ router-link.dropdown-item:hover {
 	/* max-height: 10vh; */
 }
 #mainNavigation {
-	height: 35vh;
 	padding-bottom: 15px;
 	position: fixed;
 	top: 0;
