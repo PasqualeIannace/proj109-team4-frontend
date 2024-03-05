@@ -16,6 +16,10 @@ export default {
     }
   },
 
+  mounted() {
+    // console.log("user contiene: ", userList);
+  }
+
 }
 </script>
 
