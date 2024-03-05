@@ -9,7 +9,7 @@ export const store = reactive({
     apiTypesEndpoint: "restaurant_types",
     foodList: [],
     userList: [],
-    types:[],
+    types: [],
     selectedTypes: [],
     //searched: encodeURI(""),
     foodListByUser: [],
