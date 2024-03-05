@@ -20,8 +20,6 @@ export default {
 	},
 	mounted() {
 		this.getFoods();
-		this.getUsers();
-		this.fetchData();
 	},
 	methods: {
 		getFoods() {

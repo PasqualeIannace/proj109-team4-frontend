@@ -20,7 +20,8 @@ export default {
   },
 
   mounted() {
-    this.getTypes();  
+    this.getUsers();
+	this.fetchData();
   },
 
   methods: {
@@ -91,7 +92,7 @@ export default {
         <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
             <!-- Itera sugli elementi e crea una casella di controllo per ciascuno -->
             <template v-for="tipo in store.types">
-                <input @click="getUsers()" type="checkbox" class="btn-check" :id="'btncheck_' + tipo.id" autocomplete="off" v-model="selectedTypes" :value="tipo.id">
+                <input type="checkbox" @click="getUsers()" class="btn-check" :id="'btncheck_' + tipo.id" autocomplete="off" v-model="selectedTypes" :value="tipo.id">
                 <label class="btn btn-outline-primary" :for="'btncheck_' + tipo.id">{{ tipo.name }}</label>
             </template>
         </div>
