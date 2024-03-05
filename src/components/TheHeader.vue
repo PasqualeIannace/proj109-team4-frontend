@@ -1,7 +1,11 @@
 <script>
 import { store } from "../store.js";
+import AppSearch from "../pages/AppSearch.vue";
 export default {
 	name: "TheHeader",
+	components: {
+           AppSearch,
+	},
 	data() {
 		return {
 			menuItems: [
@@ -25,6 +29,11 @@ export default {
 			store,
 		};
 	},
+	mounted(){
+      
+	},
+	methods : {
+	}
 };
 </script>
 
@@ -70,7 +79,8 @@ export default {
 					<div class="">
 						<div class="row d-flex justify-content-center">
 							<div class="col-4">
-								<div class="input-group mb-3">
+								<AppSearch />
+								<!-- <div class="input-group mb-3">
 									<input type="text" class="form-control input-text myInput" placeholder="Search products...." aria-label="Recipient's username" aria-describedby="basic-addon2" v-model="store.searched"  @keyup.enter="$emit('search')"/>
 									<div class="input-group-append">
 										<button  class="btn btn-outline-warning" type="button">
@@ -78,7 +88,7 @@ export default {
 											<i class="fa-solid fa-magnifying-glass" style="color: #dea917;"></i>
 										</button>
 									</div>
-								</div>
+								</div> -->
 							</div>
 						</div>
 					</div>

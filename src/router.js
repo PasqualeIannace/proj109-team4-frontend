@@ -7,6 +7,7 @@ import AppRestaurant from "./pages/AppRestaurant.vue";
 import AppFoodDetail from './pages/AppFoodDetail.vue';
 import AppRestaurantDetail from './pages/AppRestaurantDetail.vue';
 import AppCart from './pages/AppCart.vue';
+import AppSearch from './pages/AppSearch.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -47,7 +48,13 @@ const router = createRouter({
             path: '/cart',
             name: 'cart',
             component: AppCart,
-        }
+        },
+        {
+            path: '/restaurant_types',
+            name: 'restaurant_types',
+            component: AppSearch,
+        },
+        
     ]
 });
 
