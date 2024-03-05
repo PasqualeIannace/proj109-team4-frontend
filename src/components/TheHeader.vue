@@ -17,10 +17,6 @@ export default {
 					routeName: "about",
 					label: "Chi siamo",
 				},
-				{
-					routeName: "foods",
-					label: "Food",
-				},
 			],
 			store,
 		};
