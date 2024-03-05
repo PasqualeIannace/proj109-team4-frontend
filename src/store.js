@@ -6,17 +6,20 @@ export const store = reactive({
     apiEndpoint: "foods",
     apiUserEndpoint: "users",
     apiFoodsByUserEndpoint: "foods/user/${userId}",
-
+    apiTypesEndpoint: "restaurant_types",
     foodList: [],
     userList: [],
-    searched: encodeURI(""),
+    types:[],
+    //selectedTypes: [],
+    //searched: encodeURI(""),
     foodListByUser: [],
 });
 
 export default createStore({
     state: {
         cart: [],
-        cartTotal: 0
+        cartTotal: 0,
+        types: [],
     },
     mutations: {
         addRemoveCart(state, payload) {
@@ -41,8 +44,19 @@ export default createStore({
             }, 0);
             localStorage.setItem('cartTotal', JSON.stringify(state.cartTotal));
             localStorage.setItem('cart', JSON.stringify(state.cart));
-        }
+        },
     },
-    actions: {},
+    actions: {
+        // Agg un'azione per caricare i tipi dal backend
+        // async fetchTypes({ commit, state }) {
+        //     try {
+        //         const response = await fetch(state.apiUrl + state.apiTypesEndpoint);
+        //         const data = await response.json();
+        //         commit('setTypes', data);
+        //     } catch (error) {
+        //         console.error('Errore durante il recupero dei tipi:', error);
+        //     }
+        // },
+    },
     modules: {},
 })

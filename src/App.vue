@@ -30,9 +30,9 @@ export default {
 			axios
 				.get(`${this.store.apiUrl + this.store.apiEndpoint}`)
 				.then((risultato) => {
-					console.log(risultato);
+					//console.log(risultato);
 					if (risultato.status === 200 && risultato.data.success) {
-						console.log(risultato.data.results);
+						//console.log(risultato.data.results);
 						this.store.foodList = risultato.data.payload;
 						//console.log(risultato.data.payload, "il mio array");
 					} else {
@@ -45,7 +45,6 @@ export default {
 					console.error(errore);
 				});
 		},
-
 		getUsers() {
 			axios
 				.get(`${this.store.apiUrl + this.store.apiUserEndpoint}`)
@@ -65,6 +64,7 @@ export default {
 					console.error(errore);
 				});
 		},
+		
 
 		/* getFoodsByUser() {
 			axios
