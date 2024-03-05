@@ -5,49 +5,49 @@ export default {
 </script>
 
 <template>
-    <section class="myMargin">
-        <h1 class="mt-5 mb-3 text-center">About</h1>
+    <section class="">
         <div class="container">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae assumenda unde cumque quaerat nisi magnam
-                excepturi, soluta inventore enim id repellat ipsam veniam corporis sunt similique, odio et aliquid libero?
-                Animi temporibus est aliquam, placeat saepe quo molestiae velit, voluptatibus excepturi, ab exercitationem
-                aliquid nostrum praesentium eius alias non vel atque sunt odit vitae. Totam quam aliquid hic. Suscipit, ea!
-                Debitis accusamus minima quaerat blanditiis nam praesentium suscipit aspernatur possimus, ipsam recusandae
-                sed
-                sit vitae molestias culpa rerum, quasi cumque tempore, dignissimos optio ducimus. Eveniet deserunt
-                distinctio
-                nesciunt dignissimos est!
-                Veniam consectetur iusto sint itaque amet eaque! Pariatur repellat accusamus a laboriosam, reprehenderit,
-                placeat dignissimos possimus expedita itaque fugiat aspernatur iusto, sint nesciunt et suscipit commodi ipsa
-                magnam animi ullam?
-                Voluptas, amet? Architecto omnis corrupti fuga voluptatem minus nisi quae, ad, quia neque soluta, fugiat
-                vitae
-                quasi voluptate. Deleniti iste temporibus accusamus provident nobis recusandae fuga quis sequi iure modi!
-                Et maxime repellat, debitis itaque magnam atque, non eaque, nisi distinctio excepturi quidem? Accusamus ut
-                quaerat nihil vel placeat aspernatur aperiam magni, quod consectetur tempora repellat, consequatur
-                blanditiis
-                ratione culpa!</p>
-            <p>Beatae tenetur impedit consequuntur, debitis ex consectetur corrupti quibusdam ducimus ratione in animi
-                suscipit
-                consequatur voluptas, corporis nostrum doloribus quia sit modi necessitatibus aspernatur sapiente autem
-                adipisci
-                facere. Cum, esse.
-                Nisi, sapiente fuga. Vero nostrum commodi tempore eligendi qui labore, dolorum, nam rem vitae beatae at
-                voluptatibus libero adipisci nulla! Quia ad excepturi officia, cumque maxime repellendus possimus quas esse?
-                Deleniti minima enim, illum iste non at, molestiae, quo eaque vero suscipit illo! Reprehenderit accusamus
-                nobis
-                libero voluptatem doloremque architecto, eum veritatis quaerat velit odio rerum ducimus aliquam, nisi est!
-                Ipsum eaque illum iste aut laudantium recusandae, totam, perspiciatis illo enim temporibus sapiente
-                veritatis.
-                Perspiciatis repudiandae doloribus vero. Modi labore quam quaerat. Eveniet, quasi autem recusandae delectus
-                in
-                magni provident?
-                In, id a porro nulla unde culpa praesentium, quaerat possimus repudiandae, accusamus dicta reprehenderit
-                tenetur
-                laudantium illum modi numquam optio hic iste sint suscipit voluptatum deserunt? Sequi expedita dolorem
-                voluptate!</p>
+            <div class="row">
+                <div class="col-6">
+                    <span><strong>Chi Siamo</strong></span>
+                    <p>Deliveboo è una piattaforma di consegna di cibo a domicilio che ti permette di ordinare i tuoi piatti preferiti dai migliori ristoranti della tua città.</p>
+                    <span><strong>La nostra mission</strong></span>
+                    <p>La nostra mission è quella di rendere il cibo d'asporto un'esperienza facile, veloce e conveniente. Vogliamo che i nostri clienti possano gustare i piatti dei loro ristoranti preferiti comodamente a casa propria, senza doversi preoccupare di cucinare o di uscire.</p>
+                    <span><strong>Come funziona</strong></span>
+                    <p>Ordinare con Deliveboo è semplicissimo:</p>
+                    <ol>
+
+                    <li>Seleziona il tuo ristorante preferito</li>
+                    <li>Scegli i piatti che vuoi ordinare</li>
+                    <li>Aggiungi al carrello e paga</li>
+                    <li>Ricevi il tuo ordine a domicilio</li>
+
+                    </ol>
+
+                    <span><strong>Perché scegliere Deliveboo?</strong></span>
+                    <ul>
+                        <li>Ampia scelta di ristoranti: collaboriamo con i migliori ristoranti della tua città, offrendoti un'ampia varietà di cucine tra cui scegliere.</li>
+                        <li>Consegna veloce: i tuoi piatti saranno consegnati a domicilio in tempi rapidi.</li>
+                        <li>Ordinazione facile e veloce: il nostro sito web e la nostra app sono facili da usare e ti permettono di ordinare in pochi click.</li>
+                        <li>Pagamenti sicuri: offriamo diverse modalità di pagamento sicure e affidabili.</li>
+                        <li>Servizio clienti eccellente: il nostro team di assistenza clienti è sempre a tua disposizione per aiutarti e rispondere alle tue domande.</li>
+                    </ul>
+                    <p>Deliveboo è la scelta ideale per chi desidera gustare un pasto delizioso senza doversi preoccupare di cucinare o di uscire.</p>
+                    <hr>
+                    <span>Grazie per averci scelto!</span>
+                    <p><strong>Deliveboo</strong></p>
+                    <span>Il tuo food delivery di fiducia!</span>
+                </div>
+                <div class="col-6 d-flex justify-content-center align-items-center">
+                    <img class="w-500" src="logo.png" alt="Logo">
+                </div>
+            </div>
         </div>
     </section>
 </template>
 
-<style scoped></style>
+<style scoped>
+.w-500{
+    width: 500px;
+}
+</style>

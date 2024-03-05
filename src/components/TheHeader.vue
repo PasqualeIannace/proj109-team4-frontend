@@ -70,7 +70,7 @@ export default {
 	<header>
 		<div id="mainNavigation">
 			<nav role="navigation">
-				<div class="py-5 text-center myborder">
+				<div class="text-center myborder">
 					 <img src="" alt="" class="logo "> 
 					<div class="">
 						<div class="row d-flex justify-content-center">
@@ -228,6 +228,7 @@ router-link.dropdown-item:hover {
 	/* max-height: 10vh; */
 }
 #mainNavigation {
+	height: 35vh;
 	padding-bottom: 15px;
 	position: fixed;
 	top: 0;
