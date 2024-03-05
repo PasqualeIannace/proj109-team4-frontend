@@ -45,6 +45,26 @@ export default {
 				});
 		},
 
+        getUsers() {
+            console.log("click on getUsers function", this.selectedTypes)
+			axios.get(`${this.store.apiUrl + this.store.apiUserEndpoint}`, {params: { types: this.selectedTypes } // Passa gli ID dei tipi selezionati come parametro
+                }).then((risultato) => {
+					console.log(risultato.data.payload);
+					if (risultato.status === 200 && risultato.data.success) {
+						//console.log(risultato.data.results);
+						this.store.userList = risultato.data.payload;
+						//console.log(risultato.data.payload, "il mio array");
+					} else {
+						//ToDo: distinguere il motivo dell'else.
+						//es. controllare statusCode, presenza e veridicità di data.success
+						console.error("Ops... qualcosa è andato storto");
+					}
+				})
+				.catch((errore) => {
+					console.error(errore);
+				});
+		},
+
         getDebug() {
             console.log("selected types: ", this.selectedTypes);
         }
@@ -73,7 +93,7 @@ export default {
         <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
             <!-- Itera sugli elementi e crea una casella di controllo per ciascuno -->
             <template v-for="tipo in store.types">
-                <input type="checkbox" class="btn-check" :id="'btncheck_' + tipo.id" autocomplete="off" v-model="selectedTypes" :value="tipo.id">
+                <input @click="getUsers()" type="checkbox" class="btn-check" :id="'btncheck_' + tipo.id" autocomplete="off" v-model="selectedTypes" :value="tipo.id">
                 <label class="btn btn-outline-primary" :for="'btncheck_' + tipo.id">{{ tipo.name }}</label>
             </template>
         </div>
