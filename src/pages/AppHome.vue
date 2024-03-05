@@ -46,24 +46,22 @@ export default {
 		},
 
         getUsers() {
-            console.log("click on getUsers function", this.selectedTypes)
-			axios.get(`${this.store.apiUrl + this.store.apiUserEndpoint}`, {params: { types: this.selectedTypes } // Passa gli ID dei tipi selezionati come parametro
-                }).then((risultato) => {
-					console.log(risultato.data.payload);
-					if (risultato.status === 200 && risultato.data.success) {
-						//console.log(risultato.data.results);
-						this.store.userList = risultato.data.payload;
-						//console.log(risultato.data.payload, "il mio array");
-					} else {
-						//ToDo: distinguere il motivo dell'else.
-						//es. controllare statusCode, presenza e veridicità di data.success
-						console.error("Ops... qualcosa è andato storto");
-					}
-				})
-				.catch((errore) => {
-					console.error(errore);
-				});
-		},
+      // Ottieni gli ID dei tipi di ristorante selezionati
+      const selectedTypeIds = this.selectedTypes;
+      
+      // Effettua la chiamata API per ottenere gli utenti filtrati
+      axios
+        .get(`${this.store.apiUrl + this.store.apiUserEndpoint}`, {
+          params: { selectedTypes: selectedTypeIds },
+        })
+        .then((response) => {
+          // Aggiorna la lista degli utenti con i risultati filtrati
+          this.store.userList = response.data.payload;
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    },
 
         getDebug() {
             console.log("selected types: ", this.selectedTypes);

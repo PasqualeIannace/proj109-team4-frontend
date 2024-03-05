@@ -44,6 +44,7 @@ export default {
 					console.error(errore);
 				});
 		},
+		// STAMPO I RISTORANTI
 		getUsers(selectedTypes) {
 			axios.get(`${this.store.apiUrl + this.store.apiUserEndpoint}`, {params: { types: selectedTypes } // Passa gli ID dei tipi selezionati come parametro
                 }).then((risultato) => {
@@ -51,7 +52,7 @@ export default {
 					if (risultato.status === 200 && risultato.data.success) {
 						//console.log(risultato.data.results);
 						this.store.userList = risultato.data.payload;
-						//console.log(risultato.data.payload, "il mio array");
+						console.log(risultato.data.payload, "Stampo i ristoranti");
 					} else {
 						//ToDo: distinguere il motivo dell'else.
 						//es. controllare statusCode, presenza e veridicità di data.success
@@ -62,12 +63,13 @@ export default {
 					console.error(errore);
 				});
 		},
+		// STAMPO I BOTTONI 
 		fetchData() {
 			//console.log('sei nel fetch');
             axios.get(`${this.store.apiUrl + this.store.apiTypesEndpoint}`).then((risposta) => {
                 if (risposta.status === 200 && risposta.data.success) {
                     this.store.types = risposta.data.payload;
-                    console.log(risposta.data.payload, "il mio array di tipi");
+                    console.log(risposta.data.payload, "i miei pulsanti filtro");
                  } else {
                     console.error("Ops... qualcosa è andato storto con i tipi");
                  }
