@@ -1,32 +1,34 @@
 <script>
 import CartAddRemove from '../components/CartAddRemove.vue';
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
+
 export default {
     components: { CartAddRemove },
     methods: {
-        removeItem(item) {
-            this.$store.commit('addRemoveCart', { food: item, toAdd: false })
+        removeItem(food) {
+            this.$store.commit('addRemoveCart', { food, toAdd: false });
+        },
+
+        // TASTO INDIETRO
+        goBack() {
+        this.$router.go(-1);
         },
 
         removeAllItems() {
-            // Check if the cart is not empty before attempting to remove items
             if (this.$store.state.cart.length > 0) {
-                // Iterate through each item and remove it from the cart
-                this.$store.state.cart.forEach((item) => {
-                    // Check if the food item belongs to the selected user
-                    if (item.userId === this.$store.state.selectedUserId) {
-                        this.$store.commit('addRemoveCart', { food: item, toAdd: false });
+                this.$store.state.cart.forEach((food) => {
+                    if (food.userId === this.$store.state.selectedUserId) {
+                        this.$store.commit('addRemoveCart', { food, toAdd: false });
                     }
                 });
-
-                // Notify the user that all items have been removed
                 toast.success('All items removed from the cart');
             } else {
-                // Notify the user that the cart is already empty
                 toast.warning('The cart is already empty');
             }
         },
-    }
-}
+    },
+};
 </script>
 
 <template>
@@ -38,17 +40,18 @@ export default {
                         <div class="card-body p-4">
                             <div class="row">
                                 <div class="col-lg-7">
-                                    <h5 class="mb-3"><router-link :to="{ name: 'home' }" class="text-body">
-                                            <i class="fas fa-long-arrow-alt-left me-2"></i>Continue
-                                            shopping</router-link></h5>
+                                    <h5 class="mb-3">
+                                        <a @click="goBack" class="text-body" style="cursor: pointer;">
+                                            <i class="fas fa-long-arrow-alt-left me-2"></i>Continua lo shopping
+                                        </a>
+                                    </h5>
                                     <hr>
                                     <div class="d-flex justify-content-between align-items-center mb-4">
                                         <div>
-                                            <p class="mb-0">You have {{ $store.state.cart.length }} items in your cart
+                                            <p class="mb-0">Hai {{ $store.state.cart.length }} prodotti nel carrello
                                             </p>
                                         </div>
                                         <div>
-                                            <!-- New button to remove all items -->
                                             <button @click="removeAllItems" class="btn btn-danger">Remove All</button>
                                         </div>
                                     </div>
@@ -73,13 +76,16 @@ export default {
                                                 <div class="d-flex flex-row align-items-center">
                                                     <div>
                                                         <h5 class="mb-0"><i class="bi bi-currency-dollar"></i>€ {{
-                                        food.price * food.qty }}</h5>
+                                            food.price * food.qty }}</h5>
                                                         <small v-if="food.hasDiscount"
-                                                            class="text-muted text-decoration-line-through"><i
-                                                                class="bi bi-currency-dollar"></i></small>
+                                                            class="text-muted text-decoration-line-through">
+                                                            <i class="bi bi-currency-dollar"></i>
+                                                        </small>
                                                     </div>
-                                                    <a role="button" @click="$event => removeItem(item)" class="ms-4"
-                                                        style="color: #cecece;"><i class=""></i></a>
+                                                    <a role="button" @click="$event => removeItem(food)" class="ms-4"
+                                                        style="color: red;">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -96,7 +102,7 @@ export default {
                                             <div class="d-flex justify-content-between">
                                                 <p class="mb-2">Subtotal</p>
                                                 <p class="mb-2"><i class="bi bi-currency-dollar"></i>€ {{
-                                        $store.state.cartTotal }}</p>
+                                            $store.state.cartTotal }}</p>
                                             </div>
                                             <div class="d-flex justify-content-between mb-4">
                                                 <p class="mb-2">Total</p>
@@ -117,3 +123,9 @@ export default {
         </div>
     </section>
 </template>
+
+
+
+<style scoped>
+/* Add your styles if needed */
+</style>
