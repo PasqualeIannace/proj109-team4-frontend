@@ -7,6 +7,11 @@ export default {
             this.$store.commit('addRemoveCart', { food: item, toAdd: false })
         },
 
+        // TASTO INDIETRO
+        goBack() {
+        this.$router.go(-1);
+        },
+
         removeAllItems() {
             // Check if the cart is not empty before attempting to remove items
             if (this.$store.state.cart.length > 0) {
@@ -38,13 +43,15 @@ export default {
                         <div class="card-body p-4">
                             <div class="row">
                                 <div class="col-lg-7">
-                                    <h5 class="mb-3"><router-link :to="{ name: 'home' }" class="text-body">
-                                            <i class="fas fa-long-arrow-alt-left me-2"></i>Continue
-                                            shopping</router-link></h5>
+                                    <h5 class="mb-3">
+                                        <a @click="goBack" class="text-body" style="cursor: pointer;">
+                                            <i class="fas fa-long-arrow-alt-left me-2"></i>Continua lo shopping
+                                        </a>
+                                    </h5>
                                     <hr>
                                     <div class="d-flex justify-content-between align-items-center mb-4">
                                         <div>
-                                            <p class="mb-0">You have {{ $store.state.cart.length }} items in your cart
+                                            <p class="mb-0">Hai {{ $store.state.cart.length }} prodotti nel carrello
                                             </p>
                                         </div>
                                         <div>
