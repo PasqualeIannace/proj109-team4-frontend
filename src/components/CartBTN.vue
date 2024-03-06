@@ -15,16 +15,38 @@ export default {
     },
     methods: {
         async addOrRemove() {
-            this.item.qty = 1
-            this.$store.commit('addRemoveCart',{food:this.item, toAdd:this.toAdd})
-            let toastMSG
-            this.toAdd? toastMSG = 'Nuovo prodotto aggiunto' : toastMSG = 'Prodotto rimosso'
+        // Verifica se il carrello è vuoto
+        if (this.$store.state.cart.length === 0) {
+            // Se il carrello è vuoto, aggiungi direttamente l'elemento al carrello
+            this.item.qty = 1;
+            this.$store.commit('addRemoveCart', { food: this.item, toAdd: this.toAdd });
+            let toastMSG = this.toAdd ? 'Nuovo prodotto aggiunto' : 'Prodotto rimosso';
             toast(toastMSG, {
                 autoClose: 1000,
             });
-            this.toAdd = !this.toAdd
+            this.toAdd = !this.toAdd;
+        } else {
+            // Se il carrello non è vuoto, controlla se l'elemento da aggiungere ha lo stesso user_id di un elemento già presente nel carrello
+            let cartItem = this.$store.state.cart.find(item => item.user_id !== this.item.user_id);
+            if (cartItem) {
+                // Se l'elemento ha un user_id diverso da quelli presenti nel carrello, mostra un messaggio di errore o gestisci l'aggiunta di conseguenza
+                toast('Non è possibile aggiungere elementi da ristoratori diversi', {
+                    autoClose: 2000,
+                    type: 'error'
+                });
+            } else {
+                // Se l'elemento ha lo stesso user_id degli elementi presenti nel carrello, aggiungilo normalmente
+                this.item.qty = 1;
+                this.$store.commit('addRemoveCart', { food: this.item, toAdd: this.toAdd });
+                let toastMSG = this.toAdd ? 'Nuovo prodotto aggiunto' : 'Prodotto rimosso';
+                toast(toastMSG, {
+                    autoClose: 1000,
+                });
+                this.toAdd = !this.toAdd;
+            }
         }
-    },
+    }
+},
     mounted(){
         let cart = this.$store.state.cart
         let obj = cart.find(o => o.id === this.food.id)
