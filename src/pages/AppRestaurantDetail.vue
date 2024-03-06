@@ -1,37 +1,37 @@
 <script>
 import axios from "axios";
 import { store } from "../store.js"; // Import the store
-import CartBTN from '../components/CartBTN.vue';
+import CartBTN from "../components/CartBTN.vue";
 
 export default {
-  name: "AppRestaurantDetail",
-  components:{CartBTN},
-  data() {
-    return {
-      store,
-    };
-  },
-  mounted() {
-    this.getFoodsByUser();
-  },
-  methods: {
-    getFoodsByUser() {
-      const userId = this.$route.params.id;
+	name: "AppRestaurantDetail",
+	components: { CartBTN },
+	data() {
+		return {
+			store,
+		};
+	},
+	mounted() {
+		this.getFoodsByUser();
+	},
+	methods: {
+		getFoodsByUser() {
+			const userId = this.$route.params.id;
 
-      axios
-        .get(`${store.apiUrl}foods/user/${userId}`)
-        .then((response) => {
-          if (response.status === 200 && response.data.success) {
-            store.foodListByUser = response.data.payload;
-          } else {
-            console.error("Error fetching foods by user:", response);
-          }
-        })
-        .catch((error) => {
-          console.error("Error fetching foods by user:", error);
-        });
-    },
-  },
+			axios
+				.get(`${store.apiUrl}foods/user/${userId}`)
+				.then((response) => {
+					if (response.status === 200 && response.data.success) {
+						store.foodListByUser = response.data.payload;
+					} else {
+						console.error("Error fetching foods by user:", response);
+					}
+				})
+				.catch((error) => {
+					console.error("Error fetching foods by user:", error);
+				});
+		},
+	},
 };
 </script>
 
@@ -40,65 +40,94 @@ export default {
 		<h1 class="text-center">Food</h1>
 
 		<div class="container d-flex flex-wrap text-decoration-none">
-    <div class="ag-format-container" v-for="(food, index) in store.foodListByUser" :key="index">
-        <div class="ag-courses_box">
-            <div class="ag-courses_item">
-                <a href="" @click="openModal(index)" class="ag-courses-item_link" data-bs-toggle="modal" :data-bs-target="'#exampleModal' + index">
-						<div class="ag-courses-item_bg"></div>
+			<div
+				class="ag-format-container"
+				v-for="(food, index) in store.foodListByUser"
+				:key="index"
+			>
+				<div class="ag-courses_box">
+					<div class="ag-courses_item">
+						<a
+							href=""
+							@click="openModal(index)"
+							class="ag-courses-item_link"
+							data-bs-toggle="modal"
+							:data-bs-target="'#exampleModal' + index"
+						>
+							<div class="ag-courses-item_bg"></div>
 
-						<div class="ag-courses-item_title">
-							<h5>{{ food.name }}</h5>
-							<img :src="food.image" class="w-100" />
-						</div>
+							<div class="ag-courses-item_title">
+								<h5>{{ food.name }}</h5>
+								<img :src="food.image" class="w-100" />
+							</div>
 
-						<div class="ag-courses-item_date-box">
-							<!-- <p>{{ food.ingredients }}</p> -->
-							<!-- <p class="card-text">{{ food.description }}</p> -->
-							<p class="card-text text-center fs-5">
-								<b>€ {{ food.price }}</b>
-							</p>
+							<div class="ag-courses-item_date-box">
+								<!-- <p>{{ food.ingredients }}</p> -->
+								<!-- <p class="card-text">{{ food.description }}</p> -->
+								<p class="card-text text-center fs-5">
+									<b>€ {{ food.price }}</b>
+								</p>
 
-							<div class="card-footer text-center ag-courses-item_date">
-								
+								<div class="card-footer text-center ag-courses-item_date"></div>
+							</div>
+						</a>
+						<div class="bg-white">
+							<div
+								class="d-flex justify-content-between align-items-center cart"
+							>
+								<CartBTN :food="food" />
 							</div>
 						</div>
-				</a>
-				<div class="bg-white">
-					<div class="d-flex justify-content-between align-items-center cart">
-                        <CartBTN :food="food"/>
-                    </div>
-				</div>
-					
 					</div>
 				</div>
 
-					<!-- Modal info cibo-->
-					<div class="modal fade text-black" :id="'exampleModal' + index" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-						<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="exampleModalLabel">{{ food.name }}</h5>
-									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-								</div>
-								<div class="modal-body">
-									<p>{{ food.ingredients }}</p>
-									<p>{{ food.description }}</p>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-								</div>
+				<!-- Modal info cibo-->
+				<div
+					class="modal fade text-black"
+					:id="'exampleModal' + index"
+					tabindex="-1"
+					aria-labelledby="exampleModalLabel"
+					aria-hidden="true"
+				>
+					<div
+						class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+					>
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">
+									{{ food.name }}
+								</h5>
+								<button
+									type="button"
+									class="btn-close"
+									data-bs-dismiss="modal"
+									aria-label="Close"
+								></button>
+							</div>
+							<div class="modal-body">
+								<p>{{ food.ingredients }}</p>
+								<p>{{ food.description }}</p>
+							</div>
+							<div class="modal-footer">
+								<button
+									type="button"
+									class="btn btn-secondary"
+									data-bs-dismiss="modal"
+								>
+									Close
+								</button>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 </template>
 
 <style scoped>
-
-h1{
-    color:#f9b234;
+h1 {
+	color: #f9b234;
 }
 .ag-format-container {
 	width: calc(100% / 4);
@@ -106,10 +135,10 @@ h1{
 }
 /* Stili per le card su schermi più grandi (desktop) */
 @media screen and (max-width: 992px) {
-    .ag-format-container {
-        width: calc(50% - 30px); /* Larghezza del 50% meno il margine tra le card */
-        margin: 0 15px 30px; /* Margini tra le card */
-    }
+	.ag-format-container {
+		width: calc(50% - 30px);
+		margin: 0 15px 30px;
+	}
 }
 
 body {
@@ -169,14 +198,14 @@ body {
 	z-index: 2;
 	position: relative;
 
-	h5{
+	h5 {
 		height: 3rem;
 	}
 
-	img{
+	img {
 		height: 5.7em;
-    object-fit: cover;
-    border-radius: 1em;
+		object-fit: cover;
+		border-radius: 1em;
 	}
 }
 .ag-courses-item_date-box {
@@ -217,7 +246,7 @@ body {
 	background-color: #e44002;
 }
 .ag-courses_item:nth-child(4n) .ag-courses-item_bg {
-	background-color:#492a84db;
+	background-color: #492a84db;
 }
 .ag-courses_item:nth-child(5n) .ag-courses-item_bg {
 	background-color: #cd3e94;
@@ -226,7 +255,7 @@ body {
 	background-color: #4c49ea;
 }
 
-.cart :hover{
+.cart :hover {
 	color: black;
 }
 
