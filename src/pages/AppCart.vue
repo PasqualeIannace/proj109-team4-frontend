@@ -1,11 +1,30 @@
 <script>
 import CartAddRemove from '../components/CartAddRemove.vue';
-export default{
-    components:{CartAddRemove},
-    methods:{
-        removeItem(item){
-            this.$store.commit('addRemoveCart',{food:item,toAdd:false})
-        }
+export default {
+    components: { CartAddRemove },
+    methods: {
+        removeItem(item) {
+            this.$store.commit('addRemoveCart', { food: item, toAdd: false })
+        },
+
+        removeAllItems() {
+            // Check if the cart is not empty before attempting to remove items
+            if (this.$store.state.cart.length > 0) {
+                // Iterate through each item and remove it from the cart
+                this.$store.state.cart.forEach((item) => {
+                    // Check if the food item belongs to the selected user
+                    if (item.userId === this.$store.state.selectedUserId) {
+                        this.$store.commit('addRemoveCart', { food: item, toAdd: false });
+                    }
+                });
+
+                // Notify the user that all items have been removed
+                toast.success('All items removed from the cart');
+            } else {
+                // Notify the user that the cart is already empty
+                toast.warning('The cart is already empty');
+            }
+        },
     }
 }
 </script>
@@ -19,20 +38,28 @@ export default{
                         <div class="card-body p-4">
                             <div class="row">
                                 <div class="col-lg-7">
-                                    <h5 class="mb-3"><router-link :to="{name:'home'}" class="text-body">
-                                    <i class="fas fa-long-arrow-alt-left me-2"></i>Continue shopping</router-link></h5>
+                                    <h5 class="mb-3"><router-link :to="{ name: 'home' }" class="text-body">
+                                            <i class="fas fa-long-arrow-alt-left me-2"></i>Continue
+                                            shopping</router-link></h5>
                                     <hr>
                                     <div class="d-flex justify-content-between align-items-center mb-4">
                                         <div>
-                                            <p class="mb-0">You have {{ $store.state.cart.length }} items in  your cart</p>
+                                            <p class="mb-0">You have {{ $store.state.cart.length }} items in your cart
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <!-- New button to remove all items -->
+                                            <button @click="removeAllItems" class="btn btn-danger">Remove All</button>
                                         </div>
                                     </div>
-                                    <div v-for="food in $store.state.cart" class="card mb-3 shadow-sm border-0" :key="food.id">
+                                    <div v-for="food in $store.state.cart" class="card mb-3 shadow-sm border-0"
+                                        :key="food.id">
                                         <div class="card-body">
                                             <div class="d-flex justify-content-between">
                                                 <div class="d-flex flex-row align-items-center">
                                                     <div>
-                                                        <img :src="food.image" class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
+                                                        <img :src="food.image" class="img-fluid rounded-3"
+                                                            alt="Shopping item" style="width: 65px;">
                                                     </div>
                                                     <div class="ms-3">
                                                         <p>{{ food.name }}</p>
@@ -40,15 +67,19 @@ export default{
                                                 </div>
                                                 <div class="d-flex flex-row align-items-center">
                                                     <div>
-                                                        <CartAddRemove :food="food"/>
+                                                        <CartAddRemove :food="food" />
                                                     </div>
                                                 </div>
                                                 <div class="d-flex flex-row align-items-center">
                                                     <div>
-                                                        <h5 class="mb-0"><i class="bi bi-currency-dollar"></i>€ {{ food.price * food.qty }}</h5>
-                                                        <small v-if="food.hasDiscount" class="text-muted text-decoration-line-through"><i class="bi bi-currency-dollar"></i></small>
+                                                        <h5 class="mb-0"><i class="bi bi-currency-dollar"></i>€ {{
+                                        food.price * food.qty }}</h5>
+                                                        <small v-if="food.hasDiscount"
+                                                            class="text-muted text-decoration-line-through"><i
+                                                                class="bi bi-currency-dollar"></i></small>
                                                     </div>
-                                                    <a role="button" @click="$event => removeItem(item)" class="ms-4" style="color: #cecece;"><i class=""></i></a>
+                                                    <a role="button" @click="$event => removeItem(item)" class="ms-4"
+                                                        style="color: #cecece;"><i class=""></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -64,11 +95,13 @@ export default{
                                             <hr class="my-4">
                                             <div class="d-flex justify-content-between">
                                                 <p class="mb-2">Subtotal</p>
-                                                <p class="mb-2"><i class="bi bi-currency-dollar"></i>€ {{ $store.state.cartTotal }}</p>
+                                                <p class="mb-2"><i class="bi bi-currency-dollar"></i>€ {{
+                                        $store.state.cartTotal }}</p>
                                             </div>
                                             <div class="d-flex justify-content-between mb-4">
                                                 <p class="mb-2">Total</p>
-                                                <p class="mb-2"><i class="bi bi-currency-dollar"></i>€ {{ $store.state.cartTotal }}</p>
+                                                <p class="mb-2"><i class="bi bi-currency-dollar"></i>€ {{
+                                                    $store.state.cartTotal }}</p>
                                             </div>
                                             <button type="button" class="btn btn-info btn-block btn-lg">
                                                 Checkout
@@ -84,4 +117,3 @@ export default{
         </div>
     </section>
 </template>
-

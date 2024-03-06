@@ -5,37 +5,19 @@ import 'vue3-toastify/dist/index.css';
 
 export default {
     name: "CartBTN",
-    props:['food'],
-    components:{ CartAddRemove },
+    props: ['food'],
+    components: { CartAddRemove },
     data() {
         return {
-            toAdd:true,
-            item:[]
+            toAdd: true,
+            item: []
         }
     },
     methods: {
         async addOrRemove() {
-        // Verifica se il carrello è vuoto
-        if (this.$store.state.cart.length === 0) {
-            // Se il carrello è vuoto, aggiungi direttamente l'elemento al carrello
-            this.item.qty = 1;
-            this.$store.commit('addRemoveCart', { food: this.item, toAdd: this.toAdd });
-            let toastMSG = this.toAdd ? 'Nuovo prodotto aggiunto' : 'Prodotto rimosso';
-            toast(toastMSG, {
-                autoClose: 1000,
-            });
-            this.toAdd = !this.toAdd;
-        } else {
-            // Se il carrello non è vuoto, controlla se l'elemento da aggiungere ha lo stesso user_id di un elemento già presente nel carrello
-            let cartItem = this.$store.state.cart.find(item => item.user_id !== this.item.user_id);
-            if (cartItem) {
-                // Se l'elemento ha un user_id diverso da quelli presenti nel carrello, mostra un messaggio di errore o gestisci l'aggiunta di conseguenza
-                toast('Non è possibile aggiungere elementi da ristoratori diversi', {
-                    autoClose: 2000,
-                    type: 'error'
-                });
-            } else {
-                // Se l'elemento ha lo stesso user_id degli elementi presenti nel carrello, aggiungilo normalmente
+            // Verifica se il carrello è vuoto
+            if (this.$store.state.cart.length === 0) {
+                // Se il carrello è vuoto, aggiungi direttamente l'elemento al carrello
                 this.item.qty = 1;
                 this.$store.commit('addRemoveCart', { food: this.item, toAdd: this.toAdd });
                 let toastMSG = this.toAdd ? 'Nuovo prodotto aggiunto' : 'Prodotto rimosso';
@@ -43,17 +25,36 @@ export default {
                     autoClose: 1000,
                 });
                 this.toAdd = !this.toAdd;
+            } else {
+                // Se il carrello non è vuoto, controlla se l'elemento da aggiungere ha lo stesso user_id di un elemento già presente nel carrello
+                let cartItem = this.$store.state.cart.find(item => item.user_id !== this.item.user_id);
+                if (cartItem) {
+                    // Se l'elemento ha un user_id diverso da quelli presenti nel carrello, mostra un messaggio di errore o gestisci l'aggiunta di conseguenza
+                    toast('Non è possibile aggiungere elementi da ristoratori diversi', {
+                        autoClose: 2000,
+                        type: 'error'
+                    });
+                } else {
+                    // Se l'elemento ha lo stesso user_id degli elementi presenti nel carrello, aggiungilo normalmente
+                    this.item.qty = 1;
+                    this.$store.commit('addRemoveCart', { food: this.item, toAdd: this.toAdd });
+                    let toastMSG = this.toAdd ? 'Nuovo prodotto aggiunto' : 'Prodotto rimosso';
+                    toast(toastMSG, {
+                        autoClose: 1000,
+                    });
+                    this.toAdd = !this.toAdd;
+                }
             }
-        }
-    }
-},
-    mounted(){
+        },
+
+    },
+    mounted() {
         let cart = this.$store.state.cart
         let obj = cart.find(o => o.id === this.food.id)
-        if(obj){
+        if (obj) {
             this.toAdd = false
             this.item = obj
-        }else{
+        } else {
             this.item = this.food
             this.toAdd = true
         }
@@ -62,10 +63,10 @@ export default {
 </script>
 
 <template>
-        <button type="button" @click="$event => addOrRemove()" class="btn me-2">
+    <button type="button" @click="$event => addOrRemove()" class="btn me-2">
         <i class="fa-solid fa-cart-shopping"></i>
-        </button>
-        <CartAddRemove v-if="!toAdd" :food="item"/>
+    </button>
+    <CartAddRemove v-if="!toAdd" :food="item" />
 </template>
 
 <style scoped></style>
