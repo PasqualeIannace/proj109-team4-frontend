@@ -59,6 +59,9 @@ export default {
 					class="text-center mt-3 collapse navbar-collapse"
 					id="navbarNavDropdown"
 				>
+				<div>
+					<img src="/logo.png" class="logo" alt="">
+				</div>
 					<ul class="navbar-nav mx-auto">
 						<li
 							class="nav-item orangetext"
@@ -129,6 +132,11 @@ export default {
 
 <style scoped>
 
+.logo {
+    width: 4em;
+	margin-left: 1em;
+}
+
 /* Quando una voce di menu è attiva, mantieni il colore chiaro */
 .active {
   color: rgb(252, 255, 74);
@@ -158,14 +166,14 @@ export default {
 #mainNavigation .myA {
 	font-family: "Cabin", sans-serif;
 	font-size: 14px;
-	color: #f9b234;
+	color: #FC3966;
 	font-weight: 600;
 	text-transform: uppercase;
 	letter-spacing: 2px;
 	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
 }
 #mainNavigation .myA:hover {
-  color: rgb(252, 255, 74);
+  color: #FD5933;
 }
 .dropdown-menu {
 	background: #f9b234;
@@ -211,7 +219,7 @@ router-link.dropdown-item:hover {
 		rgba(0, 0, 0, 0) 100%
 	); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	/* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); IE6-9  */
-	background-color: #224;
+	background-color: #140934;
 }
 #navbarNavDropdown.collapsing .navbar-nav,
 #navbarNavDropdown.show .navbar-nav {
