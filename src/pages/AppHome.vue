@@ -110,7 +110,7 @@ export default {
                     <template v-for="tipo in store.types">
                         <input type="checkbox" class="btn-check" :id="'btncheck_' + tipo.id" autocomplete="off" 
                             :value="tipo.id" v-model="selectedTypes" @change="getUsers">
-                        <label class="btn btn-outline-primary" :for="'btncheck_' + tipo.id">{{ tipo.name }}</label>
+                        <label class="btn btn-outline-primary m-1 rounded-5 myBtn" :for="'btncheck_' + tipo.id">{{ tipo.name }}</label>
                     </template>
             </div>
     </div>
@@ -225,7 +225,10 @@ export default {
 </template>
 
 <style scoped>
-
+.myBtn{
+	color: #f8c146;
+	border-color: #f8c146;
+}
 .ag-format-container {
 	width: calc(100% / 4);
 	/* margin: 0 auto; */
@@ -336,21 +339,7 @@ body {
 	-o-transition: all 0.5s ease;
 	transition: all 0.5s ease;
 }
-.ag-courses_item:nth-child(2n) .ag-courses-item_bg {
-	background-color: #3ecd5e;
-}
-.ag-courses_item:nth-child(3n) .ag-courses-item_bg {
-	background-color: #e44002;
-}
-.ag-courses_item:nth-child(4n) .ag-courses-item_bg {
-	background-color: #492a84db;
-}
-.ag-courses_item:nth-child(5n) .ag-courses-item_bg {
-	background-color: #cd3e94;
-}
-.ag-courses_item:nth-child(6n) .ag-courses-item_bg {
-	background-color: #4c49ea;
-}
+
 .active {
 	color: rgb(252, 255, 74);
 }
