@@ -1,10 +1,4 @@
-<script>
-export default {
-  methods: {
-    onSuccess(payload) {
-      // let nonce = payload.nonce;
-      // Do something great with the nonce...
-      
+<script type="text/javascript">
       // Definisci la variabile button e inizializza Braintree
       var button = document.querySelector('#submit-button');
       
@@ -43,13 +37,6 @@ export default {
           });
         });
       });
-    },
-    onError(error) {
-      // let message = error.message;
-      // Whoops, an error has occured while trying to get the nonce
-    }
-  }
-}
 </script>
 
 <template>
@@ -61,5 +48,7 @@ export default {
 </template>
 
 <style>
-/* Stili CSS per il componente, se necessario */
+#dropin-wrapper {
+	margin-top: 10em;
+}
 </style>
