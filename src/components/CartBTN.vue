@@ -18,7 +18,7 @@ export default {
             this.item.qty = 1
             this.$store.commit('addRemoveCart',{food:this.item, toAdd:this.toAdd})
             let toastMSG
-            this.toAdd? toastMSG = 'Added to cart' : toastMSG = 'Removed from cart'
+            this.toAdd? toastMSG = 'Nuovo prodotto aggiunto' : toastMSG = 'Prodotto rimosso'
             toast(toastMSG, {
                 autoClose: 1000,
             });

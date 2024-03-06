@@ -19,9 +19,9 @@ export default {
                     this.qty++
                     this.food.qty = this.qty
                     await this.$store.commit('updateCart',{food:this.food})
-                    toast.success('cart updated')
+                    toast.success('Prodotto aggiunto al carrello')
                 }else{
-                    toast.warning('You reached the limit')
+                    toast.warning('Hai raggiunto il limite')
                 }
             }
             if( number == -1 ){
@@ -29,9 +29,9 @@ export default {
                     this.qty--
                     this.food.qty = this.qty
                     await this.$store.commit('updateCart',{food:this.food})
-                    toast.success('cart updated');
+                    toast.success('Prodotto rimosso al carrello');
                 }else{
-                    toast.warning('You reached the limit');
+                    toast.warning('La quantità minima è 1');
                 }
             }
             this.loading = false
