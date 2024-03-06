@@ -104,6 +104,13 @@ h1{
 	width: calc(100% / 4);
 	/* margin: 0 auto; */
 }
+/* Stili per le card su schermi più grandi (desktop) */
+@media screen and (max-width: 992px) {
+    .ag-format-container {
+        width: calc(50% - 30px); /* Larghezza del 50% meno il margine tra le card */
+        margin: 0 15px 30px; /* Margini tra le card */
+    }
+}
 
 body {
 	background-color: #000;
