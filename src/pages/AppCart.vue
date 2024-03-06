@@ -4,7 +4,9 @@ import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 
 export default {
-    components: { CartAddRemove },
+    components: { 
+        CartAddRemove,
+     },
     methods: {
         removeItem(food) {
             this.$store.commit('addRemoveCart', { food, toAdd: false });
@@ -109,9 +111,11 @@ export default {
                                                 <p class="mb-2"><i class="bi bi-currency-dollar"></i>€ {{
                                                     $store.state.cartTotal }}</p>
                                             </div>
-                                            <button type="button" class="btn btn-info btn-block btn-lg">
+                                            <router-link :to="{ name: 'payment' }">
+                                                <button type="button" class="btn btn-info btn-block btn-lg">
                                                 Checkout
-                                            </button>
+                                                </button>
+                                            </router-link>
                                         </div>
                                     </div>
                                 </div>
@@ -128,4 +132,4 @@ export default {
 
 <style scoped>
 /* Add your styles if needed */
-</style>
+</style>./Payment.vue

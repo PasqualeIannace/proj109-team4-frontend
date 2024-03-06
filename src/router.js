@@ -4,6 +4,7 @@ import AppHome from './pages/AppHome.vue';
 import AppAbout from './pages/AppAbout.vue';
 import AppRestaurantDetail from './pages/AppRestaurantDetail.vue';
 import AppCart from './pages/AppCart.vue';
+import Payment from './pages/Payment.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -29,6 +30,12 @@ const router = createRouter({
             name: 'cart',
             component: AppCart,
         },
+        {
+            path: '/payment',
+            name: 'payment',
+            component: Payment,
+        },
+
     ]
 });
 
