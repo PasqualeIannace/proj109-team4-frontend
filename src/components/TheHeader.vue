@@ -7,16 +7,6 @@ export default {
 	},
 	data() {
 		return {
-			menuItems: [
-				{
-					routeName: "home",
-					label: "Homepage",
-				},
-				{
-					routeName: "about",
-					label: "Chi siamo",
-				},
-			],
 			store,
 		};
 	},
@@ -24,7 +14,13 @@ export default {
 
 	},
 	methods: {
-	}
+    scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth" // Per uno scorrimento fluido
+        });
+    }
+}
 };
 </script>
 
@@ -32,22 +28,6 @@ export default {
 	<header>
 		<div id="mainNavigation">
 			<nav role="navigation">
-				<div class="">
-
-					<div class="row d-flex justify-content-center ">
-						<div class="col-4">
-							<!-- <div class="input-group mb-3">
-									<input type="text" class="form-control input-text myInput" placeholder="Search products...." aria-label="Recipient's username" aria-describedby="basic-addon2" v-model="store.searched"  @keyup.enter="$emit('search')"/>
-									<div class="input-group-append">
-										<button  class="btn btn-outline-warning" type="button">
-											cerca
-											<i class="fa-solid fa-magnifying-glass" style="color: #dea917;"></i>
-										</button>
-									</div>
-								</div> -->
-						</div>
-					</div>
-				</div>
 				<div class="navbar-expand-md">
 					<div class="navbar-dark text-center my-2">
 						<button class="navbar-toggler w-75" type="button" data-bs-toggle="collapse"
@@ -59,41 +39,40 @@ export default {
 					</div>
 					<div class="text-center mt-3 collapse navbar-collapse" id="navbarNavDropdown">
 						<div>
-							<img src="/logo.png" class="logo" alt="">
+							<router-link to="/" class="nav-link myA">
+								<a @click="scrollToTop" >
+									<img src="/logo.png" class="logo" alt="">
+								</a>
+							</router-link>
+
 						</div>
 						<ul class="navbar-nav mx-auto">
-							<li class="nav-item orangetext" v-for="(item, index) in menuItems" :key="index">
-								<router-link :to="{ name: item.routeName }" class="nav-link myA"
-									:class="{ 'active': $route.name === item.routeName }">
-									{{ item.label }}
+							<li class="nav-item">
+								<router-link to="/" class="nav-link myA">
+									<a href="#top" class="nav-link myA" @click="scrollToTop">Deliveboo</a>
 								</router-link>
-							</li>
-
-							<li class="nav-item orangetext">
-								<a class="nav-link myA" href="http://127.0.0.1:8000/" target="_blank">
-									Registrati Ristorante
-								</a>
 							</li>
 
 							<li class="nav-item dropdown">
 								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
 									data-bs-toggle="dropdown" aria-expanded="false">
-									Company
+									<i class="fa-solid fa-circle-info"></i> Info
 								</a>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-									<li><a class="dropdown-item text-dark" href="#">Blog</a></li>
-									<li>
-										<a class="dropdown-item text-dark" href="#">About Us</a>
+									<li class="nav-bg">
+										<router-link to="/about" class="text-decoration-none">
+											<a class="dropdown-item text-dark" href="">Chi siamo</a>
+										</router-link>
 									</li>
-									<li>
-										<a class="dropdown-item text-dark" href="#">Contact us</a>
+									<li class="nav-bg">
+										<a class="dropdown-item text-dark" href="http://127.0.0.1:8000/">Lavora con noi</a>
 									</li>
 								</ul>
 							</li>
 						</ul>
-						<router-link class="nav-link me-5" :class="$route.name == 'cart' ? 'active' : ''"
+						<router-link class="nav-link me-5 carrello" :class="$route.name == 'cart' ? 'active' : ''"
 							aria-current="page" :to="{ name: 'cart' }">
-							<i class="fa-solid fa-cart-shopping"></i>
+							<i class="fa-solid fa-cart-shopping fa-lg"></i>
 							<span v-if="$store.state.cart.length > 0"
 								class="align-items-center justify-content-center translate-middle badge rounded-pill bg-secondary">
 								{{ $store.state.cart.length }}
@@ -102,35 +81,7 @@ export default {
 					</div>
 				</div>
 			</nav>
-
 		</div>
-		<!-- <header>
-		<div class="collapse bg-dark" id="navbarHeader">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-8 col-md-7 py-4">
-						<h4 class="text-white">About</h4>
-						<p class="text-muted">Add some information about the food</p>
-					</div>
-					<div class="col-sm-4 offset-md-1 py-4">
-						<h4 class="text-white">Contact</h4>
-						<ul class="list-unstyled">
-							<li><a href="#" class="text-white">Follow on Instagram</a></li>
-							<li><a href="#" class="text-white">Like on Facebook</a></li>
-							<li><a href="#" class="text-white">Email me</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div> -->
-		<!-- <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-					<li class="nav-item me-3">
-						
-					</li>
-				</ul>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader">
-					<span class="navbar-toggler-icon"></span>
-				</button> -->
 
 	</header>
 </template>
@@ -139,6 +90,10 @@ export default {
 .logo {
 	width: 4em;
 	margin-left: 1em;
+}
+
+#navbarDropdownMenuLink {
+    margin-top: 0.4em;
 }
 
 /* Quando una voce di menu è attiva, mantieni il colore chiaro */
@@ -185,15 +140,25 @@ export default {
 }
 
 .dropdown-menu {
-	background: #f9b234;
+	background: #FC3966;
 }
 
 a.dropdown-toggle {
-	color: #f9b234 !important;
+	color: #FC3966 !important;
+
+	&:hover {
+		color: #FD5933 !important;
+	}
 }
 
 router-link.dropdown-item:hover {
 	color: black !important;
+}
+
+.dropdown-item:hover {
+	background: #140934 !important;
+	color: #FC3966 !important;
+	border-radius: 0.3em;
 }
 
 .nav-item a {
@@ -209,6 +174,14 @@ router-link.dropdown-item:hover {
 	/* max-height: 10vh; */
 }
 
+.carrello {
+	color: #FC3966;
+
+	&:hover {
+		color: #FD5933;
+	}
+}
+
 #mainNavigation {
 	padding-bottom: 15px;
 	position: fixed;
@@ -216,24 +189,6 @@ router-link.dropdown-item:hover {
 	/* left:0; */
 	width: 100%;
 	z-index: 123;
-	/* padding-bottom:120px; */
-	/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+100&0.65+0,0+100;Neutral+Density */
-	/* background: -moz-linear-gradient(
-		top,
-		rgba(0, 0, 0, 0.65) 0%,
-		rgba(0, 0, 0, 0) 100%
-	); /* FF3.6-15 */
-	/* background: -webkit-linear-gradient(
-		top,
-		rgba(0, 0, 0, 0.65) 0%,
-		rgba(0, 0, 0, 0) 100%
-	); Chrome10-25,Safari5.1-6
-	background: linear-gradient(
-		to bottom,
-		rgba(0, 0, 0, 0.65) 0%,
-		rgba(0, 0, 0, 0) 100%
-	); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	/* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); IE6-9  */
 	background-color: #140934;
 }
 
