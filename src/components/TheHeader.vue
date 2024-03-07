@@ -32,22 +32,6 @@ export default {
 	<header>
 		<div id="mainNavigation">
 			<nav role="navigation">
-				<div class="">
-
-					<div class="row d-flex justify-content-center ">
-						<div class="col-4">
-							<!-- <div class="input-group mb-3">
-									<input type="text" class="form-control input-text myInput" placeholder="Search products...." aria-label="Recipient's username" aria-describedby="basic-addon2" v-model="store.searched"  @keyup.enter="$emit('search')"/>
-									<div class="input-group-append">
-										<button  class="btn btn-outline-warning" type="button">
-											cerca
-											<i class="fa-solid fa-magnifying-glass" style="color: #dea917;"></i>
-										</button>
-									</div>
-								</div> -->
-						</div>
-					</div>
-				</div>
 				<div class="navbar-expand-md">
 					<div class="navbar-dark text-center my-2">
 						<button class="navbar-toggler w-75" type="button" data-bs-toggle="collapse"
@@ -102,35 +86,7 @@ export default {
 					</div>
 				</div>
 			</nav>
-
 		</div>
-		<!-- <header>
-		<div class="collapse bg-dark" id="navbarHeader">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-8 col-md-7 py-4">
-						<h4 class="text-white">About</h4>
-						<p class="text-muted">Add some information about the food</p>
-					</div>
-					<div class="col-sm-4 offset-md-1 py-4">
-						<h4 class="text-white">Contact</h4>
-						<ul class="list-unstyled">
-							<li><a href="#" class="text-white">Follow on Instagram</a></li>
-							<li><a href="#" class="text-white">Like on Facebook</a></li>
-							<li><a href="#" class="text-white">Email me</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div> -->
-		<!-- <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-					<li class="nav-item me-3">
-						
-					</li>
-				</ul>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader">
-					<span class="navbar-toggler-icon"></span>
-				</button> -->
 
 	</header>
 </template>
