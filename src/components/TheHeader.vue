@@ -7,16 +7,6 @@ export default {
 	},
 	data() {
 		return {
-			menuItems: [
-				{
-					routeName: "home",
-					label: "Homepage",
-				},
-				{
-					routeName: "about",
-					label: "Chi siamo",
-				},
-			],
 			store,
 		};
 	},
@@ -24,7 +14,13 @@ export default {
 
 	},
 	methods: {
-	}
+    scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth" // Per uno scorrimento fluido
+        });
+    }
+}
 };
 </script>
 
@@ -43,20 +39,18 @@ export default {
 					</div>
 					<div class="text-center mt-3 collapse navbar-collapse" id="navbarNavDropdown">
 						<div>
-							<img src="/logo.png" class="logo" alt="">
+							<router-link to="/" class="nav-link myA">
+								<a @click="scrollToTop" >
+									<img src="/logo.png" class="logo" alt="">
+								</a>
+							</router-link>
+
 						</div>
 						<ul class="navbar-nav mx-auto">
-							<li class="nav-item orangetext" v-for="(item, index) in menuItems" :key="index">
-								<router-link :to="{ name: item.routeName }" class="nav-link myA"
-									:class="{ 'active': $route.name === item.routeName }">
-									{{ item.label }}
-								</router-link>
-							</li>
-
 							<li class="nav-item orangetext">
-								<a class="nav-link myA" href="http://127.0.0.1:8000/" target="_blank">
-									Registrati Ristorante
-								</a>
+								<router-link to="/" class="nav-link myA">
+									<a href="#top" class="nav-link myA" @click="scrollToTop">Deliveboo</a>
+								</router-link>
 							</li>
 
 							<li class="nav-item dropdown">
@@ -65,9 +59,10 @@ export default {
 									Company
 								</a>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-									<li><a class="dropdown-item text-dark" href="#">Blog</a></li>
 									<li>
-										<a class="dropdown-item text-dark" href="#">About Us</a>
+										<router-link to="/about">
+											<a class="dropdown-item text-dark" href="">Chi siamo</a>
+										</router-link>
 									</li>
 									<li>
 										<a class="dropdown-item text-dark" href="#">Contact us</a>
