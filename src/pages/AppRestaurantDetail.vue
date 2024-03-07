@@ -4,6 +4,7 @@ import { store } from "../store.js"; // Import the store
 import CartBTN from "../components/CartBTN.vue";
 
 export default {
+	props: ['logo'],
 	name: "AppRestaurantDetail",
 	components: { CartBTN },
 	data() {
@@ -37,26 +38,18 @@ export default {
 
 <template>
 	<div class="myMargin">
-		<div v-for="user in store.userList" :key="userList.id">
-				<!-- <img :src="user.logo_activity" alt=""> -->
-		</div>
+		<img :src="logo" alt="">
 		<h1 class="text-center">Food</h1>
 
 		<div class="container d-flex flex-wrap text-decoration-none">
 			<div
 				class="ag-format-container"
-				v-for="(food, index) in store.foodListByUser"
-				:key="index"
-			>
+				v-for="(food, index) in store.foodListByUser" :key="index">
 				<div class="ag-courses_box">
 					<div class="ag-courses_item">
-						<a
-							href=""
-							@click="openModal(index)"
-							class="ag-courses-item_link"
-							data-bs-toggle="modal"
-							:data-bs-target="'#exampleModal' + index"
-						>
+						<a href="" @click="openModal(index)"
+							class="ag-courses-item_link" data-bs-toggle="modal"
+							:data-bs-target="'#exampleModal' + index">
 							<div class="ag-courses-item_bg"></div>
 
 							<div class="ag-courses-item_title">

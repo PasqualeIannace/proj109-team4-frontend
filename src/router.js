@@ -5,6 +5,8 @@ import AppAbout from './pages/AppAbout.vue';
 import AppRestaurantDetail from './pages/AppRestaurantDetail.vue';
 import AppCart from './pages/AppCart.vue';
 import Payment from './pages/Payment.vue';
+// Vue.use(Router);
+// import Router from 'vue-router';
 
 const router = createRouter({
     history: createWebHistory(),
