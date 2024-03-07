@@ -30,11 +30,11 @@ export default {
 			<nav role="navigation">
 				<div class="navbar-expand-md">
 					<div class="navbar-dark text-center my-2">
-						<button class="navbar-toggler w-75" type="button" data-bs-toggle="collapse"
+						<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 							data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
 							aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"></span>
-							<span class="align-middle">Menu</span>
+							<img src="/logo.png" class="logo" alt="">
+							<span class="align-middle ms-2">Menu</span>
 						</button>
 					</div>
 					<div class="text-center mt-3 collapse navbar-collapse" id="navbarNavDropdown">
@@ -206,7 +206,15 @@ router-link.dropdown-item:hover {
 
 #navbarNavDropdown.collapsing .navbar-nav,
 #navbarNavDropdown.show .navbar-nav {
-	background: #f9b234;
-	padding: 12px;
+	padding: 1em;
+}
+
+/* NAV RIDOTTA */
+.navbar-toggler {
+	border: none;
+
+	span {
+		color: #FC3966;
+	}
 }
 </style>
