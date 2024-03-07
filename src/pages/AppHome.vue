@@ -125,7 +125,7 @@ export default {
 
 
 
-			<div class="container d-flex flex-wrap text-decoration-none">
+			<div class="container d-flex flex-wrap">
 			<div class="ag-format-container" v-for="user in store.userList" :key="userList.id" >
 				<router-link :to="{ name: 'user-details', params: { id: user.id } }">
 				<div class="ag-courses_box">
@@ -134,7 +134,9 @@ export default {
 							<div class="ag-courses-item_bg"></div>
 
 							<div class="ag-courses-item_title text-center">
-								<h5>{{ user.activity_name }}</h5>
+								<p class="fs-5 mb-0">{{ user.activity_name }}</p>
+                                <!-- Mostra solo i tipi associati a questo ristorante -->
+                                   <span v-for="(tipo, index) in user.types" :key="index" class="myTypes rounded-pill">{{ tipo.name }}</span>                       
 								<img :src="user.logo_activity" class="w-100" />
 							</div>
 							<div class="ag-courses-item_date-box">
@@ -207,6 +209,18 @@ export default {
 </template>
 
 <style scoped>
+.myTypes{
+	padding: 5px 10px;
+	border: 1px solid white;
+    border-radius: 20px;
+	color: white;
+	font-size: 0.4em;
+	margin: 1 rem;
+}
+
+a{
+	text-decoration: none;
+}
 .myBtn{
 	color: #f8c146;
 	border-color: #f8c146;
@@ -264,12 +278,10 @@ body {
 	padding: 30px 20px;
 	background-color: #121212;
 	overflow: hidden;
-	text-decoration: none;
 	position: relative;
 }
 .ag-courses-item_link:hover,
 .ag-courses-item_link:hover .ag-courses-item_date {
-	text-decoration: none;
 	color: #fff;
 }
 .ag-courses-item_link:hover .ag-courses-item_bg {
