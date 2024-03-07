@@ -38,7 +38,7 @@ export default {
 						</button>
 					</div>
 					<div class="text-center mt-3 collapse navbar-collapse" id="navbarNavDropdown">
-						<div>
+						<div class="d-none d-md-block">
 							<router-link to="/" class="nav-link myA">
 								<a @click="scrollToTop" >
 									<img src="/logo.png" class="logo" alt="">
@@ -201,12 +201,12 @@ router-link.dropdown-item:hover {
 	/* left:0; */
 	width: 100%;
 	z-index: 123;
-	background-color: #929292;
+	background-color: #140934;
 }
 
 #navbarNavDropdown.collapsing .navbar-nav,
 #navbarNavDropdown.show .navbar-nav {
-	padding: 1em;
+	padding-bottom: 1em;
 }
 
 /* NAV RIDOTTA */
