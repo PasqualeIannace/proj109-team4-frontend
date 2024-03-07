@@ -37,6 +37,9 @@ export default {
 
 <template>
 	<div class="myMargin">
+		<div v-for="user in store.userList" :key="userList.id">
+				<!-- <img :src="user.logo_activity" alt=""> -->
+		</div>
 		<h1 class="text-center">Food</h1>
 
 		<div class="container d-flex flex-wrap text-decoration-none">

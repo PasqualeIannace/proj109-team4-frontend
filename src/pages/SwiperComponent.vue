@@ -32,7 +32,7 @@ export default {
   <swiper
     :spaceBetween="30"
     :slides-per-view="3"
-    :centeredSlides="true"
+    :centeredSlides="false"
     :autoplay="{
       delay: 2500,
       disableOnInteraction: false,
