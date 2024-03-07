@@ -47,7 +47,7 @@ export default {
 
 						</div>
 						<ul class="navbar-nav mx-auto">
-							<li class="nav-item orangetext">
+							<li class="nav-item">
 								<router-link to="/" class="nav-link myA">
 									<a href="#top" class="nav-link myA" @click="scrollToTop">Deliveboo</a>
 								</router-link>
@@ -56,23 +56,23 @@ export default {
 							<li class="nav-item dropdown">
 								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
 									data-bs-toggle="dropdown" aria-expanded="false">
-									Company
+									<i class="fa-solid fa-circle-info"></i> Info
 								</a>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-									<li>
-										<router-link to="/about">
+									<li class="nav-bg">
+										<router-link to="/about" class="text-decoration-none">
 											<a class="dropdown-item text-dark" href="">Chi siamo</a>
 										</router-link>
 									</li>
-									<li>
-										<a class="dropdown-item text-dark" href="#">Contact us</a>
+									<li class="nav-bg">
+										<a class="dropdown-item text-dark" href="http://127.0.0.1:8000/">Lavora con noi</a>
 									</li>
 								</ul>
 							</li>
 						</ul>
-						<router-link class="nav-link me-5" :class="$route.name == 'cart' ? 'active' : ''"
+						<router-link class="nav-link me-5 carrello" :class="$route.name == 'cart' ? 'active' : ''"
 							aria-current="page" :to="{ name: 'cart' }">
-							<i class="fa-solid fa-cart-shopping"></i>
+							<i class="fa-solid fa-cart-shopping fa-lg"></i>
 							<span v-if="$store.state.cart.length > 0"
 								class="align-items-center justify-content-center translate-middle badge rounded-pill bg-secondary">
 								{{ $store.state.cart.length }}
@@ -90,6 +90,10 @@ export default {
 .logo {
 	width: 4em;
 	margin-left: 1em;
+}
+
+#navbarDropdownMenuLink {
+    margin-top: 0.4em;
 }
 
 /* Quando una voce di menu è attiva, mantieni il colore chiaro */
@@ -136,15 +140,25 @@ export default {
 }
 
 .dropdown-menu {
-	background: #f9b234;
+	background: #FC3966;
 }
 
 a.dropdown-toggle {
-	color: #f9b234 !important;
+	color: #FC3966 !important;
+
+	&:hover {
+		color: #FD5933 !important;
+	}
 }
 
 router-link.dropdown-item:hover {
 	color: black !important;
+}
+
+.dropdown-item:hover {
+	background: #140934 !important;
+	color: #FC3966 !important;
+	border-radius: 0.3em;
 }
 
 .nav-item a {
@@ -160,6 +174,14 @@ router-link.dropdown-item:hover {
 	/* max-height: 10vh; */
 }
 
+.carrello {
+	color: #FC3966;
+
+	&:hover {
+		color: #FD5933;
+	}
+}
+
 #mainNavigation {
 	padding-bottom: 15px;
 	position: fixed;
@@ -167,24 +189,6 @@ router-link.dropdown-item:hover {
 	/* left:0; */
 	width: 100%;
 	z-index: 123;
-	/* padding-bottom:120px; */
-	/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+100&0.65+0,0+100;Neutral+Density */
-	/* background: -moz-linear-gradient(
-		top,
-		rgba(0, 0, 0, 0.65) 0%,
-		rgba(0, 0, 0, 0) 100%
-	); /* FF3.6-15 */
-	/* background: -webkit-linear-gradient(
-		top,
-		rgba(0, 0, 0, 0.65) 0%,
-		rgba(0, 0, 0, 0) 100%
-	); Chrome10-25,Safari5.1-6
-	background: linear-gradient(
-		to bottom,
-		rgba(0, 0, 0, 0.65) 0%,
-		rgba(0, 0, 0, 0) 100%
-	); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	/* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); IE6-9  */
 	background-color: #140934;
 }
 
