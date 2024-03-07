@@ -144,7 +144,9 @@ export default {
 								<!-- <p class="card-text">{{ food.description }}</p> -->
 								<p class="card-text text-center fs-5">
 								</p>
-								<div class="card-footer text-center ag-courses-item_date"></div>
+								<div class="card-footer text-center ag-courses-item_date">
+									<span>{{ user.address }}</span>
+								</div>
 							</div>
 							<!-- <div class="ag-courses-item_date-box">
 								<div class="card-footer text-center ag-courses-item_date"></div>
@@ -202,27 +204,6 @@ export default {
 				</div> -->
 			</div>
 		</div>
-
-
-
-
-
-
-            <!-- <div class="row">
-
-                <div class="col-md-4 gy-4" v-for="user in store.userList">
-                    <div class="card h-100">
-                        <router-link :to="{ name: 'user-details', params: { id: user.id } }">
-                            <div class="card-header text-center myCard">
-                                <b>{{ user.activity_name }}</b>
-                            </div>
-                            <div class="card-body">
-                                <img :src="user.logo_activity" alt="Logo" class="w-100">
-                            </div>
-                        </router-link>
-                    </div>
-                </div>
-            </div> -->
         </div>
 		<SwiperComponent />
 </template>
@@ -234,33 +215,13 @@ export default {
 }
 .ag-format-container {
 	width: calc(100% / 4);
-	/* margin: 0 auto; */
+	margin: 0 auto;
 }
-/* Stili per le card su schermi più grandi (desktop) */
-@media screen and (max-width: 992px) {
-	.ag-format-container {
-		width: calc(50% - 30px);
-		margin: 0 15px 30px;
-	}
-	.myDiv{
-		display: block;
-	}
-	.btn-group {
-        flex-direction: column; /* Allinea i pulsanti verticalmente */
-        align-items: flex-start; /* Allinea i pulsanti a sinistra */
-    }
-}
-
-
 body {
 	background-color: #000;
 }
 .ag-courses_box {
-	/* display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-align: start;
-	-ms-flex-align: start; */
+
 	align-items: flex-start;
 	/* -ms-flex-wrap: wrap; */
 	flex-wrap: wrap;
@@ -271,13 +232,12 @@ body {
 .ag-courses_item {
 	/* width:100%; */
 	flex-basis: calc(33.33333% - 30px);
-
 	margin: 0 15px 30px;
-
 	overflow: hidden;
 
 	border-radius: 28px;
 }
+
 .ag-courses-item_link {
 	display: block;
 	padding: 30px 20px;
@@ -376,4 +336,6 @@ body {
 	border-bottom: 2px solid orange;
 	padding-top: 3vh;
 }
+
+
 </style>
