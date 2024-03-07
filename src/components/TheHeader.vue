@@ -71,7 +71,7 @@ export default {
 
 							<li class="nav-item orangetext">
 								<a class="nav-link myA" href="http://127.0.0.1:8000/">
-									Registrati Restauranti
+									Registrati Ristorante
 								</a>
 							</li>
 
