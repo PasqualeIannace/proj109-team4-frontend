@@ -180,6 +180,18 @@ router-link.dropdown-item:hover {
 	&:hover {
 		color: #FD5933;
 	}
+
+	&:hover .bg-secondary {
+		border: 2px solid #FD5933;
+	color: #FD5933;
+	}
+
+}
+
+.bg-secondary {
+	background-color: #140934 !important;
+	border: 2px solid #FC3966;
+	color: #FC3966;	
 }
 
 #mainNavigation {
