@@ -215,8 +215,31 @@ export default {
 }
 .ag-format-container {
 	width: calc(100% / 4);
-	margin: 0 auto;
+	/* margin: 0 auto; */
 }
+/* Stili per le card su schermi più grandi (desktop) */
+
+@media screen and (max-width: 992px) {
+	.ag-format-container {
+		width: calc(50% - 30px);
+		margin: 0 15px 30px;
+	}
+	.myDiv{
+		display: block;
+	}
+	.btn-group {
+        flex-direction: column; /* Allinea i pulsanti verticalmente */
+        align-items: flex-start; /* Allinea i pulsanti a sinistra */
+    }
+}
+
+@media screen and (max-width: 576px) {
+	.ag-format-container {
+		width: calc(100% / 1);
+		margin: 0 15px 30px;
+	}
+}
+
 body {
 	background-color: #000;
 }
