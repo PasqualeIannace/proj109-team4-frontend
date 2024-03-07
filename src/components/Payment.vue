@@ -1,7 +1,3 @@
-
-
-
-
 <template>
   <div id="dropin-wrapper">
     <div id="checkout-message"></div>
