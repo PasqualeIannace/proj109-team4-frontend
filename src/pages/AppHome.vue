@@ -127,7 +127,7 @@ export default {
 
 			<div class="container d-flex flex-wrap">
 			<div class="ag-format-container" v-for="user in store.userList" :key="userList.id" >
-				<router-link :to="{ name: 'user-details', params: { id: user.id } }">
+				<router-link :to="{ name: 'user-details', params: { id: user.id, logo: user.logo_activity} }">
 				<div class="ag-courses_box">
 					<div class="ag-courses_item">
 						<a href="#" class="ag-courses-item_link" :data-bs-target="'#exampleModal' + userList.id">
