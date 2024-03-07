@@ -99,25 +99,28 @@ export default {
         <h1 class="text-center">Ristoranti</h1>
 
         <!-- SEARCH BY TAG -->
-        <nav role="navigation">
-		<div class="py-5 text-center myborder">
-			<!-- <img src="" alt="" class="logo "> -->
-			<div class="">
-				<div class="row d-flex justify-content-center">
-                    <div class="col-4 d-flex justify-content-center">
-                        <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                    <!-- Itera sugli elementi e crea una casella di controllo per ciascuno -->
-                    <template v-for="tipo in store.types">
-                        <input type="checkbox" class="btn-check" :id="'btncheck_' + tipo.id" autocomplete="off" 
+		<nav role="navigation">
+    <div class="py-5 text-center myborder">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="">
+                    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                        <!-- Itera sugli elementi e crea una casella di controllo per ciascuno -->
+                        <template v-for="tipo in store.types">
+                            <input type="checkbox" class="btn-check" :id="'btncheck_' + tipo.id" autocomplete="off" 
                             :value="tipo.id" v-model="selectedTypes" @change="getUsers">
-                        <label class="btn btn-outline-primary m-1 rounded-5 myBtn" :for="'btncheck_' + tipo.id">{{ tipo.name }}</label>
-                    </template>
+                            <label class="btn btn-outline-primary m-1 rounded-5 myBtn" :for="'btncheck_' + tipo.id">{{ tipo.name }}</label>
+                        </template>
+                    </div>
+                </div>
+				<div class="d-none col-md-8 bg-info myDiv">
+					QUI JUMBOTRON O ALTRO
+				</div>
             </div>
+        </div>
     </div>
-</div>
-			</div>
-		</div>
-	</nav>
+</nav>
+
 
         <!-- RISTORANTI -->
         <div class="container">
@@ -125,11 +128,11 @@ export default {
 
 
 			<div class="container d-flex flex-wrap text-decoration-none">
-			<div class="ag-format-container" v-for="user in store.userList" :key="index" >
+			<div class="ag-format-container" v-for="user in store.userList" :key="userList.id" >
 				<router-link :to="{ name: 'user-details', params: { id: user.id } }">
 				<div class="ag-courses_box">
 					<div class="ag-courses_item">
-						<a href="#" class="ag-courses-item_link" :data-bs-target="'#exampleModal' + index">
+						<a href="#" class="ag-courses-item_link" :data-bs-target="'#exampleModal' + userList.id">
 							<div class="ag-courses-item_bg"></div>
 
 							<div class="ag-courses-item_title text-center">
@@ -239,7 +242,15 @@ export default {
 		width: calc(50% - 30px);
 		margin: 0 15px 30px;
 	}
+	.myDiv{
+		display: block;
+	}
+	.btn-group {
+        flex-direction: column; /* Allinea i pulsanti verticalmente */
+        align-items: flex-start; /* Allinea i pulsanti a sinistra */
+    }
 }
+
 
 body {
 	background-color: #000;
