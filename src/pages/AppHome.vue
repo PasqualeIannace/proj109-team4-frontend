@@ -237,6 +237,7 @@ export default {
 	/* margin: 0 auto; */
 }
 /* Stili per le card su schermi più grandi (desktop) */
+
 @media screen and (max-width: 992px) {
 	.ag-format-container {
 		width: calc(50% - 30px);
@@ -251,6 +252,12 @@ export default {
     }
 }
 
+@media screen and (max-width: 576px) {
+	.ag-format-container {
+		width: calc(100% / 1);
+		margin: 0 15px 30px;
+	}
+}
 
 body {
 	background-color: #000;
