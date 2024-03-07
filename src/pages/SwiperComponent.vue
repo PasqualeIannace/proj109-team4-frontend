@@ -1,59 +1,55 @@
 <script>
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue';
+import { store } from "../store.js";
 
 // Import Swiper styles
 import 'swiper/css';
-
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 export default {
   components: {
-	Swiper,
-	SwiperSlide,
+    Swiper,
+    SwiperSlide,
   },
   setup() {
-	return {
-	  modules: [Autoplay, Pagination, Navigation],
-	};
+    return {
+      store, // Aggiungi lo store direttamente al setup
+      modules: [Autoplay, Pagination, Navigation],
+    };
+  },
+  mounted() {
+    console.log("swiper component");
   },
 };
 </script>
 
 <template>
-	<swiper
-	  :spaceBetween="30"
-	  :centeredSlides="true"
-	  :autoplay="{
-		delay: 2500,
-		disableOnInteraction: false,
-	  }"
-	  :pagination="{
-		clickable: true,
-	  }"
-	  :navigation="true"
-	  :modules="modules"
-	  class="mySwiper"
-	>
-	<swiper-slide>
-				<img src="/public/logo_activity/cinese.png" class=" object-fit-contain" />
-			</swiper-slide>
-			<swiper-slide>
-				<img src="/public/logo_activity/pub.png" class=" object-fit-contain" />
-			</swiper-slide>
-			<swiper-slide>
-				<img src="/public/logo_activity/pizza.png" class=" object-fit-contain" />
-			</swiper-slide>
-			<swiper-slide>
-				<img src="/public/logo_activity/osteria.png" class=" object-fit-contain" />
-			</swiper-slide>
-	</swiper>
-  </template>
+  <swiper
+    :spaceBetween="30"
+    :centeredSlides="true"
+    :autoplay="{
+      delay: 2500,
+      disableOnInteraction: false,
+    }"
+    :pagination="{
+      clickable: true,
+    }"
+    :navigation="true"
+    :modules="modules"
+    class="mySwiper"
+  >
+
+      <swiper-slide v-for="user in store.userList" :key="user.id">
+        <img :src="user.logo_activity" class="object-fit-contain" />
+      </swiper-slide>
+
+  </swiper>
+</template>
 
 <style scoped>
 #app {
