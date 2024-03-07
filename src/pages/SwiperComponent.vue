@@ -31,15 +31,12 @@ export default {
 <template>
   <swiper
     :spaceBetween="30"
+    :slides-per-view="3"
     :centeredSlides="true"
     :autoplay="{
       delay: 2500,
       disableOnInteraction: false,
     }"
-    :pagination="{
-      clickable: true,
-    }"
-    :navigation="true"
     :modules="modules"
     class="mySwiper"
   >
