@@ -1,6 +1,7 @@
 <script>
 import { store } from "../store.js";
 import SwiperComponent from "./SwiperComponent.vue";
+import HomeSwiper from "./HomeSwiper.vue";
 import Swiper from 'swiper';
 import axios from "axios"; //importo Axios
 
@@ -9,7 +10,8 @@ export default {
   name: "Home",
   components: {
     Swiper,
-    SwiperComponent
+    SwiperComponent,
+	HomeSwiper
   },
   data() {
     return {
@@ -92,9 +94,10 @@ export default {
 <template>
 <!-- RISTORANTI -->
 <div>
-    <SwiperComponent />
+	<HomeSwiper />
+    <!-- <SwiperComponent /> -->
   </div>
-        <h1 class="text-center">Ristoranti</h1>
+        <h1 class="text-center ubuntu-bold-italic mySize">Ristoranti</h1>
 
         <!-- SEARCH BY TAG -->
 		<nav role="navigation">
@@ -105,15 +108,23 @@ export default {
                     <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
                         <!-- Itera sugli elementi e crea una casella di controllo per ciascuno -->
                         <template v-for="tipo in store.types">
-                            <input type="checkbox" class="btn-check" :id="'btncheck_' + tipo.id" autocomplete="off" 
+							<input type="checkbox" class="btn-check" :id="'btncheck_' + tipo.id" autocomplete="off" 
+                                :value="tipo.id" v-model="selectedTypes" @change="getUsers">
+                                <label class="btn btn-outline m-1 rounded-5 myBtn"
+                                       :for="'btncheck_' + tipo.id"
+                                       :class="{ 'active': selectedTypes.includes(tipo.id) }">
+                                    <img class="click-image" src="ghost.png" alt="Image" />
+                                    {{ tipo.name }}
+                                </label>
+                            <!-- <input type="checkbox" class="btn-check" :id="'btncheck_' + tipo.id" autocomplete="off" 
                             :value="tipo.id" v-model="selectedTypes" @change="getUsers">
-                            <label class="btn btn-outline-primary m-1 rounded-5 myBtn" :for="'btncheck_' + tipo.id">{{ tipo.name }}</label>
+                            <label class="btn btn-outline-primary m-1 rounded-5 myBtn" :for="'btncheck_' + tipo.id">
+								<img class="click-image" src="ghost.png" alt="Image" />
+								{{ tipo.name }}
+							</label> -->
                         </template>
                     </div>
                 </div>
-				<div class="d-none col-md-8 bg-info myDiv">
-					QUI JUMBOTRON O ALTRO
-				</div>
             </div>
         </div>
     </div>
@@ -122,9 +133,6 @@ export default {
 
         <!-- RISTORANTI -->
         <div class="container">
-
-
-
 			<div class="container d-flex flex-wrap">
 			<div class="ag-format-container" v-for="user in store.userList" :key="userList.id" >
 				<router-link :to="{ name: 'user-details', params: { id: user.id, logo: user.logo_activity} }">
@@ -137,8 +145,10 @@ export default {
 								<p class="fs-5 mb-0">{{ user.activity_name }}</p>
                                 <!-- Mostra solo i tipi associati a questo ristorante -->
                                    <span v-for="(tipo, index) in user.types" :key="index" class="myTypes rounded-pill">{{ tipo.name }}</span>                       
+								</div>
+								<div class="ag-courses-item_date-box logo-activity">
 								<img :src="user.logo_activity" class="w-100" />
-							</div>
+								</div>
 							<div class="ag-courses-item_date-box">
 								<!-- <p>{{ food.ingredients }}</p> -->
 								<!-- <p class="card-text">{{ food.description }}</p> -->
@@ -209,6 +219,29 @@ export default {
 </template>
 
 <style scoped>
+.mySize{
+	font-size: 70px;
+	margin-bottom: 0px;
+	color: goldenrod;
+}
+.myBtn.active .click-image {
+    display: block;
+}
+.myBtn.active{
+	border: 2px solid indigo;
+	color: orangered;
+}
+
+.click-image {
+    display: none;
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 20px;
+    height: auto;
+    z-index: 1;
+    width: 150px;
+}
 .myTypes{
 	padding: 5px 10px;
 	border: 1px solid white;
@@ -223,7 +256,12 @@ a{
 }
 .myBtn{
 	color: #f8c146;
-	border-color: #f8c146;
+	border:2px solid #f8c146;
+	margin: 1rem;
+}
+.myBtn:hover{
+	color:indigo;
+	border: 2px solid  indianred;
 }
 .ag-format-container {
 	width: calc(100% / 4);
@@ -273,13 +311,6 @@ body {
 	border-radius: 28px;
 }
 
-.ag-courses-item_link {
-	display: block;
-	padding: 30px 20px;
-	background-color: #121212;
-	overflow: hidden;
-	position: relative;
-}
 .ag-courses-item_link:hover,
 .ag-courses-item_link:hover .ag-courses-item_date {
 	color: #fff;
@@ -305,13 +336,45 @@ body {
 	h5 {
 		height: 3rem;
 	}
+}
+/* CARD */
 
+	/* BACKGROUNG */
+	.ag-courses-item_link {
+		display: block;
+		padding: 30px 20px;
+		background-color: #121212;
+		overflow: hidden;
+		position: relative;
+	}
+
+	/* IMAGE */
 	img {
-		height: 5.7em;
+		height: 100%;
+		width: 100%;
 		object-fit: cover;
 		border-radius: 1em;
 	}
-}
+
+	.logo-activity {
+		border-radius: 1em;
+	}
+	
+	/* HOVER */
+	.ag-courses-item_bg {
+		height: 128px;
+		width: 128px;
+		background-color: #FC3966;
+		z-index: 1;
+		position: absolute;
+		top: -75px;
+		right: -75px;
+		border-radius: 50%;
+		-webkit-transition: all 0.5s ease;
+		-o-transition: all 0.5s ease;
+		transition: all 0.5s ease;
+	}
+
 .ag-courses-item_date-box {
 	/* height: 15rem; */
 	font-size: 16px;
@@ -319,6 +382,8 @@ body {
 	z-index: 2;
 	position: relative;
 }
+
+/* CARD STREET TEXT */
 .ag-courses-item_date {
 	font-weight: bold;
 	color: #f9b234;
@@ -327,22 +392,8 @@ body {
 	-o-transition: color 0.5s ease;
 	transition: color 0.5s ease;
 }
-.ag-courses-item_bg {
-	height: 128px;
-	width: 128px;
-	background-color: #f9b234;
 
-	z-index: 1;
-	position: absolute;
-	top: -75px;
-	right: -75px;
 
-	border-radius: 50%;
-
-	-webkit-transition: all 0.5s ease;
-	-o-transition: all 0.5s ease;
-	transition: all 0.5s ease;
-}
 
 .active {
 	color: rgb(252, 255, 74);

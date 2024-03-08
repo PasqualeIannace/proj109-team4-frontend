@@ -8,6 +8,7 @@ export default {
 	data() {
 		return {
 			store,
+			showImage: false,
 		};
 	},
 	mounted() {
@@ -38,7 +39,7 @@ export default {
 						</button>
 					</div>
 					<div class="text-center mt-3 collapse navbar-collapse" id="navbarNavDropdown">
-						<div>
+						<div class="d-none d-md-block">
 							<router-link to="/" class="nav-link myA">
 								<a @click="scrollToTop" >
 									<img src="/logo.png" class="logo" alt="">
@@ -47,9 +48,12 @@ export default {
 
 						</div>
 						<ul class="navbar-nav mx-auto">
-							<li class="nav-item">
+							<li class="nav-item" @mouseenter="showImage = true" @mouseleave="showImage = false">
 								<router-link to="/" class="nav-link myA">
-									<a href="#top" class="nav-link myA" @click="scrollToTop">Deliveboo</a>
+								<a class="nav-link a-txt-logo" @click="scrollToTop">
+									<img v-if="!showImage" src="/txt-logo.png" class="txt-logo" alt="">
+									<img v-else src="/txt-logo-hover.png" class="txt-logo" alt="">
+								</a>
 								</router-link>
 							</li>
 
@@ -70,7 +74,7 @@ export default {
 								</ul>
 							</li>
 						</ul>
-						<router-link class="nav-link me-5 carrello" :class="$route.name == 'cart' ? 'active' : ''"
+						<router-link class="nav-link carrello" :class="$route.name == 'cart' ? 'active' : ''"
 							aria-current="page" :to="{ name: 'cart' }">
 							<i class="fa-solid fa-cart-shopping fa-lg"></i>
 							<span v-if="$store.state.cart.length > 0"
@@ -90,6 +94,14 @@ export default {
 .logo {
 	width: 4em;
 	margin-left: 1em;
+}
+
+.a-txt-logo {
+	padding: 0;
+
+	.txt-logo {
+		width: 10em;
+	}
 }
 
 #navbarDropdownMenuLink {
@@ -201,12 +213,12 @@ router-link.dropdown-item:hover {
 	/* left:0; */
 	width: 100%;
 	z-index: 123;
-	background-color: #929292;
+	background-color: #140934;
 }
 
 #navbarNavDropdown.collapsing .navbar-nav,
 #navbarNavDropdown.show .navbar-nav {
-	padding: 1em;
+	padding-bottom: 1em;
 }
 
 /* NAV RIDOTTA */

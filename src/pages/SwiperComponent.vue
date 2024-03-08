@@ -41,9 +41,9 @@ export default {
     class="mySwiper"
   >
 
-      <!-- <swiper-slide v-for="user in store.userList" :key="user.id">
+      <swiper-slide v-for="user in store.userList" :key="user.id">
         <img :src="user.logo_activity" class="object-fit-contain" />
-      </swiper-slide> -->
+      </swiper-slide>
 
   </swiper>
 </template>
@@ -68,7 +68,7 @@ body {
 }
 
 .swiper {
-	margin-top: 15rem;
+	margin-top: 1rem;
 	margin-bottom: 1rem;
   width: 100%;
   height: 100%;
