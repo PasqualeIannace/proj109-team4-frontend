@@ -75,7 +75,7 @@ export default {
 
 <style scoped>
 .swiper {
-  margin-top: 1rem;
+  margin-top: 5rem;
   margin-bottom: 1rem;
   width: 100%;
   height: 83vh;
