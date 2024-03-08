@@ -61,16 +61,16 @@ export default {
 
 <style scoped lang="scss">
 .containerTnx{
-    width: 99.9vw;
-    height: 80vh;
+    //width: 99vw;
+    height:80vh;
     background-image: url(/tnx.png); 
-    background-position: top;
-    background-size: 65%;
+    // background-position: top;
+    object-fit: cover;
 }
 .ghost {
     width: 400px;
     position: absolute;
-    left: -400px;
+    left: -1000px;
     //bottom: 300px;
     animation: moveGhost 5s linear infinite;
 }
@@ -81,8 +81,8 @@ export default {
         opacity: 1; /* Assicura che l'immagine sia visibile all'inizio dell'animazione */
     }
     100% {
-        transform: translateX(calc(100vw)); /* Arriva fino al bordo destro del viewport */
-        opacity: 0; /* Scompare quando raggiunge il bordo destro */
+        transform: translateX(2000px); /* Arriva fino al bordo destro del viewport */
+        opacity: 1; /* Scompare quando raggiunge il bordo destro */
     }
 }
 #motorino {

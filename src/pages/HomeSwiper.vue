@@ -66,9 +66,6 @@ export default {
       <swiper-slide>
         <img src="9.gif" class="myImg"/>
       </swiper-slide>
-      <!-- <swiper-slide>
-        <img src="11.gif" class="myImg"/>
-      </swiper-slide> -->
 
   </swiper>
 </template>

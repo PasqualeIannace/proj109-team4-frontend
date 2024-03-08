@@ -106,7 +106,6 @@ export default {
     position: absolute;
     bottom: 0px;
     right: 700px;
-
 }
 #myFooterimg2{
     width: 200px;
