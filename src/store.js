@@ -16,51 +16,49 @@ export const store = reactive({
 });
 
 export default createStore({
-    state: {
-        cart: JSON.parse(localStorage.getItem('cart')) || [], // Inizializza con il carrello dal localStorage
-        cartTotal: JSON.parse(localStorage.getItem('cartTotal')) || 0, // Inizializza con il totale dal localStorage
+    state: reactive({
+        cart: JSON.parse(localStorage.getItem('cart')) || [],
+        cartTotal: JSON.parse(localStorage.getItem('cartTotal')) || 0,
         types: [],
-    },
+    }),
     mutations: {
         addRemoveCart(state, payload) {
             // Logica per aggiungere/rimuovere dal carrello
-            // Aggiorna lo stato del carrello
             state.cart = payload.toAdd ?
                 [...state.cart, payload.food] :
                 state.cart.filter(obj => obj.id !== payload.food.id);
-            // Aggiorna il totale del carrello
             state.cartTotal = state.cart.reduce((accumulator, object) => {
                 return parseFloat(accumulator) + parseFloat(object.price * object.qty);
             }, 0);
-            // Aggiorna il localStorage
             localStorage.setItem('cartTotal', JSON.stringify(state.cartTotal));
             localStorage.setItem('cart', JSON.stringify(state.cart));
         },
         updateCart(state, payload) {
             // Logica per aggiornare il carrello
-            // Aggiorna lo stato del carrello
             state.cart.find(o => o.id === payload.food.id).qty = payload.food.qty;
-            // Aggiorna il totale del carrello
             state.cartTotal = state.cart.reduce((accumulator, object) => {
                 return parseFloat(accumulator) + parseFloat(object.price * object.qty);
             }, 0);
-            // Aggiorna il localStorage
             localStorage.setItem('cartTotal', JSON.stringify(state.cartTotal));
             localStorage.setItem('cart', JSON.stringify(state.cart));
         },
+        // mutations section in store.js
+        clearCart(state) {
+            console.log('Clearing the cart'); // Add this line
+            state.cart = [];
+            state.cartTotal = 0;
+            localStorage.removeItem('cartTotal');
+            localStorage.removeItem('cart');
+        },
+
     },
 
     actions: {
-        // Agg un'azione per caricare i tipi dal backend
-        // async fetchTypes({ commit, state }) {
-        //     try {
-        //         const response = await fetch(state.apiUrl + state.apiTypesEndpoint);
-        //         const data = await response.json();
-        //         commit('setTypes', data);
-        //     } catch (error) {
-        //         console.error('Errore durante il recupero dei tipi:', error);
-        //     }
-        // },
+        // Add other actions as needed
+
+        clearCart({ commit }) {
+            commit('clearCart');
+        },
     },
     modules: {},
-})
+});
