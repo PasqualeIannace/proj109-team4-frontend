@@ -66,19 +66,17 @@ export default {
       <swiper-slide>
         <img src="9.gif" class="myImg"/>
       </swiper-slide>
-      <swiper-slide>
-        <img src="11.gif" class="myImg"/>
-      </swiper-slide>
 
   </swiper>
 </template>
 
 <style scoped>
+
 .swiper {
-  margin-top: 1rem;
+  margin-top: 5rem;
   margin-bottom: 1rem;
   width: 100%;
-  height: 83vh;
+  /* height: 83vh; */
 }
 
 .swiper-slide {
@@ -99,7 +97,9 @@ export default {
   opacity: 1;
 }
 .myImg{
-    object-position: center;
+  width: 100vw; /* Fai sì che le immagini coprano tutta la larghezza del container */
+  max-height: 95vh; /* Mantieni l'aspetto proporzionato dell'immagine */
+  object-fit: cover; /* Adatta l'immagine alla larghezza del container senza distorcere */
 }
 
 .swiper-slide-next .swiper-image,

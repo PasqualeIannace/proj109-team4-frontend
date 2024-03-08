@@ -29,8 +29,8 @@ export default {
 	<header>
 		<div id="mainNavigation">
 			<nav role="navigation">
-				<div class="navbar-expand-md">
-					<div class="navbar-dark text-center my-2">
+				<div class="navbar-expand-sm">
+					<div class="navbar-dark my-2">
 						<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 							data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
 							aria-label="Toggle navigation">
@@ -38,8 +38,8 @@ export default {
 							<span class="align-middle ms-2">Menu</span>
 						</button>
 					</div>
-					<div class="text-center mt-3 collapse navbar-collapse" id="navbarNavDropdown">
-						<div class="d-none d-md-block">
+					<div class="mt-3 px-3 collapse navbar-collapse" id="navbarNavDropdown">
+						<div class="d-none d-sm-block">
 							<router-link to="/" class="nav-link myA">
 								<a @click="scrollToTop" >
 									<img src="/logo.png" class="logo" alt="">

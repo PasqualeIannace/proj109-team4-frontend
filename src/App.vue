@@ -24,6 +24,11 @@ export default {
 	},
 	mounted() {
 		window.addEventListener('mousemove', this.handleMouseMove);
+			// Imposta la posizione iniziale dei fantasmi
+			this.ghost1Top = window.innerHeight / 2 - 75; // 75 è la metà dell'altezza del fantasma
+    		this.ghost1Left = 30;
+    		this.ghost2Top = window.innerHeight / 2 - 75; // 75 è la metà dell'altezza del fantasma
+    		this.ghost2Left = window.innerWidth - 150; // 150 è la larghezza del fantasma
 		this.getFoods();
 	},
 
@@ -34,10 +39,10 @@ export default {
 	methods: {
 		handleMouseMove(event) {
       	// Calcola le nuove posizioni dei fantasmi in base alla posizione del mouse
-      	this.ghost1Top = event.clientY / 20;
-      	this.ghost1Left = event.clientX / 20;
-      	this.ghost2Top = event.clientY / 15;
-      	this.ghost2Left = event.clientX / 15;
+		this.ghost1Top = (event.clientY + 3000) / 10; // 75 è la metà dell'altezza del fantasma
+    	this.ghost1Left = (event.clientX - 75) / 20; // 75 è la metà della larghezza del fantasma
+    	this.ghost2Top = (event.clientY + 10000) / 15; // 75 è la metà dell'altezza del fantasma
+    	this.ghost2Left = (event.clientX + 23000) / 15; // 75 è la metà della larghezza del fantasma
     	},
 
 		getFoods() {
@@ -125,16 +130,17 @@ export default {
 
 .ghost {
   position: absolute;
-  width: 150px; /* Dimensioni del tuo fantasma */
-  height: 150px;
+
   transition: transform 0.2s ease-in-out; /* Aggiungi una transizione per rendere il movimento più fluido */
 }
 
 .ghost-1 {
-
+	width: 120px; /* Dimensioni del tuo fantasma */
+  	height: 150px;
 }
 
 .ghost-2 {
-  /* Imposta la posizione iniziale del fantasma 2 */
+	width: 150px; /* Dimensioni del tuo fantasma */
+  	height: 150px;
 }
 </style>
