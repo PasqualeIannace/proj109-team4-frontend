@@ -145,8 +145,10 @@ export default {
 								<p class="fs-5 mb-0">{{ user.activity_name }}</p>
                                 <!-- Mostra solo i tipi associati a questo ristorante -->
                                    <span v-for="(tipo, index) in user.types" :key="index" class="myTypes rounded-pill">{{ tipo.name }}</span>                       
+								</div>
+								<div class="ag-courses-item_date-box logo-activity">
 								<img :src="user.logo_activity" class="w-100" />
-							</div>
+								</div>
 							<div class="ag-courses-item_date-box">
 								<!-- <p>{{ food.ingredients }}</p> -->
 								<!-- <p class="card-text">{{ food.description }}</p> -->
@@ -309,13 +311,6 @@ body {
 	border-radius: 28px;
 }
 
-.ag-courses-item_link {
-	display: block;
-	padding: 30px 20px;
-	background-color: #121212;
-	overflow: hidden;
-	position: relative;
-}
 .ag-courses-item_link:hover,
 .ag-courses-item_link:hover .ag-courses-item_date {
 	color: #fff;
@@ -341,13 +336,45 @@ body {
 	h5 {
 		height: 3rem;
 	}
+}
+/* CARD */
 
+	/* BACKGROUNG */
+	.ag-courses-item_link {
+		display: block;
+		padding: 30px 20px;
+		background-color: #121212;
+		overflow: hidden;
+		position: relative;
+	}
+
+	/* IMAGE */
 	img {
-		height: 5.7em;
+		height: 100%;
+		width: 100%;
 		object-fit: cover;
 		border-radius: 1em;
 	}
-}
+
+	.logo-activity {
+		border-radius: 1em;
+	}
+	
+	/* HOVER */
+	.ag-courses-item_bg {
+		height: 128px;
+		width: 128px;
+		background-color: #FC3966;
+		z-index: 1;
+		position: absolute;
+		top: -75px;
+		right: -75px;
+		border-radius: 50%;
+		-webkit-transition: all 0.5s ease;
+		-o-transition: all 0.5s ease;
+		transition: all 0.5s ease;
+	}
+
 .ag-courses-item_date-box {
 	/* height: 15rem; */
 	font-size: 16px;
@@ -355,6 +382,8 @@ body {
 	z-index: 2;
 	position: relative;
 }
+
+/* CARD STREET TEXT */
 .ag-courses-item_date {
 	font-weight: bold;
 	color: #f9b234;
@@ -363,22 +392,8 @@ body {
 	-o-transition: color 0.5s ease;
 	transition: color 0.5s ease;
 }
-.ag-courses-item_bg {
-	height: 128px;
-	width: 128px;
-	background-color: #f9b234;
 
-	z-index: 1;
-	position: absolute;
-	top: -75px;
-	right: -75px;
 
-	border-radius: 50%;
-
-	-webkit-transition: all 0.5s ease;
-	-o-transition: all 0.5s ease;
-	transition: all 0.5s ease;
-}
 
 .active {
 	color: rgb(252, 255, 74);
