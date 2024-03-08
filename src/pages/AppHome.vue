@@ -97,7 +97,7 @@ export default {
 	<HomeSwiper />
     <!-- <SwiperComponent /> -->
   </div>
-        <h1 class="text-center">Ristoranti</h1>
+        <h1 class="text-center ubuntu-bold-italic mySize">Ristoranti</h1>
 
         <!-- SEARCH BY TAG -->
 		<nav role="navigation">
@@ -217,6 +217,11 @@ export default {
 </template>
 
 <style scoped>
+.mySize{
+	font-size: 70px;
+	margin-bottom: 0px;
+	color: goldenrod;
+}
 .myBtn.active .click-image {
     display: block;
 }

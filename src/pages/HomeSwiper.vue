@@ -33,6 +33,7 @@ export default {
     :spaceBetween="0"
     :slides-per-view="1"
     :centeredSlides="true"
+    :loop = "true"
     :autoplay="{
       delay: 2500,
       disableOnInteraction: false,
