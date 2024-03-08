@@ -5,6 +5,7 @@ import AppAbout from './pages/AppAbout.vue';
 import AppRestaurantDetail from './pages/AppRestaurantDetail.vue';
 import AppCart from './pages/AppCart.vue';
 import Payment from './pages/Payment.vue';
+import StatusOrder from './pages/StatusOrder.vue';
 // Vue.use(Router);
 // import Router from 'vue-router';
 
