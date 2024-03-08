@@ -6,7 +6,9 @@ import CartBTN from "../components/CartBTN.vue";
 export default {
 	props: ['logo'],
 	name: "AppRestaurantDetail",
-	components: { CartBTN },
+	components: { 
+		CartBTN,
+	},
 	data() {
 		return {
 			store,
@@ -42,14 +44,10 @@ export default {
 		<h1 class="text-center">Food</h1>
 
 		<div class="container d-flex flex-wrap text-decoration-none">
-			<div
-				class="ag-format-container"
-				v-for="(food, index) in store.foodListByUser" :key="index">
+			<div class="ag-format-container" v-for="(food, index) in store.foodListByUser" :key="index">
 				<div class="ag-courses_box">
 					<div class="ag-courses_item">
-						<a href="" @click="openModal(index)"
-							class="ag-courses-item_link" data-bs-toggle="modal"
-							:data-bs-target="'#exampleModal' + index">
+						<a href="" @click="openModal(index)" class="ag-courses-item_link" data-bs-toggle="modal" :data-bs-target="'#exampleModal' + index">
 							<div class="ag-courses-item_bg"></div>
 
 							<div class="ag-courses-item_title">
@@ -58,8 +56,6 @@ export default {
 							</div>
 
 							<div class="ag-courses-item_date-box">
-								<!-- <p>{{ food.ingredients }}</p> -->
-								<!-- <p class="card-text">{{ food.description }}</p> -->
 								<p class="card-text text-center fs-5">
 									<b>€ {{ food.price }}</b>
 								</p>
@@ -68,9 +64,7 @@ export default {
 							</div>
 						</a>
 						<div class="bg-white">
-							<div
-								class="d-flex justify-content-between align-items-center cart"
-							>
+							<div class="d-flex justify-content-between align-items-center cart">
 								<CartBTN :food="food" />
 							</div>
 						</div>
@@ -80,7 +74,7 @@ export default {
 				<!-- Modal info cibo-->
 				<div class="modal fade text-black" :id="'exampleModal' + index" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-						<div class="modal-content">
+						<div class="modal-content myModal">
 							<div class="modal-header">
 								<h5 class="modal-title" id="exampleModalLabel">
 									{{ food.name }}
@@ -97,11 +91,7 @@ export default {
 								<p>{{ food.description }}</p>
 							</div>
 							<div class="modal-footer">
-								<button
-									type="button"
-									class="btn btn-secondary"
-									data-bs-dismiss="modal"
-								>
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
 									Close
 								</button>
 							</div>
@@ -114,6 +104,19 @@ export default {
 </template>
 
 <style scoped>
+.btn{
+	background-color: #fa8c31;
+	border: 2px solid indigo;
+}
+.myModal{
+	border-radius: 28px;
+	background-color:rgba(76, 0, 130, 0.696);
+	color: #fff;
+	background-image: url('ghost.png');
+}
+.modal-header , .modal-footer{
+	background-color: #fa8c31;
+}
 h1 {
 	color: #f9b234;
 }
@@ -133,11 +136,6 @@ body {
 	background-color: #000;
 }
 .ag-courses_box {
-	/* display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-align: start;
-	-ms-flex-align: start; */
 	align-items: flex-start;
 	/* -ms-flex-wrap: wrap; */
 	flex-wrap: wrap;
@@ -148,11 +146,8 @@ body {
 .ag-courses_item {
 	/* width:100%; */
 	flex-basis: calc(33.33333% - 30px);
-
 	margin: 0 15px 30px;
-
 	overflow: hidden;
-
 	border-radius: 28px;
 }
 .ag-courses-item_link {
