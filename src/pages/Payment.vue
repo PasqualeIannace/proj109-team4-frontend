@@ -91,12 +91,15 @@
 import axios from 'axios';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
+import store from '../store';
+import { reactive } from 'vue';
+import { Store } from 'vuex';
+import { toRefs } from 'vue';
 
 export default {
     // Existing component options...
 
     data() {
-        // Move defaultFormData outside of the data function
         const defaultFormData = Object.fromEntries(
             Object.keys(this.formFields || {}).map((field) => [field, ''])
         );
@@ -111,12 +114,31 @@ export default {
                 // Add other form fields as needed
             },
             formData: { ...defaultFormData },
-            defaultFormData: { ...defaultFormData }, // Ensure defaultFormData is accessible
+            defaultFormData: { ...defaultFormData },
         };
     },
 
     methods: {
         async handleCheckout() {
+            try {
+                const orderId = await this.createOrder();
+                await this.updateFoodOrder(orderId);
+
+                // Navigate to a thank you page
+                this.$router.push({ name: 'thank-you' });
+
+                // Display a success message to the user
+                toast.success('Order placed successfully');
+            } catch (error) {
+                // Handle errors
+                this.handleError(error);
+            } finally {
+                // Dispatch action to clear the cart
+                await store.dispatch('clearCart');
+            }
+        },
+
+        async createOrder() {
             const paymentStatus = 'Done';
 
             const orderData = {
@@ -134,53 +156,90 @@ export default {
             try {
                 const response = await axios.post('http://localhost:8000/api/orders/create', orderData);
 
-                // Handle success response
-                console.log(response.data);
+                console.log('createOrder response:', response.data);
 
-                // Reset form data
-                this.formData = { ...this.defaultFormData };
+                if (response.data.success) {
+                    // Reset form data
+                    this.formData = { ...this.defaultFormData };
 
-                // Dispatch action to clear the cart
-                this.$store.dispatch('clearCart');
-
-                //  navigate to a thank you page
-                this.$router.push({ name: 'thank-you' });
-
-                // Display a success message to the user
-                toast.success('Order placed successfully');
-            } catch (error) {
-                // Log the entire error object
-                console.error(error);
-
-                // Check if the error has a response property
-                if (error.response) {
-                    // The request was made and the server responded with a status code
-                    // that falls out of the range of 2xx
-                    console.error('Response data:', error.response.data);
-                    console.error('Response status:', error.response.status);
-                    console.error('Response headers:', error.response.headers);
-
-                    // Display an error message based on the server response
-                    toast.error(`Failed to place the order. Server error: ${error.response.data.message}`);
-                } else if (error.request) {
-                    // The request was made but no response was received
-                    console.error('No response received:', error.request);
-                    toast.error('Failed to place the order. No response received from the server.');
+                    return response.data.orderId;
                 } else {
-                    // Something happened in setting up the request that triggered an Error
-                    console.error('Error setting up the request:', error.message);
-                    toast.error('Failed to place the order. An unexpected error occurred.');
+                    console.error('Error creating order:', response.data.message);
+                    return null;
                 }
+            } catch (error) {
+                // Handle errors
+                this.handleError(error);
+                return null;
             }
+        },
 
+        // Other methods...
+
+
+
+        async updateFoodOrder(orderId) {
+            console.log('Cart Data:', this.$store.state.cart);
+
+            console.log('orderId:', orderId);
+            for (const item of this.$store.state.cart) {
+                console.log('Processing item:', item);
+                const foodOrderData = {
+                    foodId: item.id,
+                    orderId,
+                    quantity: item.qty,
+                };
+
+                console.log('foodOrderData:', foodOrderData);
+
+                try {
+                    const response = await axios.post('http://localhost:8000/api/food_order/create', foodOrderData);
+
+                    if (response.status === 200) {
+                        console.log('Food order updated successfully:', response.data);
+                    } else {
+                        console.error('Failed to update food order. Unexpected status code:', response.status);
+                    }
+                } catch (error) {
+                    console.error('Error updating food order:', error);
+                }
+
+            }
         }
-    }
 
+    },
+
+    handleError: (error) => {
+
+        // Log the entire error object
+        console.error(error);
+
+        // Check if the error has a response property
+        if (error.response) {
+            // The request was made and the server responded with a status code
+            // that falls out of the range of 2xx
+            console.error('Response data:', error.response.data);
+            console.error('Response status:', error.response.status);
+            console.error('Response headers:', error.response.headers);
+
+            // Display an error message based on the server response
+            toast.error(`Failed to place the order. Server error: ${error.response.data.message}`);
+        } else if (error.request) {
+            // The request was made but no response was received
+            console.error('No response received:', error.request);
+            toast.error('Failed to place the order. No response received from the server.');
+        } else {
+            // Something happened in setting up the request that triggered an Error
+            console.error('Error setting up the request:', error.message);
+            toast.error('Failed to place the order. An unexpected error occurred.');
+        }
+    },
 
 
     // Other methods...
 
 };
 </script>
+
 
 <style scoped></style>
