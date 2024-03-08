@@ -238,8 +238,7 @@ a{
 		display: block;
 	}
 	.btn-group {
-        flex-direction: column; /* Allinea i pulsanti verticalmente */
-        align-items: flex-start; /* Allinea i pulsanti a sinistra */
+		flex-wrap: wrap;
     }
 }
 

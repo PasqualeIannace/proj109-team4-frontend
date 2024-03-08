@@ -97,8 +97,8 @@ export default {
   opacity: 1;
 }
 .myImg{
-  width: 100%; /* Fai sì che le immagini coprano tutta la larghezza del container */
-  height: auto; /* Mantieni l'aspetto proporzionato dell'immagine */
+  width: 100vw; /* Fai sì che le immagini coprano tutta la larghezza del container */
+  max-height: 95vh; /* Mantieni l'aspetto proporzionato dell'immagine */
   object-fit: cover; /* Adatta l'immagine alla larghezza del container senza distorcere */
 }
 
