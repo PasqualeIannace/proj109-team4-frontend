@@ -30,9 +30,9 @@ export default {
 
 <template>
   <swiper
-    :spaceBetween="30"
-    :slides-per-view="3"
-    :centeredSlides="false"
+    :spaceBetween="0"
+    :slides-per-view="1"
+    :centeredSlides="true"
     :autoplay="{
       delay: 2500,
       disableOnInteraction: false,
@@ -41,58 +41,60 @@ export default {
     class="mySwiper"
   >
 
-      <swiper-slide v-for="user in store.userList" :key="user.id">
-        <img :src="user.logo_activity" class="object-fit-contain" />
+      <swiper-slide>
+        <img src="1.png" class="myImg"/>
+      </swiper-slide>
+      <swiper-slide>
+        <img src="2.png" class="myImg"/>
+      </swiper-slide>
+      <swiper-slide>
+        <img src="3.png" class="myImg"/>
+      </swiper-slide>
+      <swiper-slide>
+        <img src="4.png" class="myImg"/>
+      </swiper-slide>
+      <swiper-slide>
+        <img src="5.png" class="myImg"/>
+      </swiper-slide>
+      <swiper-slide>
+        <img src="7.png" class="myImg"/>
       </swiper-slide>
 
   </swiper>
 </template>
 
 <style scoped>
-#app {
-  height: 100%;
-}
-html,
-body {
-  position: relative;
-  height: 100%;
-}
-
-body {
-  background: #000000e0;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  color: #000;
-  margin: 0;
-  padding: 0;
-}
-
 .swiper {
-	margin-top: 1rem;
-	margin-bottom: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   width: 100%;
-  height: 100%;
+  height: 83vh;
 }
 
 .swiper-slide {
   text-align: center;
   font-size: 18px;
   background: #ffffff00;
-
-  /* Center slide text vertically */
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-.swiper-slide img {
-  display: block;
+.swiper-image {
   width: 100%;
   height: 100%;
-  width: 22%;
+  object-fit: cover;
+  object-position: center;
+  transition: opacity 0.5s ease;
 }
 
+.swiper-slide-active .swiper-image {
+  opacity: 1;
+}
+.myImg{
+    object-position: center;
+}
 
-
+.swiper-slide-next .swiper-image,
+.swiper-slide-prev .swiper-image {
+  opacity: 0;
+}
 </style>
   
