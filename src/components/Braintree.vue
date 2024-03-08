@@ -28,24 +28,41 @@ export default {
 </script>
 
 <template>
-  <div>
     <h2>Modulo di Pagamento</h2>
-    <form @submit.prevent="effettuaPagamento">
-      <div>
-        <label for="numeroCarta">Numero Carta di Credito:</label>
-        <input type="text" id="numeroCarta" v-model="numeroCarta">
-      </div>
-      <div>
-        <label for="scadenzaCarta">Scadenza Carta di Credito:</label>
-        <input type="text" id="scadenzaCarta" v-model="scadenzaCarta">
-      </div>
-      <div>
-        <label for="cvv">CVV:</label>
-        <input type="text" id="cvv" v-model="cvv">
-      </div>
-      <div>
-        <button type="submit">Effettua Pagamento</button>
-      </div>
-    </form>
-  </div>
+    <div class="container-sm mt-4 bg-opacity-50 bg-black text-light">
+        <div class="row g-3">
+            <form @submit.prevent="effettuaPagamento">
+            <div class="col-md-6">
+                <label for="name" class="form-label text-white">Numero Carta di Credito:</label>
+                <input type="text" class="form-control" id="numeroCarta" v-model="numeroCarta">
+            </div>
+
+            <div class="col-md-6">
+                <label for="price" class="form-label">Scadenza Carta</label>
+                <input type="number" class="form-control" id="scadenzaCarta" v-model="scadenzaCarta">
+            </div>
+
+            <div>
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" v-model="cvv">
+            </div>
+            <div>
+                <button type="submit">Effettua Pagamento</button>
+            </div>
+            </form>
+        </div>
+    </div>
+                
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <label for="ingredients" class="form-label">Ingredienti *</label>
+                        <input type="text" class="form-control @error('ingredients') is-invalid @enderror"
+                            id="ingredients" name="ingredients" value="{{ old('ingredients') ?? $editFood->ingredients }} ">
+                        @error('ingredients')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    
+                        </div>
+
 </template>
