@@ -107,7 +107,7 @@ export default {
                         <template v-for="tipo in store.types">
                             <input type="checkbox" class="btn-check" :id="'btncheck_' + tipo.id" autocomplete="off" 
                             :value="tipo.id" v-model="selectedTypes" @change="getUsers">
-                            <label class="btn btn-outline-primary m-1 rounded-5 myBtn" :for="'btncheck_' + tipo.id">{{ tipo.name }}</label>
+                            <label class="btn btn-outline-warning m-1 rounded-5 myBtn" :for="'btncheck_' + tipo.id">{{ tipo.name }}</label>
                         </template>
                     </div>
                 </div>
