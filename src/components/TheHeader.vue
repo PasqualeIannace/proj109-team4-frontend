@@ -8,6 +8,7 @@ export default {
 	data() {
 		return {
 			store,
+			showImage: false,
 		};
 	},
 	mounted() {
@@ -47,9 +48,12 @@ export default {
 
 						</div>
 						<ul class="navbar-nav mx-auto">
-							<li class="nav-item">
+							<li class="nav-item" @mouseenter="showImage = true" @mouseleave="showImage = false">
 								<router-link to="/" class="nav-link myA">
-									<a href="#top" class="nav-link myA" @click="scrollToTop">Deliveboo</a>
+								<a class="nav-link a-txt-logo" @click="scrollToTop">
+									<img v-if="!showImage" src="/txt-logo.png" class="txt-logo" alt="">
+									<img v-else src="/txt-logo-hover.png" class="txt-logo" alt="">
+								</a>
 								</router-link>
 							</li>
 
@@ -90,6 +94,14 @@ export default {
 .logo {
 	width: 4em;
 	margin-left: 1em;
+}
+
+.a-txt-logo {
+	padding: 0;
+
+	.txt-logo {
+		width: 10em;
+	}
 }
 
 #navbarDropdownMenuLink {
