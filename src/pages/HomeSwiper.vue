@@ -78,7 +78,7 @@ export default {
   margin-top: 5rem;
   margin-bottom: 1rem;
   width: 100%;
-  height: 83vh;
+  /* height: 83vh; */
 }
 
 .swiper-slide {
@@ -99,7 +99,9 @@ export default {
   opacity: 1;
 }
 .myImg{
-    object-position: center;
+  width: 100%; /* Fai sì che le immagini coprano tutta la larghezza del container */
+  height: auto; /* Mantieni l'aspetto proporzionato dell'immagine */
+  object-fit: cover; /* Adatta l'immagine alla larghezza del container senza distorcere */
 }
 
 .swiper-slide-next .swiper-image,
