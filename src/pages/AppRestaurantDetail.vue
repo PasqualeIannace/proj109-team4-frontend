@@ -80,7 +80,7 @@ export default {
 				<!-- Modal info cibo-->
 				<div class="modal fade text-black" :id="'exampleModal' + index" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-						<div class="modal-content">
+						<div class="modal-content myModal">
 							<div class="modal-header">
 								<h5 class="modal-title" id="exampleModalLabel">
 									{{ food.name }}
@@ -114,6 +114,19 @@ export default {
 </template>
 
 <style scoped>
+.btn{
+	background-color: #fa8c31;
+	border: 2px solid indigo;
+}
+.myModal{
+	border-radius: 28px;
+	background-color:rgba(76, 0, 130, 0.696);
+	color: #fff;
+	background-image: url('ghost.png');
+}
+.modal-header , .modal-footer{
+	background-color: #fa8c31;
+}
 h1 {
 	color: #f9b234;
 }
@@ -133,11 +146,6 @@ body {
 	background-color: #000;
 }
 .ag-courses_box {
-	/* display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-align: start;
-	-ms-flex-align: start; */
 	align-items: flex-start;
 	/* -ms-flex-wrap: wrap; */
 	flex-wrap: wrap;
@@ -148,11 +156,8 @@ body {
 .ag-courses_item {
 	/* width:100%; */
 	flex-basis: calc(33.33333% - 30px);
-
 	margin: 0 15px 30px;
-
 	overflow: hidden;
-
 	border-radius: 28px;
 }
 .ag-courses-item_link {
