@@ -74,7 +74,7 @@ export default {
 								</ul>
 							</li>
 						</ul>
-						<router-link class="nav-link me-5 carrello" :class="$route.name == 'cart' ? 'active' : ''"
+						<router-link class="nav-link carrello" :class="$route.name == 'cart' ? 'active' : ''"
 							aria-current="page" :to="{ name: 'cart' }">
 							<i class="fa-solid fa-cart-shopping fa-lg"></i>
 							<span v-if="$store.state.cart.length > 0"
