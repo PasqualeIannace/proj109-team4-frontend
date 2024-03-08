@@ -108,6 +108,11 @@ export default {
     }
 }
 
+.w-20 {
+    width: 20rem;
+    margin-top: 50px;
+}
+
 .mt-20{
     margin-top: 7rem;
 }
