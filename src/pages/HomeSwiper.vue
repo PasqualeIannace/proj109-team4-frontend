@@ -66,17 +66,18 @@ export default {
       <swiper-slide>
         <img src="9.gif" class="myImg"/>
       </swiper-slide>
-      <swiper-slide>
+      <!-- <swiper-slide>
         <img src="11.gif" class="myImg"/>
-      </swiper-slide>
+      </swiper-slide> -->
 
   </swiper>
 </template>
 
 <style scoped>
+
 .swiper {
   margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
   width: 100%;
   height: 83vh;
 }
