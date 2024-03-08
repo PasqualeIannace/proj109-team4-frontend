@@ -129,8 +129,6 @@ export default {
         </div>
     </div>
 </nav>
-
-
         <!-- RISTORANTI -->
         <div class="container">
 			<div class="container d-flex flex-wrap">
@@ -158,60 +156,10 @@ export default {
 									<span>{{ user.address }}</span>
 								</div>
 							</div>
-							<!-- <div class="ag-courses-item_date-box">
-								<div class="card-footer text-center ag-courses-item_date"></div>
-							</div> -->
-						<!-- </a> -->
-						<!-- <div class="bg-white">
-							<div class="d-flex justify-content-between align-items-center cart">
-							</div>
-						</div> -->
 						</a>
 					</div>
 				</div>
 			</router-link>
-					
-			
-
-				<!-- Modal info cibo-->
-				<!-- <div
-					class="modal fade text-black"
-					:id="'exampleModal' + index"
-					tabindex="-1"
-					aria-labelledby="exampleModalLabel"
-					aria-hidden="true"
-				>
-					<div
-						class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-					>
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">
-									{{ food.name }}
-								</h5>
-								<button
-									type="button"
-									class="btn-close"
-									data-bs-dismiss="modal"
-									aria-label="Close"
-								></button>
-							</div>
-							<div class="modal-body">
-								<p>{{ food.ingredients }}</p>
-								<p>{{ food.description }}</p>
-							</div>
-							<div class="modal-footer">
-								<button
-									type="button"
-									class="btn btn-secondary"
-									data-bs-dismiss="modal"
-								>
-									Close
-								</button>
-							</div>
-						</div>
-					</div>
-				</div> -->
 			</div>
 		</div>
         </div>

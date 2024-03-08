@@ -43,22 +43,31 @@ export default {
   >
 
       <swiper-slide>
-        <img src="1.png" class="myImg"/>
+        <img src="11.gif" class="myImg"/>
       </swiper-slide>
       <swiper-slide>
-        <img src="2.png" class="myImg"/>
+        <img src="2.gif" class="myImg"/>
       </swiper-slide>
       <swiper-slide>
-        <img src="3.png" class="myImg"/>
+        <img src="3.gif" class="myImg"/>
       </swiper-slide>
       <swiper-slide>
-        <img src="4.png" class="myImg"/>
+        <img src="4.gif" class="myImg"/>
       </swiper-slide>
       <swiper-slide>
-        <img src="5.png" class="myImg"/>
+        <img src="5.gif" class="myImg"/>
       </swiper-slide>
       <swiper-slide>
-        <img src="7.png" class="myImg"/>
+        <img src="7.gif" class="myImg"/>
+      </swiper-slide>
+      <swiper-slide>
+        <img src="8.gif" class="myImg"/>
+      </swiper-slide>
+      <swiper-slide>
+        <img src="9.gif" class="myImg"/>
+      </swiper-slide>
+      <swiper-slide>
+        <img src="11.gif" class="myImg"/>
       </swiper-slide>
 
   </swiper>
