@@ -6,7 +6,7 @@
                 <h1>Grazie per il tuo ordine</h1>
                 <p>Il nostro rider sta arrivando da te.</p>
                 <div id="motorino">
-                    <img src="giphy.gif" alt="Motorino">
+                    <img class="w-20" src="https://media.tenor.com/z4yhBV4rEMMAAAAj/halloween-scary.gif" alt="Motorino">
                 </div>
                 <router-link :to="{ name: 'home' }">
                     <button class="btn btn-primary">
@@ -75,6 +75,11 @@ export default {
     100% {
         left: 100%;
     }
+}
+
+.w-20 {
+    width: 20rem;
+    margin-top: 50px;
 }
 
 .mt-20{
