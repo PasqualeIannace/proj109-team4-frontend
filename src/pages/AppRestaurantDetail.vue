@@ -6,7 +6,9 @@ import CartBTN from "../components/CartBTN.vue";
 export default {
 	props: ['logo'],
 	name: "AppRestaurantDetail",
-	components: { CartBTN },
+	components: { 
+		CartBTN,
+	},
 	data() {
 		return {
 			store,
