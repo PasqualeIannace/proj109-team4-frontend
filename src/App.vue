@@ -16,12 +16,30 @@ export default {
 			store,
 			foodList: [],
 			userList: [],
+			ghost1Top: 0,
+      		ghost1Left: 0,
+      		ghost2Top: 0,
+      		ghost2Left: 0,
 		};
 	},
 	mounted() {
+		window.addEventListener('mousemove', this.handleMouseMove);
 		this.getFoods();
 	},
+
+	beforeDestroy() {
+    	window.removeEventListener('mousemove', this.handleMouseMove);
+  	},
+
 	methods: {
+		handleMouseMove(event) {
+      	// Calcola le nuove posizioni dei fantasmi in base alla posizione del mouse
+      	this.ghost1Top = event.clientY / 20;
+      	this.ghost1Left = event.clientX / 20;
+      	this.ghost2Top = event.clientY / 15;
+      	this.ghost2Left = event.clientX / 15;
+    	},
+
 		getFoods() {
 			// let url = this.store.apiUrl + this.store.apiEndpoint;
 			// let url = "http://127.0.0.1:8000/api/foods";
@@ -83,6 +101,10 @@ export default {
 <template>
 	<!-- <AppSearch @search="getUsers()" /> -->
 	<TheHeader />
+	<div class="ghost-container">
+		<img class="ghost ghost-1" :style="{ top: ghost1Top + 'px', left: ghost1Left + 'px' }" src="ghost-1.png" alt="Ghost">
+		<img class="ghost ghost-2" :style="{ top: ghost2Top + 'px', left: ghost2Left + 'px' }" src="ghost-2.png" alt="Ghost">
+	</div>
 	<router-view></router-view>
 	<Footer />
 </template>
@@ -93,9 +115,26 @@ export default {
 </style>
 
 <style scoped lang="scss">
-// importo variabili
-// @use './styles/partials/variables' as *;
 
-// ...qui eventuale SCSS di App.vue
+.ghost-container {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+}
 
+.ghost {
+  position: absolute;
+  width: 150px; /* Dimensioni del tuo fantasma */
+  height: 150px;
+  transition: transform 0.2s ease-in-out; /* Aggiungi una transizione per rendere il movimento più fluido */
+}
+
+.ghost-1 {
+
+}
+
+.ghost-2 {
+  /* Imposta la posizione iniziale del fantasma 2 */
+}
 </style>
