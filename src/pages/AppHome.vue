@@ -97,7 +97,11 @@ export default {
 	<HomeSwiper />
     <!-- <SwiperComponent /> -->
   </div>
-        <h1 class="text-center ubuntu-bold-italic mySize">Ristoranti</h1>
+  <div class="d-flex justify-content-center">
+	<img src="/logo.png" class="logo" alt="">
+  <h1 class="text-center ubuntu-bold-italic mySize">Ristoranti</h1>
+  </div>
+  
 
         <!-- SEARCH BY TAG -->
 		<nav role="navigation">
@@ -167,6 +171,14 @@ export default {
 </template>
 
 <style scoped>
+.logo{
+	width: 70px;
+	transition: transform 2s;
+}
+.logo:hover{
+	transition: 1s;
+	transform: translateX(450px); 
+}
 .mySize{
 	font-size: 70px;
 	margin-bottom: 0px;
