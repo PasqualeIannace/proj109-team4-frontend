@@ -71,7 +71,7 @@ export default {
     width: 400px;
     position: absolute;
     left: -400px;
-    bottom: 300px;
+    //bottom: 300px;
     animation: moveGhost 5s linear infinite;
 }
 
