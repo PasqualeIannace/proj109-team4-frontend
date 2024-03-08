@@ -12,8 +12,10 @@
 
 body {
     font-family: sans-serif;
-    background-color: $themeColorDark;
-    color: $themeColorLight;
+    background-image: url(/prova.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 //CARD
