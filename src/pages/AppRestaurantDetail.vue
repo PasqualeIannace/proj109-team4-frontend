@@ -51,11 +51,14 @@ this.$nextTick(() => {
 
 <template>
 	<div class="myMargin">
+		<div class="d-flex justify-content-center position-relative">
+			<a @click="goBack" class="text-body myBtn position-absolute" style="cursor: pointer;">
+            <i class="fas fa-long-arrow-alt-left me-2"><span>GO BACK</span></i>
+            </a>
+
+			<img src="/3.png" class="w-25">
+		</div>
 		
-		<h1 class="text-center">Food</h1>
-		<a @click="goBack" class="text-body myBtn" style="cursor: pointer;">
-            <i class="fas fa-long-arrow-alt-left me-2"></i>Back
-        </a>
 		<div class="container d-flex flex-wrap text-decoration-none">
 			<div class="ag-format-container" v-for="(food, index) in store.foodListByUser" :key="index">
 				<div class="ag-courses_box">
@@ -95,12 +98,7 @@ this.$nextTick(() => {
 								<h5 class="modal-title" id="exampleModalLabel">
 									{{ food.name }}
 								</h5>
-								<button
-									type="button"
-									class="btn-close"
-									data-bs-dismiss="modal"
-									aria-label="Close"
-								></button>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 							</div>
 							<div class="modal-body">
 								<p>{{ food.ingredients }}</p>
@@ -120,9 +118,15 @@ this.$nextTick(() => {
 </template>
 
 <style scoped>
+span{
+	color:lightcyan;
+}
 .myBtn{
-	border: 2px solid black;
+	border: 2px solid lightcyan;
+
 	border-radius: 20px;
+	left: 100px;
+	top:100px;
 }
 .btn{
 	background-color: #fa8c31;
@@ -295,4 +299,5 @@ body {
 		font-size: 16px;
 	}
 } */
+
 </style>
