@@ -99,7 +99,7 @@ export default {
   </div>
   <div class="d-flex justify-content-center">
 	<img src="/logo.png" class="logo" alt="">
-  <h1 class="text-center ubuntu-bold-italic mySize">Ristoranti</h1>
+	<img src="/ristorboo.png" class="restaurant-logo" alt="">
   </div>
   
 
@@ -179,6 +179,12 @@ export default {
 	transition: 1s;
 	transform: translateX(450px); 
 }
+
+.restaurant-logo {
+	max-width: 25em;
+    max-height: 7em;
+}
+
 .mySize{
 	font-size: 70px;
 	margin-bottom: 0px;
