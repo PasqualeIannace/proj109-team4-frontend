@@ -85,8 +85,8 @@ this.$nextTick(() => {
 								<div class="card-footer text-center ag-courses-item_date"></div>
 							</div>
 						</a>
-						<div class="bg-white">
-							<div class="d-flex justify-content-between align-items-center cart">
+						<div class="bg-card">
+							<div class="d-flex justify-content-around align-items-center cart">
 								<CartBTN :food="food" />
 							</div>
 						</div>
@@ -124,6 +124,11 @@ this.$nextTick(() => {
 span{
 	color:lightcyan;
 }
+
+.bg-card {
+	background-color: #482883;
+}
+
 .myBtn{
 	border: 2px solid lightcyan;
 

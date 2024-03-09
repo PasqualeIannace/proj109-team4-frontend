@@ -54,6 +54,15 @@ export default {
 </template>
 
 <style scoped>
+.input-group {
+    width: 9em;
+}
+
+.form-control {
+    flex: none;
+    width: 33%;
+}
+
 .inputCart{
     background-color: rgba(0, 0, 0, 0.454);
     color: blueviolet;
