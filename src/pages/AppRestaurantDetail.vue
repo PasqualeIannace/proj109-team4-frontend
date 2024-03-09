@@ -68,6 +68,9 @@ this.$nextTick(() => {
 
 							<div class="ag-courses-item_title">
 								<h5>{{ food.name }}</h5>
+							</div>
+
+							<div class="ag-courses-item_date-box">
 								<img :src="food.image" class="w-100" />
 							</div>
 
@@ -152,9 +155,6 @@ h1 {
 	}
 }
 
-body {
-	background-color: #000;
-}
 .ag-courses_box {
 	align-items: flex-start;
 	/* -ms-flex-wrap: wrap; */
@@ -173,7 +173,7 @@ body {
 .ag-courses-item_link {
 	display: block;
 	padding: 30px 20px;
-	background-color: #121212;
+	background-color: #472883f5;
 	overflow: hidden;
 	text-decoration: none;
 	position: relative;
@@ -190,7 +190,6 @@ body {
 }
 .ag-courses-item_title {
 	max-height: 270px;
-	margin: 0 0 25px;
 
 	overflow: hidden;
 
@@ -205,18 +204,20 @@ body {
 		height: 3rem;
 	}
 
-	img {
-		height: 5.7em;
-		object-fit: cover;
-		border-radius: 1em;
-	}
 }
+
 .ag-courses-item_date-box {
 	/* height: 15rem; */
 	font-size: 16px;
 	color: #fff;
 	z-index: 2;
 	position: relative;
+
+	img {
+		height: 14em;
+		object-fit: cover;
+		border-radius: 1em;
+	}
 }
 .ag-courses-item_date {
 	font-weight: bold;
@@ -229,7 +230,7 @@ body {
 .ag-courses-item_bg {
 	height: 128px;
 	width: 128px;
-	background-color: #f9b234;
+	background-color: #FC3966;
 
 	z-index: 1;
 	position: absolute;
