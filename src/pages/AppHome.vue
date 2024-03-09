@@ -302,7 +302,7 @@ body {
 	.ag-courses-item_link {
 		display: block;
 		padding: 30px 20px;
-		background-color: #121212;
+		background-color: #472883f5;
 		overflow: hidden;
 		position: relative;
 	}
@@ -345,7 +345,7 @@ body {
 /* CARD STREET TEXT */
 .ag-courses-item_date {
 	font-weight: bold;
-	color: #f9b234;
+	color: #fff;
 	text-decoration: none;
 	-webkit-transition: color 0.5s ease;
 	-o-transition: color 0.5s ease;
