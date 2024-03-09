@@ -190,13 +190,6 @@ export default {
 	margin-bottom: 0px;
 	color: goldenrod;
 }
-.myBtn.active .click-image {
-    display: block;
-}
-.myBtn.active{
-	border: 2px solid indigo;
-	color: orangered;
-}
 
 .click-image {
     display: none;
@@ -217,17 +210,29 @@ export default {
 	margin: 1 rem;
 }
 
+/* BOTTONI FILTRI RISTORANTI */
 a{
 	text-decoration: none;
 }
+.btn-group {
+		flex-wrap: wrap;
+}
 .myBtn{
-	color: #f8c146;
-	border:2px solid #f8c146;
-	margin: 1rem;
+    color: #FC3966;
+    border: 2px solid #FC3966;
+    width: 7em;
+    height: 2.7em;
 }
 .myBtn:hover{
-	color:indigo;
-	border: 2px solid  indianred;
+	color:#FD5933 !important;
+	border: 2px solid  #FD5933;
+}
+.myBtn.active .click-image {
+    display: block;
+}
+.myBtn.active{
+	border: 4px solid #FD5933;
+	color: #FD5933;
 }
 .ag-format-container {
 	width: calc(100% / 4);
@@ -243,9 +248,6 @@ a{
 	.myDiv{
 		display: block;
 	}
-	.btn-group {
-		flex-wrap: wrap;
-    }
 }
 
 @media screen and (max-width: 576px) {
