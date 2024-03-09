@@ -18,6 +18,17 @@ export default {
 		this.getFoodsByUser();
 	},
 	methods: {
+		goBack() {
+		const scrollPosition = window.scrollY;
+
+// Naviga alla pagina precedente
+this.$router.go(-1);
+
+// Dopo il completamento della navigazione, posiziona la finestra nella posizione memorizzata
+this.$nextTick(() => {
+	window.scrollTo(0, scrollPosition);
+});
+        },
 		getFoodsByUser() {
 			const userId = this.$route.params.id;
 
@@ -40,15 +51,20 @@ export default {
 
 <template>
 	<div class="myMargin">
-		<img :src="logo" alt="">
+		
 		<h1 class="text-center">Food</h1>
-
+		<a @click="goBack" class="text-body myBtn" style="cursor: pointer;">
+            <i class="fas fa-long-arrow-alt-left me-2"></i>Back
+        </a>
 		<div class="container d-flex flex-wrap text-decoration-none">
 			<div class="ag-format-container" v-for="(food, index) in store.foodListByUser" :key="index">
 				<div class="ag-courses_box">
 					<div class="ag-courses_item">
 						<a href="" @click="openModal(index)" class="ag-courses-item_link" data-bs-toggle="modal" :data-bs-target="'#exampleModal' + index">
-							<div class="ag-courses-item_bg"></div>
+							<div class="ag-courses-item_bg">
+						<img :src="logo" alt="">
+
+							</div>
 
 							<div class="ag-courses-item_title">
 								<h5>{{ food.name }}</h5>
@@ -104,6 +120,10 @@ export default {
 </template>
 
 <style scoped>
+.myBtn{
+	border: 2px solid black;
+	border-radius: 20px;
+}
 .btn{
 	background-color: #fa8c31;
 	border: 2px solid indigo;
