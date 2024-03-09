@@ -99,7 +99,7 @@ export default {
   </div>
   <div class="d-flex justify-content-center">
 	<img src="/logo.png" class="logo" alt="">
-  <h1 class="text-center ubuntu-bold-italic mySize">Ristoranti</h1>
+	<img src="/ristorboo.png" class="restaurant-logo" alt="">
   </div>
   
 
@@ -179,17 +179,16 @@ export default {
 	transition: 1s;
 	transform: translateX(450px); 
 }
+
+.restaurant-logo {
+	max-width: 25em;
+    max-height: 7em;
+}
+
 .mySize{
 	font-size: 70px;
 	margin-bottom: 0px;
 	color: goldenrod;
-}
-.myBtn.active .click-image {
-    display: block;
-}
-.myBtn.active{
-	border: 2px solid indigo;
-	color: orangered;
 }
 
 .click-image {
@@ -211,17 +210,29 @@ export default {
 	margin: 1 rem;
 }
 
+/* BOTTONI FILTRI RISTORANTI */
 a{
 	text-decoration: none;
 }
+.btn-group {
+		flex-wrap: wrap;
+}
 .myBtn{
-	color: #f8c146;
-	border:2px solid #f8c146;
-	margin: 1rem;
+    color: #FC3966;
+    border: 2px solid #FC3966;
+    width: 7em;
+    height: 2.7em;
 }
 .myBtn:hover{
-	color:indigo;
-	border: 2px solid  indianred;
+	color:#FD5933 !important;
+	border: 2px solid  #FD5933;
+}
+.myBtn.active .click-image {
+    display: block;
+}
+.myBtn.active{
+	border: 4px solid #FD5933;
+	color: #FD5933;
 }
 .ag-format-container {
 	width: calc(100% / 4);
@@ -237,9 +248,6 @@ a{
 	.myDiv{
 		display: block;
 	}
-	.btn-group {
-		flex-wrap: wrap;
-    }
 }
 
 @media screen and (max-width: 576px) {
