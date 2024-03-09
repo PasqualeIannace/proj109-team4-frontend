@@ -74,7 +74,7 @@ export default {
 
 .swiper {
   margin-top: 5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 4rem;
   width: 100%;
   /* height: 83vh; */
 }

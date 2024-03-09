@@ -105,7 +105,7 @@ export default {
 
         <!-- SEARCH BY TAG -->
 		<nav role="navigation">
-    <div class="py-5 text-center myborder">
+    <div class="py-5 text-center">
         <div class="container">
             <div class="row d-flex justify-content-center">
                 <div class="">
@@ -382,11 +382,4 @@ body {
 	border: 1px solid #f8c146;
 	background-color: transparent;
 }
-
-.myborder {
-	border-bottom: 2px solid orange;
-	padding-top: 3vh;
-}
-
-
 </style>
