@@ -146,7 +146,13 @@ export default {
 							<div class="ag-courses-item_title text-center">
 								<p class="fs-5 mb-0">{{ user.activity_name }}</p>
                                 <!-- Mostra solo i tipi associati a questo ristorante -->
-                                   <span v-for="(tipo, index) in user.types" :key="index" class="myTypes rounded-pill">{{ tipo.name }}</span>                       
+								<div class="row justify-content-center d-flex flex-wrap">
+                                    <div class="col-12">
+                                        <div class="row justify-content-center">
+                                            <span v-for="(tipo, index) in user.types" :key="index" class="myTypes rounded-pill col-lg-auto col-md-7">{{ tipo.name }}</span>
+                                        </div>
+                                    </div>
+                                </div>
 								</div>
 								<div class="ag-courses-item_date-box logo-activity">
 								<img :src="user.logo_activity" class="w-100" />
