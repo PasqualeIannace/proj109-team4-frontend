@@ -316,7 +316,7 @@ export default {
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body" style="height: 250px">
+                        <div class="card-body">
                             <div class="form-group">
                                 <label for="cc-number" class="control-label">CARD NUMBER</label>
                                 <input id="cc-number" type="tel" class="input-lg form-control cc-number"
@@ -347,15 +347,13 @@ export default {
                                 <label for="cardholder-name" class="control-label">CARD HOLDER NAME</label>
                                 <input type="text" class="input-lg form-control" required />
                             </div>
-                        </div>
-                        <div class="col-lg-2 d-flex align-items-center" id="order_a">
-                            <!-- <div class="col-lg-12 col-12">
-                            <span class="text-white fs_5"></span>  
-                        </div> -->
-                            <div class="col-lg-4 col-2">
+
+
+                            <div class="d-flex align-items-center justify-content-center mt-3" id="order_a">
+                            <div class="">
                                 <button type="button" class="btn btn-outline-light fs-6 text-center"
                                     data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                                    aria-controls="offcanvasRight" id="plus">TERMINA PAGAMENTO</button>
+                                    aria-controls="offcanvasRight" id="plus">AVANTI</button>
                                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
                                     aria-labelledby="offcanvasRightLabel">
                                     <div class="offcanvas-header">
@@ -364,7 +362,6 @@ export default {
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="offcanvas-body">
-
                                         <!-- ... (previous template code) ... -->
                                         <form @submit.prevent="handleCheckout">
                                             <div v-for="(field, label) in formFields" :key="label" class="mb-3">
@@ -384,6 +381,7 @@ export default {
                                     </div>
                                 </div>
                             </div>
+                        </div>
                         </div>
                     </div>
                 </div>
