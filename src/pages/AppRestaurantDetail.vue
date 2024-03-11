@@ -193,7 +193,7 @@ h1 {
 
 .ag-courses-item_link {
 	display: block;
-	padding: 30px 20px;
+    padding: 30px 20px 0px 20px;
 	background-color: #472883f5;
 	overflow: hidden;
 	text-decoration: none;
@@ -231,11 +231,16 @@ h1 {
 }
 
 .ag-courses-item_date-box {
-	/* height: 15rem; */
 	font-size: 16px;
 	color: #fff;
 	z-index: 2;
 	position: relative;
+
+	img {
+		height: 14em;
+		object-fit: cover;
+		border-radius: 1em;
+	}
 }
 
 .ag-courses-item_date {
