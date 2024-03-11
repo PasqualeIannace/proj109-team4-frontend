@@ -59,6 +59,21 @@ export default createStore({
         clearCart({ commit }) {
             commit('clearCart');
         },
+
+        fetchUserList({ commit }) {
+            // Make an API call to fetch the user list
+            axios.get(`${store.apiUrl}${store.apiUserEndpoint}`)
+                .then((response) => {
+                    if (response.status === 200 && response.data.success) {
+                        commit('updateUserList', response.data.payload);
+                    } else {
+                        console.error("Error fetching user list:", response);
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error fetching user list:", error);
+                });
+        }
     },
     modules: {},
 });

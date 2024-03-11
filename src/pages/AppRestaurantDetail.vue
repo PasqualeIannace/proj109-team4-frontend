@@ -12,12 +12,39 @@ export default {
 	data() {
 		return {
 			store,
+			user: null
 		};
 	},
 	mounted() {
 		this.getFoodsByUser();
+		this.getUserData();
 	},
 	methods: {
+		getUserData() {
+			const userId = this.$route.params.id;
+
+			axios
+				.get(`http://127.0.0.1:8000/api/users/${userId}`)
+				.then((response) => {
+					if (response.status === 200 && response.data.success) {
+						this.user = response.data.payload;
+						console.log("success", response.data.payload)
+					} else {
+						console.error("Error fetching user:", response);
+					}
+				})
+				.catch((error) => {
+					console.error("Error fetching user:", error);
+				});
+		},
+		getUserActivityName() {
+			return this.user ? this.user.activity_name : 'User Not Found';
+		},
+
+		getUserLogoActivity() {
+			return this.user ? this.user.logo_activity : 'Logo Not Found';
+		},
+
 		goBack() {
 			const scrollPosition = window.scrollY;
 
@@ -50,12 +77,18 @@ export default {
 </script>
 
 <template>
+
+
+
 	<div class="myMargin">
+		<div class="restaurant-info text-center">
+			<h1 class="text-white">{{ getUserActivityName() }}</h1>
+			<img v-if="user" :src="user.logo_activity" alt="Logo Activity" class="logo-activity" />
+		</div>
 		<div class="d-flex justify-content-center position-relative">
 			<a @click="goBack" class="text-body myBtn position-fixed" style="cursor: pointer;">
 				<i class="fas fa-long-arrow-alt-left me-2"></i>
 			</a>
-
 			<img src="/3.png" class="food-img">
 		</div>
 
@@ -122,6 +155,16 @@ export default {
 </template>
 
 <style scoped>
+.restaurant-info {
+	margin-top: 6.5rem;
+}
+
+.logo-activity {
+	opacity: 0.5;
+	border-radius: 50%;
+	width: 20%;
+}
+
 span {
 	color: lightcyan;
 }
@@ -190,9 +233,9 @@ h1 {
 }
 
 .size-fixed {
-		height: 16em;
-    	/* width: 16em; */
-	}
+	height: 16em;
+	/* width: 16em; */
+}
 
 /* Stili per le card su schermi più grandi (desktop) */
 @media screen and (max-width: 1200px) {
@@ -210,7 +253,7 @@ h1 {
 
 	.size-fixed {
 		height: 16em;
-    	/* max-width: 29em; */
+		/* max-width: 29em; */
 	}
 }
 
@@ -218,11 +261,11 @@ h1 {
 	.ag-format-container {
 		width: calc(100% / 1);
 		margin: 0 15px 30px;
-		}
+	}
 
 	.size-fixed {
 		max-height: 20em;
-    	max-width: 29em;
+		max-width: 29em;
 	}
 
 	.container {
@@ -249,7 +292,7 @@ h1 {
 
 .ag-courses-item_link {
 	display: block;
-    padding: 30px 10px 0px 10px;
+	padding: 30px 10px 0px 10px;
 	background-color: #472883f5;
 	overflow: hidden;
 	text-decoration: none;
