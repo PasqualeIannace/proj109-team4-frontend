@@ -35,7 +35,7 @@ export default {
 
 <template>
     <section class="myMargin">
-        <div class="container py-5 h-100">
+        <div class="container py-5 my-height">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col">
                     <div class="card border-0">
@@ -131,5 +131,7 @@ export default {
 
 
 <style scoped>
-/* Add your styles if needed */
+.my-height {
+    min-height: 70.7vh;
+}
 </style>./Payment.vue

@@ -134,9 +134,9 @@ export default {
 	</nav>
 	<!-- RISTORANTI -->
 	<div class="container">
-		<div class="container d-flex flex-wrap">
+		<div class="d-flex flex-wrap">
 			<div class="ag-format-container" v-for="user in store.userList" :key="userList.id">
-				<router-link :to="{ name: 'user-details', params: { id: user.id, logo: user.logo_activity } }">
+				<router-link :to="{ name: 'user-details', params: { id: user.id } }">
 					<div class="ag-courses_box">
 						<div class="ag-courses_item">
 							<a href="#" class="ag-courses-item_link" :data-bs-target="'#exampleModal' + userList.id">
