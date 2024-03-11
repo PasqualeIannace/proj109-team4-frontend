@@ -373,7 +373,7 @@ export default {
                                                     :id="label" :required="field.required">
                                             </div>
                                             <div class="form-group">
-                                                <button type="submit" class="btn btn-success btn-lg form-control"
+                                                <button type="submit" class="btn btn-lg form-control"
                                                     style="font-size: 1rem;">
                                                     TERMIINA PAGAMENTO
                                                 </button>
@@ -397,12 +397,23 @@ export default {
 
 
 <style scoped>
+#offcanvasRight{
+    background-image: url(/prova3.png);
+}
 .btn2 {
     top: 200px;
 }
 
 .btn {
     margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.486);
+    color:azure
+}
+.btn:hover{
+    opacity: 0.7;
+  /* background: hsl(186 100% 69%); */
+  border-width: 4px;
+  border-color: hsl(186 100% 69%) ;
 }
 
 .card {
