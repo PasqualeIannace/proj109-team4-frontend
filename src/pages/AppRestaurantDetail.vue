@@ -74,7 +74,7 @@ export default {
 								<h5>{{ food.name }}</h5>
 							</div>
 
-							<div class="ag-courses-item_date-box h-fissa">
+							<div class="ag-courses-item_date-box size-fixed">
 								<img :src="food.image" class="w-100" />
 							</div>
 
@@ -173,12 +173,28 @@ h1 {
 	/* margin: 0 auto; */
 }
 
+.size-fixed {
+		height: 16em;
+    	/* width: 16em; */
+	}
+
 /* Stili per le card su schermi più grandi (desktop) */
+@media screen and (max-width: 1200px) {
+	.ag-format-container {
+		width: calc(100% / 3 - 30px);
+		margin: 0 15px 30px;
+	}
+}
 
 @media screen and (max-width: 992px) {
 	.ag-format-container {
 		width: calc(50% - 30px);
 		margin: 0 15px 30px;
+	}
+
+	.size-fixed {
+		height: 16em;
+    	/* max-width: 29em; */
 	}
 }
 
@@ -187,6 +203,15 @@ h1 {
 		width: calc(100% / 1);
 		margin: 0 15px 30px;
 		}
+
+	.size-fixed {
+		max-height: 20em;
+    	max-width: 29em;
+	}
+
+	.container {
+		max-width: none;
+	}
 }
 
 .ag-courses_box {
@@ -243,10 +268,6 @@ h1 {
 		height: 3rem;
 	}
 
-}
-
-.h-fissa {
-	height: 16em;
 }
 
 .ag-courses-item_date-box {
@@ -311,38 +332,4 @@ h1 {
 .cart :hover {
 	color: black;
 }
-
-/* @media only screen and (max-width: 979px) {
-	.ag-courses_item {
-		-ms-flex-preferred-size: calc(50% - 30px);
-		flex-basis: calc(50% - 30px);
-	}
-	.ag-courses-item_title {
-		font-size: 24px;
-	}
-}
-
-@media only screen and (max-width: 767px) {
-	.ag-format-container {
-		width: 96%;
-	}
-}
-@media only screen and (max-width: 639px) {
-	.ag-courses_item {
-		-ms-flex-preferred-size: 100%;
-		flex-basis: 100%;
-	}
-	.ag-courses-item_title {
-		min-height: 72px;
-		line-height: 1;
-
-		font-size: 24px;
-	}
-	.ag-courses-item_link {
-		padding: 22px 40px;
-	}
-	.ag-courses-item_date-box {
-		font-size: 16px;
-	}
-} */
 </style>
