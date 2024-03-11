@@ -63,14 +63,15 @@ export default {
 </script>
 
 <template>
-    <button type="button" @click="$event => addOrRemove()" class="btn me-2">
-        <i class="fa-solid fa-cart-shopping my-cart"></i>
+    <button type="button" @click="addOrRemove" class="btn me-2">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="ps-2" v-if="toAdd">Add to Cart</span>
     </button>
     <CartAddRemove v-if="!toAdd" :food="item" />
 </template>
 
 <style scoped>
-    .my-cart {
-        color: white;
-    }
+.my-cart {
+    color: white;
+}
 </style>

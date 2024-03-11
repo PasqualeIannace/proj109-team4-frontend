@@ -6,7 +6,7 @@ import CartBTN from "../components/CartBTN.vue";
 export default {
 	props: ['logo'],
 	name: "AppRestaurantDetail",
-	components: { 
+	components: {
 		CartBTN,
 	},
 	data() {
@@ -19,16 +19,16 @@ export default {
 	},
 	methods: {
 		goBack() {
-		const scrollPosition = window.scrollY;
+			const scrollPosition = window.scrollY;
 
-// Naviga alla pagina precedente
-this.$router.go(-1);
+			// Naviga alla pagina precedente
+			this.$router.go(-1);
 
-// Dopo il completamento della navigazione, posiziona la finestra nella posizione memorizzata
-this.$nextTick(() => {
-	window.scrollTo(0, scrollPosition);
-});
-        },
+			// Dopo il completamento della navigazione, posiziona la finestra nella posizione memorizzata
+			this.$nextTick(() => {
+				window.scrollTo(0, scrollPosition);
+			});
+		},
 		getFoodsByUser() {
 			const userId = this.$route.params.id;
 
@@ -53,19 +53,20 @@ this.$nextTick(() => {
 	<div class="myMargin">
 		<div class="d-flex justify-content-center position-relative">
 			<a @click="goBack" class="text-body myBtn position-absolute" style="cursor: pointer;">
-            <i class="fas fa-long-arrow-alt-left me-2"><span>GO BACK</span></i>
-            </a>
+				<i class="fas fa-long-arrow-alt-left me-2"><span>GO BACK</span></i>
+			</a>
 
 			<img src="/3.png" class="w-25">
 		</div>
-		
+
 		<div class="container d-flex flex-wrap text-decoration-none">
 			<div class="ag-format-container" v-for="(food, index) in store.foodListByUser" :key="index">
 				<div class="ag-courses_box">
 					<div class="ag-courses_item">
-						<a href="" @click="openModal(index)" class="ag-courses-item_link" data-bs-toggle="modal" :data-bs-target="'#exampleModal' + index">
+						<a href="" @click="openModal(index)" class="ag-courses-item_link" data-bs-toggle="modal"
+							:data-bs-target="'#exampleModal' + index">
 							<div class="ag-courses-item_bg">
-						<img :src="logo" alt="">
+								<img :src="logo" alt="">
 
 							</div>
 
@@ -94,14 +95,16 @@ this.$nextTick(() => {
 				</div>
 
 				<!-- Modal info cibo-->
-				<div class="modal fade text-black" :id="'exampleModal' + index" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal fade text-black" :id="'exampleModal' + index" tabindex="-1"
+					aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
 						<div class="modal-content myModal">
 							<div class="modal-header">
 								<h5 class="modal-title" id="exampleModalLabel">
 									{{ food.name }}
 								</h5>
-								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+								<button type="button" class="btn-close" data-bs-dismiss="modal"
+									aria-label="Close"></button>
 							</div>
 							<div class="modal-body">
 								<p>{{ food.ingredients }}</p>
@@ -121,41 +124,48 @@ this.$nextTick(() => {
 </template>
 
 <style scoped>
-span{
-	color:lightcyan;
+span {
+	color: lightcyan;
 }
 
 .bg-card {
 	background-color: #482883;
 }
 
-.myBtn{
+.myBtn {
 	border: 2px solid lightcyan;
 
 	border-radius: 20px;
 	left: 100px;
-	top:100px;
+	top: 100px;
 }
-.btn{
+
+.btn {
 	background-color: #fa8c31;
 	border: 2px solid indigo;
 }
-.myModal{
+
+.myModal {
 	border-radius: 28px;
-	background-color:rgba(76, 0, 130, 0.696);
+	background-color: rgba(76, 0, 130, 0.696);
 	color: #fff;
 	background-image: url('ghost.png');
 }
-.modal-header , .modal-footer{
+
+.modal-header,
+.modal-footer {
 	background-color: #fa8c31;
 }
+
 h1 {
 	color: #f9b234;
 }
+
 .ag-format-container {
 	width: calc(100% / 4);
 	/* margin: 0 auto; */
 }
+
 /* Stili per le card su schermi più grandi (desktop) */
 @media screen and (max-width: 992px) {
 	.ag-format-container {
@@ -172,6 +182,7 @@ h1 {
 	/* height: 300px; */
 	padding: 10px 0;
 }
+
 .ag-courses_item {
 	/* width:100%; */
 	flex-basis: calc(33.33333% - 30px);
@@ -179,6 +190,7 @@ h1 {
 	overflow: hidden;
 	border-radius: 28px;
 }
+
 .ag-courses-item_link {
 	display: block;
 	padding: 30px 20px;
@@ -187,16 +199,19 @@ h1 {
 	text-decoration: none;
 	position: relative;
 }
+
 .ag-courses-item_link:hover,
 .ag-courses-item_link:hover .ag-courses-item_date {
 	text-decoration: none;
 	color: #fff;
 }
+
 .ag-courses-item_link:hover .ag-courses-item_bg {
 	-webkit-transform: scale(10);
 	-ms-transform: scale(10);
 	transform: scale(10);
 }
+
 .ag-courses-item_title {
 	max-height: 270px;
 
@@ -221,13 +236,8 @@ h1 {
 	color: #fff;
 	z-index: 2;
 	position: relative;
-
-	img {
-		height: 14em;
-		object-fit: cover;
-		border-radius: 1em;
-	}
 }
+
 .ag-courses-item_date {
 	font-weight: bold;
 	color: #f9b234;
@@ -236,6 +246,7 @@ h1 {
 	-o-transition: color 0.5s ease;
 	transition: color 0.5s ease;
 }
+
 .ag-courses-item_bg {
 	height: 128px;
 	width: 128px;
@@ -252,18 +263,23 @@ h1 {
 	-o-transition: all 0.5s ease;
 	transition: all 0.5s ease;
 }
+
 .ag-courses_item:nth-child(2n) .ag-courses-item_bg {
 	background-color: #3ecd5e;
 }
+
 .ag-courses_item:nth-child(3n) .ag-courses-item_bg {
 	background-color: #e44002;
 }
+
 .ag-courses_item:nth-child(4n) .ag-courses-item_bg {
 	background-color: #492a84db;
 }
+
 .ag-courses_item:nth-child(5n) .ag-courses-item_bg {
 	background-color: #cd3e94;
 }
+
 .ag-courses_item:nth-child(6n) .ag-courses-item_bg {
 	background-color: #4c49ea;
 }
@@ -305,5 +321,4 @@ h1 {
 		font-size: 16px;
 	}
 } */
-
 </style>
