@@ -243,7 +243,7 @@ export default {
                                 <label for="inputCity" class="form-label">Città</label>
                                 <input type="text" class="form-control" id="inputCity">
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-8 col-8">
+                            <!-- <div class="col-lg-4 col-md-4 col-sm-8 col-8">
                                 <label for="inputState" class="form-label">Stato</label>
                                 <select id="inputState" class="form-select">
                                     <option selected>Regioni</option>
@@ -252,7 +252,7 @@ export default {
                                     <option>Germania</option>
                                     <option>Norvegia</option>
                                 </select>
-                            </div>
+                            </div> -->
                             <div class="col-le-2 col-md-2 col-sm-4 col-4">
                                 <label for="inputZip" class="form-label">Numero Ordine</label>
                                 <input type="text" class="form-control" id="inputZip">
@@ -370,9 +370,9 @@ export default {
                                                     :id="label" :required="field.required">
                                             </div>
                                             <div class="form-group">
-                                                <button type="submit" class="btn btn-success form-control w-100"
-                                                    style="font-size: .8rem;">
-                                                    MAKE PAYMENT
+                                                <button type="submit" class="btn btn-success btn-lg form-control"
+                                                    style="font-size: 1rem;">
+                                                    TERMIINA PAGAMENTO
                                                 </button>
                                             </div>
                                         </form>
