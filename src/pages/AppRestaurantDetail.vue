@@ -244,7 +244,7 @@ h1 {
 	position: relative;
 
 	img {
-		height: 14em;
+		height: 100%;
 		object-fit: cover;
 		border-radius: 1em;
 	}
