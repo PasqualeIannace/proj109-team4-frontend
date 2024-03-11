@@ -374,7 +374,7 @@ export default {
                                             </div>
                                             <div class="form-group">
                                                 <button type="submit" class="btn btn-success btn-lg form-control"
-                                                    style="font-size: .8rem;">
+                                                    style="font-size: 1rem;">
                                                     TERMIINA PAGAMENTO
                                                 </button>
                                             </div>
