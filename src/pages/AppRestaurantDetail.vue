@@ -74,7 +74,7 @@ export default {
 								<h5>{{ food.name }}</h5>
 							</div>
 
-							<div class="ag-courses-item_date-box">
+							<div class="ag-courses-item_date-box h-fissa">
 								<img :src="food.image" class="w-100" />
 							</div>
 
@@ -208,7 +208,7 @@ h1 {
 
 .ag-courses-item_link {
 	display: block;
-    padding: 30px 20px 0px 20px;
+    padding: 30px 10px 0px 10px;
 	background-color: #472883f5;
 	overflow: hidden;
 	text-decoration: none;
@@ -243,6 +243,10 @@ h1 {
 		height: 3rem;
 	}
 
+}
+
+.h-fissa {
+	height: 16em;
 }
 
 .ag-courses-item_date-box {
