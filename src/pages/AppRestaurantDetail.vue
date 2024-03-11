@@ -174,11 +174,19 @@ h1 {
 }
 
 /* Stili per le card su schermi più grandi (desktop) */
+
 @media screen and (max-width: 992px) {
 	.ag-format-container {
 		width: calc(50% - 30px);
 		margin: 0 15px 30px;
 	}
+}
+
+@media screen and (max-width: 576px) {
+	.ag-format-container {
+		width: calc(100% / 1);
+		margin: 0 15px 30px;
+		}
 }
 
 .ag-courses_box {
