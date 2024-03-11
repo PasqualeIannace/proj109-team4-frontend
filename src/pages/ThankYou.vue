@@ -34,9 +34,7 @@ export default {
 
 <template>
     <div class="containerTnx">
-        <div class="row">
-        <div class="col-12">
-            <div class="d-flex flex-column align-items-center py-5 mt-20 text-white">
+            <div class="col-12 d-flex flex-column align-items-center py-5 mt-20 text-white">
 
                 <h1>Grazie per il tuo ordine</h1>
                 <p>Il nostro rider sta arrivando da te.</p>
@@ -51,9 +49,6 @@ export default {
                         Torna alla homepage
                     </button>
                 </router-link>
-
-            </div>
-        </div>
     </div>
     </div>
     
@@ -114,6 +109,6 @@ export default {
 }
 
 .mt-20{
-    margin-top: 7rem;
+    margin-top: 5rem;
 }
 </style>
