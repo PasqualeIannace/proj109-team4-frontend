@@ -94,13 +94,13 @@ export default {
             const paymentStatus = 'Done';
 
             const orderData = {
-                message: this.formData.message,
+                message: this.formData.Messaggio,
                 paymentStatus,
                 orderDate: new Date().toISOString(),
                 totalPrice: this.$store.state.cartTotal,
-                nameSurname: this.formData.nameSurname,
-                address: this.formData.address,
-                phoneNumber: this.formData.phoneNumber,
+                nameSurname: this.formData.NomeCognome,
+                address: this.formData.Indirizzo,
+                phoneNumber: this.formData.Numero,
                 email: this.formData.email,
                 // Add other order details
             };
