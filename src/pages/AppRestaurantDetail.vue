@@ -178,7 +178,7 @@ p {
 }
 
 .bg-card {
-	background-color: #482883;
+	background-color: #472883f5;
 }
 
 .myBtn {
