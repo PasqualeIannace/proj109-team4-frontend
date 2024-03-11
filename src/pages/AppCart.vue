@@ -94,26 +94,26 @@ export default {
                                     </div>
                                 </div>
                                 <div class="col-lg-5">
-                                    <div class="card bg-primary text-white rounded-0 border-0">
-                                        <div class="card-body">
+                                    <div class="card text-white rounded-0 border-0">
+                                        <div class="card-body bg-pesca">
                                             <div class="d-flex justify-content-between align-items-center mb-4">
-                                                <h5 class="mb-0">Cart details</h5>
+                                                <h5 class="mb-0">Carrello</h5>
                                                 <i class="bi bi-cart3 h1"></i>
                                             </div>
                                             <hr class="my-4">
-                                            <div class="d-flex justify-content-between">
+                                            <!-- <div class="d-flex justify-content-between">
                                                 <p class="mb-2">Subtotal</p>
                                                 <p class="mb-2"><i class="bi bi-currency-dollar"></i>€ {{
                                             $store.state.cartTotal }}</p>
-                                            </div>
+                                            </div> -->
                                             <div class="d-flex justify-content-between mb-4">
-                                                <p class="mb-2">Total</p>
+                                                <p class="mb-2">Totale</p>
                                                 <p class="mb-2"><i class="bi bi-currency-dollar"></i>€ {{
                                                     $store.state.cartTotal }}</p>
                                             </div>
                                             <router-link :to="{ name: 'payment' }">
-                                                <button type="button" class="btn btn-info btn-block btn-lg">
-                                                Checkout
+                                                <button type="button" class="btn btn-info btn-block btn-lg my-btn">
+                                                Paga
                                                 </button>
                                             </router-link>
                                         </div>
@@ -131,7 +131,38 @@ export default {
 
 
 <style scoped>
+.my-btn {
+    background: white;
+    border: none;
+    color: #140934;
+    border-radius: 2em;
+
+    &:hover {
+        /* transition: 300ms; */
+        /* color: white;
+        background-color: #140934; */
+        /* background-color: #FD5933; */
+        border: 3px solid #140934;
+        /* border: 2px solid white; */
+    }
+}
+
 .my-height {
     min-height: 70.7vh;
+}
+
+.card {
+    background-color: #472883f5;
+    color: white;
+    border-radius: 2em;
+}
+
+.bg-pesca {
+    background-color: #FC3966;
+    border-radius: 2em;
+
+    div {
+        border-radius: 2em;
+    }
 }
 </style>./Payment.vue
