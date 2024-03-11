@@ -107,8 +107,8 @@ export default {
 	<!-- <AppSearch @search="getUsers()" /> -->
 	<TheHeader />
 	<div class="ghost-container">
-		<img class="ghost ghost-1" :style="{ top: ghost1Top + 'px', left: ghost1Left + 'px' }" src="ghost-1.png" alt="Ghost">
-		<img class="ghost ghost-2" :style="{ top: ghost2Top + 'px', left: ghost2Left + 'px' }" src="ghost-2.png" alt="Ghost">
+		<img class="ghost ghost-1" :style="{ top: ghost1Top + 'px', left: ghost1Left + 'px' }" src="/ghost-1.png" alt="Ghost">
+		<img class="ghost ghost-2" :style="{ top: ghost2Top + 'px', left: ghost2Left + 'px' }" src="/ghost-2.png" alt="Ghost">
 	</div>
 	<router-view></router-view>
 	<Footer />

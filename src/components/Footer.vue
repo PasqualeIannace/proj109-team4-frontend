@@ -78,8 +78,8 @@ export default {
         <div class="footer-bottom dark-blue text-white">
             <div class="container-sm py-2">
                 <div class="row justify-content-center position-relative">
-                    <img src="ghost.png" id="myFooterimg">
-                    <img src="ghost.png" id="myFooterimg2">
+                    <img src="/ghost.png" id="myFooterimg">
+                    <img src="/ghost.png" id="myFooterimg2">
                     <div class="col-12 text-center">
                         <a class="nav-link myA text-light" href="http://127.0.0.1:8000/" target="_blank">
 						Lavora con noi
