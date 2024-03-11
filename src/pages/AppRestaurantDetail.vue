@@ -74,7 +74,7 @@ export default {
 								<h5>{{ food.name }}</h5>
 							</div>
 
-							<div class="ag-courses-item_date-box">
+							<div class="ag-courses-item_date-box h-fissa">
 								<img :src="food.image" class="w-100" />
 							</div>
 
@@ -82,8 +82,6 @@ export default {
 								<p class="card-text text-center fs-5">
 									<b>€ {{ food.price }}</b>
 								</p>
-
-								<div class="card-footer text-center ag-courses-item_date"></div>
 							</div>
 						</a>
 						<div class="bg-card">
@@ -107,14 +105,14 @@ export default {
 									aria-label="Close"></button>
 							</div>
 							<div class="modal-body">
+								<img :src="food.image" class="w-100 modal-img" />
+								<h5 class="fw-bolder">INGREDIENTI</h5>
 								<p>{{ food.ingredients }}</p>
+								<h5 class="fw-bolder">DESCRIZIONE</h5>
 								<p>{{ food.description }}</p>
 							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-									Close
-								</button>
-							</div>
+							<!-- <div class="modal-footer">
+							</div> -->
 						</div>
 					</div>
 				</div>
@@ -126,6 +124,10 @@ export default {
 <style scoped>
 span {
 	color: lightcyan;
+}
+
+p {
+	margin-top: 0.5em;
 }
 
 .bg-card {
@@ -141,20 +143,25 @@ span {
 }
 
 .btn {
-	background-color: #fa8c31;
+	background-color: #FC3966;
 	border: 2px solid indigo;
 }
 
 .myModal {
 	border-radius: 28px;
-	background-color: rgba(76, 0, 130, 0.696);
+	background-color: #482883;
 	color: #fff;
 	background-image: url('ghost.png');
 }
 
 .modal-header,
 .modal-footer {
-	background-color: #fa8c31;
+	background-color: #FC3966;
+}
+
+.modal-img {
+	border-radius: 1em;
+	margin-bottom: 1em;
 }
 
 h1 {
@@ -167,11 +174,19 @@ h1 {
 }
 
 /* Stili per le card su schermi più grandi (desktop) */
+
 @media screen and (max-width: 992px) {
 	.ag-format-container {
 		width: calc(50% - 30px);
 		margin: 0 15px 30px;
 	}
+}
+
+@media screen and (max-width: 576px) {
+	.ag-format-container {
+		width: calc(100% / 1);
+		margin: 0 15px 30px;
+		}
 }
 
 .ag-courses_box {
@@ -193,7 +208,7 @@ h1 {
 
 .ag-courses-item_link {
 	display: block;
-	padding: 30px 20px;
+    padding: 30px 10px 0px 10px;
 	background-color: #472883f5;
 	overflow: hidden;
 	text-decoration: none;
@@ -230,12 +245,21 @@ h1 {
 
 }
 
+.h-fissa {
+	height: 16em;
+}
+
 .ag-courses-item_date-box {
-	/* height: 15rem; */
 	font-size: 16px;
 	color: #fff;
 	z-index: 2;
 	position: relative;
+
+	img {
+		height: 100%;
+		object-fit: cover;
+		border-radius: 1em;
+	}
 }
 
 .ag-courses-item_date {
