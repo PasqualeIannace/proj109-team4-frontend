@@ -365,8 +365,8 @@ h1 {
 
 	border-radius: 50%;
 
-	-webkit-transition: all 0.5s ease;
-	-o-transition: all 0.5s ease;
+	/* -webkit-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease; */
 	transition: all 0.5s ease;
 }
 .cart :hover {
@@ -382,15 +382,15 @@ h1 {
   border-radius: 0.45em;
   background: none;
   perspective: 2em;
-  font-family: "Raleway", sans-serif;
+  /* font-family: "Raleway", sans-serif; */
   font-size: 2em;
   font-weight: 900;
   letter-spacing: 1em;
 
-  -webkit-box-shadow: inset 0px 0px 0.5em 0px hsl(186 100% 69%),
+  /* -webkit-box-shadow: inset 0px 0px 0.5em 0px hsl(186 100% 69%),
     0px 0px 0.5em 0px var(--glow-color);
   -moz-box-shadow: inset 0px 0px 0.5em 0px hsl(186 100% 69%),
-    0px 0px 0.5em 0px var(--glow-color);
+    0px 0px 0.5em 0px var(--glow-color); */
   box-shadow: inset 0px 0px 0.5em 0px hsl(186 100% 69%),
     0px 0px 0.5em 0px hsl(186 100% 69%);
   animation: border-flicker 2s linear infinite;
@@ -399,10 +399,10 @@ h1 {
 .glowing-txt {
   float: left;
   margin-right: -0.8em;
-  -webkit-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3),
+  /* -webkit-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3),
     0 0 0.45em hsl(186 100% 69%);
   -moz-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3),
-    0 0 0.45em hsl(186 100% 69%);
+    0 0 0.45em hsl(186 100% 69%); */
   text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em hsl(186 100% 69%);
   animation: text-flicker 3s linear infinite;
 }

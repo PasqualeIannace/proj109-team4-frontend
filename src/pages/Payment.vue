@@ -17,10 +17,10 @@ export default {
 
         return {
             formFields: {
-                message: { type: 'text', required: true },
-                nameSurname: { type: 'text', required: true },
-                address: { type: 'text', required: true },
-                phoneNumber: { type: 'tel', required: true },
+                Messaggio: { type: 'text', required: true },
+                NomeCognome: { type: 'text', required: true },
+                Indirizzo: { type: 'text', required: true },
+                Numero: { type: 'tel', required: true },
                 email: { type: 'email', required: true },
                 // Add other form fields as needed
             },
