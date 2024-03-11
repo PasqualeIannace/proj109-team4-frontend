@@ -344,9 +344,6 @@ export default {
 .btn2{
     top:200px;
 }
-.btn{
-    margin: 0 auto;
-}
 .card{
 background-color: rgba(0, 0, 0, 0.712);
 color: aliceblue;
