@@ -52,11 +52,11 @@ export default {
 <template>
 	<div class="myMargin">
 		<div class="d-flex justify-content-center position-relative">
-			<a @click="goBack" class="text-body myBtn position-absolute" style="cursor: pointer;">
-				<i class="fas fa-long-arrow-alt-left me-2"><span>GO BACK</span></i>
+			<a @click="goBack" class="text-body myBtn position-fixed" style="cursor: pointer;">
+				<i class="fas fa-long-arrow-alt-left me-2"></i>
 			</a>
 
-			<img src="/3.png" class="w-25">
+			<img src="/3.png" class="food-img">
 		</div>
 
 		<div class="container d-flex flex-wrap text-decoration-none">
@@ -130,16 +130,32 @@ p {
 	margin-top: 0.5em;
 }
 
+.food-img {
+	width: 23em;
+}
+
 .bg-card {
 	background-color: #482883;
 }
 
 .myBtn {
-	border: 2px solid lightcyan;
-
-	border-radius: 20px;
-	left: 100px;
+	padding-left: 0.32em;
+	border: 2px solid #FC3966;
+	border-radius: 13px;
+	left: 20px;
 	top: 100px;
+
+	i {
+		color: #3E2274;
+	}
+
+	&:hover {
+		border: 2px solid #FD5933;
+
+		i {
+			color: #FD5933;
+		}
+	}
 }
 
 .btn {
