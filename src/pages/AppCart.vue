@@ -4,9 +4,9 @@ import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 
 export default {
-    components: { 
+    components: {
         CartAddRemove,
-     },
+    },
     methods: {
         removeItem(food) {
             this.$store.commit('addRemoveCart', { food, toAdd: false });
@@ -14,7 +14,7 @@ export default {
 
         // TASTO INDIETRO
         goBack() {
-        this.$router.go(-1);
+            this.$router.go(-1);
         },
 
         removeAllItems() {
@@ -67,7 +67,7 @@ export default {
                                                             alt="Shopping item" style="width: 65px;">
                                                     </div>
                                                     <div class="ms-3">
-                                                        <p>{{ food.name }}</p>
+                                                        <p style="width: 13rem;">{{ food.name }}</p>
                                                     </div>
                                                 </div>
                                                 <div class="d-flex flex-row align-items-center">
@@ -94,28 +94,30 @@ export default {
                                     </div>
                                 </div>
                                 <div class="col-lg-5">
-                                    <div class="card text-white rounded-0 border-0">
-                                        <div class="card-body bg-pesca">
-                                            <div class="d-flex justify-content-between align-items-center mb-4">
-                                                <h5 class="mb-0">Carrello</h5>
-                                                <i class="bi bi-cart3 h1"></i>
+                                    <div class="card text-white rounded-0 border-0 checkout-card">
+                                        <div class="card-body">
+                                            <div class="card text-white rounded-0 border-0">
+                                                <div class="card-body bg-pesca">
+                                                    <div class="d-flex justify-content-between align-items-center mb-4">
+                                                        <h5 class="mb-0">Carrello</h5>
+                                                        <i class="bi bi-cart3 h1"></i>
+                                                    </div>
+                                                    <hr class="my-4">
+                                                    <div class="d-flex justify-content-between">
+                                                    <p class="mb-2">Subtotal</p>
+                                                    <p class="mb-2"><i class="bi bi-currency-dollar"></i>€ {{ $store.state.cartTotal.toFixed(2) }}</p>
+                                                    </div>
+                                                    <div class="d-flex justify-content-between mb-4">
+                                                        <p class="mb-2">Totale</p>
+                                                        <p class="mb-2"><i class="bi bi-currency-dollar"></i>€ {{ $store.state.cartTotal.toFixed(2) }}</p>
+                                                    </div>
+                                                    <router-link :to="{ name: 'payment' }">
+                                                        <button type="button" class="btn btn-info btn-block btn-lg my-btn">
+                                                        Paga
+                                                        </button>
+                                                    </router-link>
+                                                </div>
                                             </div>
-                                            <hr class="my-4">
-                                            <!-- <div class="d-flex justify-content-between">
-                                                <p class="mb-2">Subtotal</p>
-                                                <p class="mb-2"><i class="bi bi-currency-dollar"></i>€ {{
-                                            $store.state.cartTotal }}</p>
-                                            </div> -->
-                                            <div class="d-flex justify-content-between mb-4">
-                                                <p class="mb-2">Totale</p>
-                                                <p class="mb-2"><i class="bi bi-currency-dollar"></i>€ {{
-                                                    $store.state.cartTotal }}</p>
-                                            </div>
-                                            <router-link :to="{ name: 'payment' }">
-                                                <button type="button" class="btn btn-info btn-block btn-lg my-btn">
-                                                Paga
-                                                </button>
-                                            </router-link>
                                         </div>
                                     </div>
                                 </div>
@@ -149,6 +151,11 @@ export default {
 
 .my-height {
     min-height: 70.7vh;
+}
+
+.checkout-card {
+    background-color: rgb(175, 124, 209);
+    margin-top: 2.5rem;
 }
 
 .card {
