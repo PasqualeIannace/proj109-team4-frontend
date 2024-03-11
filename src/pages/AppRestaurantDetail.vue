@@ -81,9 +81,9 @@ export default {
 
 
 	<div class="myMargin">
-		<div class="mt-5">
+		<div class="restaurant-info text-center">
 			<h1 class="text-white">{{ getUserActivityName() }}</h1>
-			<img v-if="user" :src="user.logo_activity" alt="Logo Activity" class="logo-activity w-25" />
+			<img v-if="user" :src="user.logo_activity" alt="Logo Activity" class="logo-activity" />
 		</div>
 		<div class="d-flex justify-content-center position-relative">
 			<a @click="goBack" class="text-body myBtn position-fixed" style="cursor: pointer;">
@@ -155,6 +155,16 @@ export default {
 </template>
 
 <style scoped>
+.restaurant-info {
+	margin-top: 6.5rem;
+}
+
+.logo-activity {
+	opacity: 0.5;
+	border-radius: 50%;
+	width: 20%;
+}
+
 span {
 	color: lightcyan;
 }
