@@ -42,8 +42,8 @@ export default {
                         <div class="card-body p-4">
                             <div class="row">
                                 <div class="col-lg-7">
-                                    <h5 class="mb-3">
-                                        <a @click="goBack" class="text-body" style="cursor: pointer;">
+                                    <h5 class="mb-3 go-back">
+                                        <a @click="goBack" class="" style="cursor: pointer;">
                                             <i class="fas fa-long-arrow-alt-left me-2"></i>Continua lo shopping
                                         </a>
                                     </h5>
@@ -94,9 +94,9 @@ export default {
                                     </div>
                                 </div>
                                 <div class="col-lg-5">
-                                    <div class="card text-white rounded-0 border-0 checkout-card">
+                                    <div class="card text-white rounded-0 border-0 checkout-card no-bg">
                                         <div class="card-body">
-                                            <div class="card text-white rounded-0 border-0">
+                                            <div class="text-white rounded-0 border-0 no-bg">
                                                 <div class="card-body bg-pesca">
                                                     <div class="d-flex justify-content-between align-items-center mb-4">
                                                         <h5 class="mb-0">Carrello</h5>
@@ -104,8 +104,8 @@ export default {
                                                     </div>
                                                     <hr class="my-4">
                                                     <div class="d-flex justify-content-between">
-                                                    <p class="mb-2">Subtotal</p>
-                                                    <p class="mb-2"><i class="bi bi-currency-dollar"></i>€ {{ $store.state.cartTotal.toFixed(2) }}</p>
+                                                    <p class="mb-2">Spedizione</p>
+                                                    <p class="mb-2">Gratuita</p>
                                                     </div>
                                                     <div class="d-flex justify-content-between mb-4">
                                                         <p class="mb-2">Totale</p>
@@ -149,6 +149,23 @@ export default {
     }
 }
 
+.no-bg {
+    background: none !important;
+}
+
+.go-back {
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+
+    &:hover a {
+        transition: 400ms;
+        color: #FC3966;
+    }
+}
+
 .my-height {
     min-height: 70.7vh;
 }
@@ -159,7 +176,7 @@ export default {
 }
 
 .card {
-    background-color: #472883f5;
+    background-color: #000000a6;
     color: white;
     border-radius: 2em;
 }
