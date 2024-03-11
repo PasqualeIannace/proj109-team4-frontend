@@ -198,7 +198,7 @@ export default {
 
 
 <template>
-    <section class="myMargin">
+    <section class="myVH">
         <!-- Existing code ... -->
         <div class="col-lg-2 d-flex align-items-center" id="resi">
 
@@ -395,6 +395,10 @@ export default {
 
 
 <style scoped>
+.myVH {
+    height: 64.5vh;
+}
+
 #offcanvasRight{
     background-image: url(/prova3.png);
 }
