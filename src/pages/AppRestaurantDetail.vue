@@ -82,8 +82,6 @@ export default {
 								<p class="card-text text-center fs-5">
 									<b>€ {{ food.price }}</b>
 								</p>
-
-								<div class="card-footer text-center ag-courses-item_date"></div>
 							</div>
 						</a>
 						<div class="bg-card">
@@ -126,6 +124,10 @@ export default {
 <style scoped>
 span {
 	color: lightcyan;
+}
+
+p {
+	margin-top: 0.5em;
 }
 
 .bg-card {
