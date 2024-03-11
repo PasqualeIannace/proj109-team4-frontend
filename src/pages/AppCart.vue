@@ -4,9 +4,9 @@ import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 
 export default {
-    components: { 
+    components: {
         CartAddRemove,
-     },
+    },
     methods: {
         removeItem(food) {
             this.$store.commit('addRemoveCart', { food, toAdd: false });
@@ -14,7 +14,7 @@ export default {
 
         // TASTO INDIETRO
         goBack() {
-        this.$router.go(-1);
+            this.$router.go(-1);
         },
 
         removeAllItems() {
@@ -67,7 +67,7 @@ export default {
                                                             alt="Shopping item" style="width: 65px;">
                                                     </div>
                                                     <div class="ms-3">
-                                                        <p>{{ food.name }}</p>
+                                                        <p style="width: 13rem;">{{ food.name }}</p>
                                                     </div>
                                                 </div>
                                                 <div class="d-flex flex-row align-items-center">
@@ -109,11 +109,11 @@ export default {
                                             <div class="d-flex justify-content-between mb-4">
                                                 <p class="mb-2">Total</p>
                                                 <p class="mb-2"><i class="bi bi-currency-dollar"></i>€ {{
-                                                    $store.state.cartTotal }}</p>
+                                            $store.state.cartTotal }}</p>
                                             </div>
                                             <router-link :to="{ name: 'payment' }">
                                                 <button type="button" class="btn btn-info btn-block btn-lg">
-                                                Checkout
+                                                    Checkout
                                                 </button>
                                             </router-link>
                                         </div>
