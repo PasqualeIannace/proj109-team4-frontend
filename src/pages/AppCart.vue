@@ -94,7 +94,7 @@ export default {
                                     </div>
                                 </div>
                                 <div class="col-lg-5">
-                                    <div class="card bg-primary text-white rounded-0 border-0">
+                                    <div class="card text-white rounded-0 border-0 checkout-card">
                                         <div class="card-body">
                                             <div class="d-flex justify-content-between align-items-center mb-4">
                                                 <h5 class="mb-0">Cart details</h5>
@@ -134,4 +134,9 @@ export default {
 .my-height {
     min-height: 70.7vh;
 }
-</style>./Payment.vue
+
+.checkout-card {
+    background-color: rgb(175, 124, 209);
+    margin-top: 2.5rem;
+}
+</style>
