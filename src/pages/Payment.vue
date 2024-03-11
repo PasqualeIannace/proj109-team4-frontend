@@ -17,11 +17,11 @@ export default {
 
         return {
             formFields: {
-                message: { type: 'text' },
-                nameSurname: { type: 'text' },
-                address: { type: 'text' },
-                phoneNumber: { type: 'tel' },
-                email: { type: 'email' },
+                message: { type: 'text', required: true },
+                nameSurname: { type: 'text', required: true },
+                address: { type: 'text', required: true },
+                phoneNumber: { type: 'tel', required: true },
+                email: { type: 'email', required: true },
                 // Add other form fields as needed
             },
             formData: { ...defaultFormData },
@@ -31,6 +31,35 @@ export default {
 
     methods: {
         async handleCheckout() {
+
+            if (this.$store.state.cartTotal === 0) {
+                // Display an error message and prevent further execution
+                toast.error('Cart is empty. Add items to your cart before proceeding to checkout.');
+                return;
+            }
+            // Check if any required field is empty
+            const emptyFields = Object.keys(this.formData).filter(field => this.formData[field].trim() === '');
+            if (emptyFields.length > 0) {
+                // Display an error message and prevent further execution
+                toast.error('Please fill in all the required fields.');
+                return;
+            }
+            const isCardValid = this.isCardDetailsValid();
+
+            if (!isCardValid) {
+                toast.error('Invalid card details. Please check and try again.');
+                return;
+            }
+
+            try {
+                // ... (existing code)
+            } catch (error) {
+                // ... (existing code)
+            } finally {
+                // ... (existing code)
+            }
+
+
             try {
                 const orderId = await this.createOrder();
                 await this.updateFoodOrder(orderId);
@@ -47,6 +76,18 @@ export default {
                 // Dispatch action to clear the cart
                 await store.dispatch('clearCart');
             }
+        },
+
+        isCardDetailsValid() {
+            const cardNumberInput = document.getElementById('cc-number');
+            const cardExpInput = document.getElementById('cc-exp');
+            const cardCvcInput = document.getElementById('cc-cvc');
+
+            return (
+                cardNumberInput.checkValidity() &&
+                cardExpInput.checkValidity() &&
+                cardCvcInput.checkValidity()
+            );
         },
 
         async createOrder() {
@@ -116,35 +157,36 @@ export default {
                 }
 
             }
-        }
+        },
 
+        handleError: (error) => {
+
+            // Log the entire error object
+            console.error(error);
+
+            // Check if the error has a response property
+            if (error.response) {
+                // The request was made and the server responded with a status code
+                // that falls out of the range of 2xx
+                console.error('Response data:', error.response.data);
+                console.error('Response status:', error.response.status);
+                console.error('Response headers:', error.response.headers);
+
+                // Display an error message based on the server response
+                toast.error(`Failed to place the order. Server error: ${error.response.data.message}`);
+            } else if (error.request) {
+                // The request was made but no response was received
+                console.error('No response received:', error.request);
+                toast.error('Failed to place the order. No response received from the server.');
+            } else {
+                // Something happened in setting up the request that triggered an Error
+                console.error('Error setting up the request:', error.message);
+                toast.error('Failed to place the order. An unexpected error occurred.');
+            }
+        },
     },
 
-    handleError: (error) => {
 
-        // Log the entire error object
-        console.error(error);
-
-        // Check if the error has a response property
-        if (error.response) {
-            // The request was made and the server responded with a status code
-            // that falls out of the range of 2xx
-            console.error('Response data:', error.response.data);
-            console.error('Response status:', error.response.status);
-            console.error('Response headers:', error.response.headers);
-
-            // Display an error message based on the server response
-            toast.error(`Failed to place the order. Server error: ${error.response.data.message}`);
-        } else if (error.request) {
-            // The request was made but no response was received
-            console.error('No response received:', error.request);
-            toast.error('Failed to place the order. No response received from the server.');
-        } else {
-            // Something happened in setting up the request that triggered an Error
-            console.error('Error setting up the request:', error.message);
-            toast.error('Failed to place the order. An unexpected error occurred.');
-        }
-    },
 
 
     // Other methods...
@@ -158,83 +200,88 @@ export default {
 <template>
     <section class="myMargin">
         <!-- Existing code ... -->
-                    <div class="col-lg-2 d-flex align-items-center" id="resi">
-                         
-                        <div class="col-lg-4 col-2 position-relative">
-                            <button type="button" class="btn btn-outline-light fs-5 position-absolute btn2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft" id="plus2">Recensioni o Rimborsi</button>
-                            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel">
-                                <div class="offcanvas-header">
-                                  <h6 id="offcanvasLeftLabel">Inserisci i tuoi dati personali</h6>
-                                  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                </div>
-                                <div class="offcanvas-body">
-                                    <form class="row g-3 form-control d-flex">
-                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                                          <label class="form-label">Nome</label>
-                                          <input type="text" class="form-control" aria-label="First name">
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                                          <label class="form-label">Cognome</label>
-                                          <input type="text" class="form-control" id="Second name">
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                                          <label for="inputEmail4" class="form-label">Email</label>
-                                          <div class="input-group">
-                                            <div class="input-group-text">@</div>
-                                            <input type="email" class="form-control" id="inputEmail4">
-                                          </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                                          <label for="inputPassword4" class="form-label">Password</label>                    
-                                          <input type="password" class="form-control" id="inputPassword4">                                        
-                                        </div>
-                                     
-                                        <div class="col-12">
-                                            <label for="inputAddress" class="form-label">Lascia un tuo commento</label>
-                                            <input type="text" class="form-control" id="inputAddress">
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                                            <label for="inputCity" class="form-label">Città</label>
-                                            <input type="text" class="form-control" id="inputCity">
-                                        </div>
-                                        <div class="col-lg-4 col-md-4 col-sm-8 col-8">
-                                            <label for="inputState" class="form-label">Stato</label>
-                                            <select id="inputState" class="form-select">
-                                              <option selected>Regioni</option>
-                                              <option>Italia</option>
-                                              <option>Regno Unito</option>
-                                              <option>Germania</option>
-                                              <option>Norvegia</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-le-2 col-md-2 col-sm-4 col-4">
-                                            <label for="inputZip" class="form-label">Numero Ordine</label>
-                                            <input type="text" class="form-control" id="inputZip">
-                                        </div>
-                                        <div class="col-12">
-                                            <label for="formFile" class="form-label">inserisci una foto del prodotto</label>
-                                            <input class="form-control" type="file" id="formFile" placeholder="Nessun file selezionato">
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-check">
-                                              <input class="form-check-input" type="checkbox" id="gridCheck">
-                                              <label class="form-check-label" for="gridCheck">
-                                                Ricevi newsletter
-                                              </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-3">
-                                            <button type="submit" class="btn btn-primary">Salva</button>
-                                        </div>
-                                        <div class="col-3">
-                                            <button type="submit" class="btn btn-warning">Svuota</button>
-                                        </div>                                            
-                                      </form>
-                                </div>
-                              </div>
-                              
-                        </div>                    
+        <div class="col-lg-2 d-flex align-items-center" id="resi">
+
+            <div class="col-lg-4 col-2 position-relative">
+                <button type="button" class="btn btn-outline-light fs-5 position-absolute btn2"
+                    data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft"
+                    id="plus2">Recensioni o Rimborsi</button>
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLeft"
+                    aria-labelledby="offcanvasLeftLabel">
+                    <div class="offcanvas-header">
+                        <h6 id="offcanvasLeftLabel">Inserisci i tuoi dati personali</h6>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
                     </div>
+                    <div class="offcanvas-body">
+                        <form class="row g-3 form-control d-flex">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                <label class="form-label">Nome</label>
+                                <input type="text" class="form-control" aria-label="First name">
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                <label class="form-label">Cognome</label>
+                                <input type="text" class="form-control" id="Second name">
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                <label for="inputEmail4" class="form-label">Email</label>
+                                <div class="input-group">
+                                    <div class="input-group-text">@</div>
+                                    <input type="email" class="form-control" id="inputEmail4">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                <label for="inputPassword4" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="inputPassword4">
+                            </div>
+
+                            <div class="col-12">
+                                <label for="inputAddress" class="form-label">Lascia un tuo commento</label>
+                                <input type="text" class="form-control" id="inputAddress">
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                <label for="inputCity" class="form-label">Città</label>
+                                <input type="text" class="form-control" id="inputCity">
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-8 col-8">
+                                <label for="inputState" class="form-label">Stato</label>
+                                <select id="inputState" class="form-select">
+                                    <option selected>Regioni</option>
+                                    <option>Italia</option>
+                                    <option>Regno Unito</option>
+                                    <option>Germania</option>
+                                    <option>Norvegia</option>
+                                </select>
+                            </div>
+                            <div class="col-le-2 col-md-2 col-sm-4 col-4">
+                                <label for="inputZip" class="form-label">Numero Ordine</label>
+                                <input type="text" class="form-control" id="inputZip">
+                            </div>
+                            <div class="col-12">
+                                <label for="formFile" class="form-label">inserisci una foto del prodotto</label>
+                                <input class="form-control" type="file" id="formFile"
+                                    placeholder="Nessun file selezionato">
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                                    <label class="form-check-label" for="gridCheck">
+                                        Ricevi newsletter
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <button type="submit" class="btn btn-primary">Salva</button>
+                            </div>
+                            <div class="col-3">
+                                <button type="submit" class="btn btn-warning">Svuota</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
 
 
         <div class="col-lg-5 offset-4">
@@ -272,7 +319,7 @@ export default {
                                 <label for="cc-number" class="control-label">CARD NUMBER</label>
                                 <input id="cc-number" type="tel" class="input-lg form-control cc-number"
                                     autocomplete="cc-number" placeholder="•••• •••• •••• ••••" maxlength="19"
-                                    pattern="[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}" required>
+                                    pattern="[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}" required />
                             </div>
 
                             <div class="row">
@@ -281,7 +328,7 @@ export default {
                                         <label for="cc-exp" class="control-label">CARD EXPIRY</label>
                                         <input id="cc-exp" type="tel" class="input-lg form-control cc-exp"
                                             autocomplete="cc-exp" placeholder="•• / ••" maxlength="5"
-                                            pattern="(0[1-9]|1[0-2])\/[0-9]{2}" required>
+                                            pattern="(0[1-9]|1[0-2])\/[0-9]{2}" required />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -289,51 +336,58 @@ export default {
                                         <label for="cc-cvc" class="control-label">CARD CVC</label>
                                         <input id="cc-cvc" type="tel" class="input-lg form-control cc-cvc"
                                             autocomplete="off" placeholder="•••" maxlength="3" pattern="[0-9]{3}"
-                                            required>
+                                            required />
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="cardholder-name" class="control-label">CARD HOLDER NAME</label>
-                                <input type="text" class="input-lg form-control">
+                                <input type="text" class="input-lg form-control" required />
+                            </div>
+                        </div>
+                        <div class="col-lg-2 d-flex align-items-center" id="order_a">
+                            <!-- <div class="col-lg-12 col-12">
+                            <span class="text-white fs_5"></span>  
+                        </div> -->
+                            <div class="col-lg-4 col-2">
+                                <button type="button" class="btn btn-outline-light fs-6 text-center"
+                                    data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                                    aria-controls="offcanvasRight" id="plus">TERMINA PAGAMENTO</button>
+                                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
+                                    aria-labelledby="offcanvasRightLabel">
+                                    <div class="offcanvas-header">
+                                        <h6 id="offcanvasRightLabel">Inserisci i tuoi dati personali</h6>
+                                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="offcanvas-body">
+
+                                        <!-- ... (previous template code) ... -->
+                                        <form @submit.prevent="handleCheckout">
+                                            <div v-for="(field, label) in formFields" :key="label" class="mb-3">
+                                                <label :for="label" class="form-label">{{ label }}</label>
+                                                <input v-model="formData[label]" :type="field.type" class="form-control"
+                                                    :id="label" :required="field.required">
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-success btn-lg form-control"
+                                                    style="font-size: .8rem;">
+                                                    MAKE PAYMENT
+                                                </button>
+                                            </div>
+                                        </form>
+                                        <!-- ... (remaining template code) ... -->
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 d-flex align-items-center" id="order_a">
-                        <!-- <div class="col-lg-12 col-12">
-                            <span class="text-white fs_5"></span>  
-                        </div> -->
-                        <div class="col-lg-4 col-2">
-                            <button type="button" class="btn btn-outline-light fs-6 text-center" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" id="plus">TERMINA PAGAMENTO</button>
-                            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-                                <div class="offcanvas-header">
-                                  <h6 id="offcanvasRightLabel">Inserisci i tuoi dati personali</h6>
-                                  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                </div>
-                                <div class="offcanvas-body">
-
-
-                                    <form @submit.prevent="handleCheckout">
-                                        <div v-for="(field, label) in formFields" :key="label" class="mb-3">
-                                            <label :for="label" class="form-label">{{ label }}</label>
-                                            <input v-model="formData[label]" :type="field.type" class="form-control" :id="label">
-                                        </div>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-success btn-lg form-control" style="font-size: .8rem;">
-                                                MAKE PAYMENT
-                                            </button>
-                                        </div>
-                                         <!-- 
-                                         <button type="submit" class="btn btn-info btn-block btn-lg">Checkout</button> -->
-                                    </form>
-                                </div>
-                            </div>        
-                        </div>                    
-                </div>
                 </div>
             </div>
         </div>
+
     </section>
 </template>
 
@@ -341,15 +395,21 @@ export default {
 
 
 <style scoped>
-.btn2{
-    top:200px;
+.btn2 {
+    top: 200px;
 }
-.card{
-background-color: rgba(0, 0, 0, 0.712);
-color: aliceblue;
+
+.btn {
+    margin: 0 auto;
 }
-section{
-margin-top: 100px;
-margin-bottom: 50px;
+
+.card {
+    background-color: rgba(0, 0, 0, 0.712);
+    color: aliceblue;
+}
+
+section {
+    margin-top: 100px;
+    margin-bottom: 50px;
 }
 </style>

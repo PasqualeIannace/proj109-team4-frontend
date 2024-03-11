@@ -63,7 +63,7 @@ export default {
 </script>
 
 <template>
-    <button type="button" @click="addOrRemove" class="btn me-2">
+    <button type="button" @click="addOrRemove" class="btn me-2 text-white">
         <i class="fa-solid fa-cart-shopping"></i>
         <span class="ps-2" v-if="toAdd">Aggiungi al carrello</span>
     </button>
@@ -73,5 +73,15 @@ export default {
 <style scoped>
 .my-cart {
     color: white;
+}
+
+button {
+    &:hover {
+
+        i, span {
+            transition: 300ms;
+            color: #FC3966 !important;
+        }
+    }
 }
 </style>
