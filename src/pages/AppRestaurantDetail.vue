@@ -86,7 +86,7 @@ export default {
 			<img v-if="user" :src="user.logo_activity" alt="Logo Activity" class="logo-activity" />
 		</div>
 		<div class="d-flex justify-content-center position-relative">
-			<a @click="goBack" class="text-body myBtn position-fixed glowing-btn" style="cursor: pointer;">
+			<a @click="goBack" class="text-body myBtn position-fixed glowing-btn back" style="cursor: pointer;">
 				<i class="fas fa-long-arrow-alt-left me-2 glowing-txt"></i>
 			</a>
 			<img src="/3.png" class="food-img">
@@ -239,7 +239,34 @@ h1 {
 	/* width: 16em; */
 }
 
+.arrow {
+	margin-right: 0.5rem;
+}
+
 /* Stili per le card su schermi più grandi (desktop) */
+
+
+@media screen and (max-width: 1560px) {
+	.glowing-btn {
+		background: #00fffb !important;
+	}
+
+	.back {
+		z-index: 3;
+	}
+
+	i {
+			/* color: #FD5933; */
+			transition: 1s;
+	        transform: translateX(14px); 
+		}
+
+	.me-2 {
+		margin-right: -1rem !important;
+    	margin-left: -22px;
+	}
+}
+
 @media screen and (max-width: 1200px) {
 	.ag-format-container {
 		width: calc(100% / 3 - 30px);
