@@ -406,6 +406,7 @@ export default {
 .card {
     background-color: rgba(0, 0, 0, 0.712);
     color: aliceblue;
+    border-radius: 2em;
 }
 
 section {
