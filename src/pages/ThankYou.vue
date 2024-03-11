@@ -1,4 +1,3 @@
-
 <script>
 import { store } from "../store.js" //state management
 export default {
@@ -34,36 +33,37 @@ export default {
 
 <template>
     <div class="containerTnx">
-            <div class="col-12 d-flex flex-column align-items-center py-5 mt-20 text-white">
+        <div class="col-12 d-flex flex-column align-items-center py-5 mt-20 text-white">
 
-                <h1>Grazie per il tuo ordine</h1>
-                <p>Il nostro rider sta arrivando da te.</p>
-                <!-- <div id="motorino">
+            <h1>Grazie per il tuo ordine</h1>
+            <p>Il nostro rider sta arrivando da te.</p>
+            <!-- <div id="motorino">
                     <img src="giphy.gif" alt="Motorino">
                 </div> -->
-                <div id="ghost" class="position-relative">
-                    <img src="tnxGhost.png" alt="Fantasmino" class="ghost">
-                </div>
-                <router-link :to="{ name: 'home' }">
-                    <button class="btn btn-primary">
-                        Torna alla homepage
-                    </button>
-                </router-link>
+            <div id="ghost" class="position-relative">
+                <img src="tnxGhost.png" alt="Fantasmino" class="ghost">
+            </div>
+            <router-link :to="{ name: 'home' }">
+                <button class="btn btn-primary">
+                    Torna alla homepage
+                </button>
+            </router-link>
+        </div>
     </div>
-    </div>
-    
+
 </template>
 
 <style scoped lang="scss">
-.containerTnx{
+.containerTnx {
     //width: 99vw;
-    height:80vh;
-    background-image: url(/tnx.png); 
+    height: 80vh;
+    background-image: url(/tnx.png);
     // background-position: top;
     object-fit: cover;
 }
+
 .ghost {
-    width: 400px;
+    width: 550px;
     position: absolute;
     left: -1000px;
     //bottom: 300px;
@@ -72,14 +72,20 @@ export default {
 
 @keyframes moveGhost {
     0% {
-        transform: translateX(-400px); /* Parte dall'esterno a sinistra */
-        opacity: 1; /* Assicura che l'immagine sia visibile all'inizio dell'animazione */
+        transform: translateX(-400px);
+        /* Parte dall'esterno a sinistra */
+        opacity: 1;
+        /* Assicura che l'immagine sia visibile all'inizio dell'animazione */
     }
+
     100% {
-        transform: translateX(2000px); /* Arriva fino al bordo destro del viewport */
-        opacity: 1; /* Scompare quando raggiunge il bordo destro */
+        transform: translateX(2000px);
+        /* Arriva fino al bordo destro del viewport */
+        opacity: 1;
+        /* Scompare quando raggiunge il bordo destro */
     }
 }
+
 #motorino {
     position: relative;
     overflow: hidden;
@@ -108,7 +114,7 @@ export default {
     margin-top: 50px;
 }
 
-.mt-20{
+.mt-20 {
     margin-top: 5rem;
 }
 </style>

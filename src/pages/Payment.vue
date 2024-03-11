@@ -294,11 +294,13 @@ export default {
                     <hr class="my-4">
                     <div class="d-flex justify-content-between">
                         <p class="mb-2">Subtotal</p>
-                        <p class="mb-2"><i class="bi bi-currency-dollar"></i>€ {{ $store.state.cartTotal }}</p>
+                        <p class="mb-2"><i class="bi bi-currency-dollar"></i>€ {{ $store.state.cartTotal.toFixed(2) }}
+                        </p>
                     </div>
                     <div class="d-flex justify-content-between mb-4">
                         <p class="mb-2">Total</p>
-                        <p class="mb-2"><i class="bi bi-currency-dollar"></i>€ {{ $store.state.cartTotal }}</p>
+                        <p class="mb-2"><i class="bi bi-currency-dollar"></i>€ {{ $store.state.cartTotal.toFixed(2) }}
+                        </p>
                     </div>
 
                     <div class="card">
