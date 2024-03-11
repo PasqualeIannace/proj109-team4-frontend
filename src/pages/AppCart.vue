@@ -54,7 +54,7 @@ export default {
                                             </p>
                                         </div>
                                         <div>
-                                            <button @click="removeAllItems" class="btn btn-danger">Remove All</button>
+                                            <button @click="removeAllItems" class="btn btn-danger">Svuota il carrello</button>
                                         </div>
                                     </div>
                                     <div v-for="food in $store.state.cart" class="card mb-3 shadow-sm border-0"

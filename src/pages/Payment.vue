@@ -288,17 +288,17 @@ export default {
             <div class="card rounded-5 border-5 mb-0">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h5 class="mb-0">Cart details</h5>
+                        <h5 class="mb-0">Inserisci i dati della tua carta</h5>
                         <i class="bi bi-cart3 h1"></i>
                     </div>
                     <hr class="my-4">
-                    <div class="d-flex justify-content-between">
+                    <!-- <div class="d-flex justify-content-between">
                         <p class="mb-2">Subtotal</p>
                         <p class="mb-2"><i class="bi bi-currency-dollar"></i>€ {{ $store.state.cartTotal.toFixed(2) }}
                         </p>
-                    </div>
+                    </div> -->
                     <div class="d-flex justify-content-between mb-4">
-                        <p class="mb-2">Total</p>
+                        <p class="mb-2">Totale</p>
                         <p class="mb-2"><i class="bi bi-currency-dollar"></i>€ {{ $store.state.cartTotal.toFixed(2) }}
                         </p>
                     </div>
@@ -307,7 +307,7 @@ export default {
                         <div class="card-header">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <span>CREDIT/DEBIT CARD PAYMENT</span>
+                                    <span>Carta di CREDITO/DEBITO</span>
                                 </div>
                                 <div class="col-md-6 text-right" style="margin-top: -5px;">
                                     <img src="https://img.icons8.com/color/36/000000/visa.png">
@@ -318,7 +318,7 @@ export default {
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="cc-number" class="control-label">CARD NUMBER</label>
+                                <label for="cc-number" class="control-label">Numero Carta</label>
                                 <input id="cc-number" type="tel" class="input-lg form-control cc-number"
                                     autocomplete="cc-number" placeholder="•••• •••• •••• ••••" maxlength="19"
                                     pattern="[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}" required />
@@ -327,7 +327,7 @@ export default {
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="cc-exp" class="control-label">CARD EXPIRY</label>
+                                        <label for="cc-exp" class="control-label">Scadenza</label>
                                         <input id="cc-exp" type="tel" class="input-lg form-control cc-exp"
                                             autocomplete="cc-exp" placeholder="•• / ••" maxlength="5"
                                             pattern="(0[1-9]|1[0-2])\/[0-9]{2}" required />
@@ -335,7 +335,7 @@ export default {
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="cc-cvc" class="control-label">CARD CVC</label>
+                                        <label for="cc-cvc" class="control-label">CVC</label>
                                         <input id="cc-cvc" type="tel" class="input-lg form-control cc-cvc"
                                             autocomplete="off" placeholder="•••" maxlength="3" pattern="[0-9]{3}"
                                             required />
@@ -344,7 +344,7 @@ export default {
                             </div>
 
                             <div class="form-group">
-                                <label for="cardholder-name" class="control-label">CARD HOLDER NAME</label>
+                                <label for="cardholder-name" class="control-label">Intestatario carta</label>
                                 <input type="text" class="input-lg form-control" required />
                             </div>
 
