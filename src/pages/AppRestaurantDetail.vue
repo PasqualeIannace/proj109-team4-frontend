@@ -6,7 +6,7 @@ import CartBTN from "../components/CartBTN.vue";
 export default {
 	props: ['logo'],
 	name: "AppRestaurantDetail",
-	components: { 
+	components: {
 		CartBTN,
 	},
 	data() {
@@ -41,13 +41,14 @@ export default {
 <template>
 	<div class="myMargin">
 		<img :src="logo" alt="">
-		<h1 class="text-center">Food</h1>
+		<h1 class="text-center">il nostro menù</h1>
 
 		<div class="container d-flex flex-wrap text-decoration-none">
 			<div class="ag-format-container" v-for="(food, index) in store.foodListByUser" :key="index">
 				<div class="ag-courses_box">
 					<div class="ag-courses_item">
-						<a href="" @click="openModal(index)" class="ag-courses-item_link" data-bs-toggle="modal" :data-bs-target="'#exampleModal' + index">
+						<a href="" @click="openModal(index)" class="ag-courses-item_link" data-bs-toggle="modal"
+							:data-bs-target="'#exampleModal' + index">
 							<div class="ag-courses-item_bg"></div>
 
 							<div class="ag-courses-item_title">
@@ -72,19 +73,16 @@ export default {
 				</div>
 
 				<!-- Modal info cibo-->
-				<div class="modal fade text-black" :id="'exampleModal' + index" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal fade text-black" :id="'exampleModal' + index" tabindex="-1"
+					aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
 						<div class="modal-content myModal">
 							<div class="modal-header">
 								<h5 class="modal-title" id="exampleModalLabel">
 									{{ food.name }}
 								</h5>
-								<button
-									type="button"
-									class="btn-close"
-									data-bs-dismiss="modal"
-									aria-label="Close"
-								></button>
+								<button type="button" class="btn-close" data-bs-dismiss="modal"
+									aria-label="Close"></button>
 							</div>
 							<div class="modal-body">
 								<p>{{ food.ingredients }}</p>
@@ -104,26 +102,32 @@ export default {
 </template>
 
 <style scoped>
-.btn{
+.btn {
 	background-color: #fa8c31;
 	border: 2px solid indigo;
 }
-.myModal{
+
+.myModal {
 	border-radius: 28px;
-	background-color:rgba(76, 0, 130, 0.696);
+	background-color: rgba(76, 0, 130, 0.696);
 	color: #fff;
 	background-image: url('ghost.png');
 }
-.modal-header , .modal-footer{
+
+.modal-header,
+.modal-footer {
 	background-color: #fa8c31;
 }
+
 h1 {
 	color: #f9b234;
 }
+
 .ag-format-container {
 	width: calc(100% / 4);
 	/* margin: 0 auto; */
 }
+
 /* Stili per le card su schermi più grandi (desktop) */
 @media screen and (max-width: 992px) {
 	.ag-format-container {
@@ -135,6 +139,7 @@ h1 {
 body {
 	background-color: #000;
 }
+
 .ag-courses_box {
 	align-items: flex-start;
 	/* -ms-flex-wrap: wrap; */
@@ -143,6 +148,7 @@ body {
 	/* height: 300px; */
 	padding: 10px 0;
 }
+
 .ag-courses_item {
 	/* width:100%; */
 	flex-basis: calc(33.33333% - 30px);
@@ -150,6 +156,7 @@ body {
 	overflow: hidden;
 	border-radius: 28px;
 }
+
 .ag-courses-item_link {
 	display: block;
 	padding: 30px 20px;
@@ -158,16 +165,19 @@ body {
 	text-decoration: none;
 	position: relative;
 }
+
 .ag-courses-item_link:hover,
 .ag-courses-item_link:hover .ag-courses-item_date {
 	text-decoration: none;
 	color: #fff;
 }
+
 .ag-courses-item_link:hover .ag-courses-item_bg {
 	-webkit-transform: scale(10);
 	-ms-transform: scale(10);
 	transform: scale(10);
 }
+
 .ag-courses-item_title {
 	max-height: 270px;
 	margin: 0 0 25px;
@@ -191,6 +201,7 @@ body {
 		border-radius: 1em;
 	}
 }
+
 .ag-courses-item_date-box {
 	/* height: 15rem; */
 	font-size: 16px;
@@ -198,6 +209,7 @@ body {
 	z-index: 2;
 	position: relative;
 }
+
 .ag-courses-item_date {
 	font-weight: bold;
 	color: #f9b234;
@@ -206,6 +218,7 @@ body {
 	-o-transition: color 0.5s ease;
 	transition: color 0.5s ease;
 }
+
 .ag-courses-item_bg {
 	height: 128px;
 	width: 128px;
@@ -222,18 +235,23 @@ body {
 	-o-transition: all 0.5s ease;
 	transition: all 0.5s ease;
 }
+
 .ag-courses_item:nth-child(2n) .ag-courses-item_bg {
 	background-color: #3ecd5e;
 }
+
 .ag-courses_item:nth-child(3n) .ag-courses-item_bg {
 	background-color: #e44002;
 }
+
 .ag-courses_item:nth-child(4n) .ag-courses-item_bg {
 	background-color: #492a84db;
 }
+
 .ag-courses_item:nth-child(5n) .ag-courses-item_bg {
 	background-color: #cd3e94;
 }
+
 .ag-courses_item:nth-child(6n) .ag-courses-item_bg {
 	background-color: #4c49ea;
 }
