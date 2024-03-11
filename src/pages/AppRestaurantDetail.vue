@@ -141,20 +141,20 @@ span {
 }
 
 .btn {
-	background-color: #fa8c31;
+	background-color: #FC3966;
 	border: 2px solid indigo;
 }
 
 .myModal {
 	border-radius: 28px;
-	background-color: rgba(76, 0, 130, 0.696);
+	background-color: #482883;
 	color: #fff;
 	background-image: url('ghost.png');
 }
 
 .modal-header,
 .modal-footer {
-	background-color: #fa8c31;
+	background-color: #FC3966;
 }
 
 h1 {
