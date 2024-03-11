@@ -372,7 +372,7 @@ export default {
                                             <div class="form-group">
                                                 <button type="submit" class="btn btn-lg form-control"
                                                     style="font-size: 1rem;">
-                                                    TERMIINA PAGAMENTO
+                                                    TERMINA PAGAMENTO
                                                 </button>
                                             </div>
                                         </form>
@@ -395,7 +395,7 @@ export default {
 
 
 <style scoped>
-#offcanvasRight{
+#offcanvasRight , #offcanvasLeft{
     background-image: url(/prova3.png);
 }
 .btn2 {
@@ -410,8 +410,9 @@ export default {
 .btn:hover{
     opacity: 0.7;
   /* background: hsl(186 100% 69%); */
-  border-width: 4px;
+  border-width: 2px;
   border-color: hsl(186 100% 69%) ;
+  padding: 5px;
 }
 
 .card {
