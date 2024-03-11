@@ -1,92 +1,3 @@
-<template>
-    <section class="myMargin">
-        <!-- Existing code ... -->
-
-        <div class="col-lg-5">
-            <div class="card bg-primary text-white rounded-0 border-0">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h5 class="mb-0">Cart details</h5>
-                        <i class="bi bi-cart3 h1"></i>
-                    </div>
-                    <hr class="my-4">
-                    <div class="d-flex justify-content-between">
-                        <p class="mb-2">Subtotal</p>
-                        <p class="mb-2"><i class="bi bi-currency-dollar"></i>€ {{ $store.state.cartTotal }}</p>
-                    </div>
-                    <div class="d-flex justify-content-between mb-4">
-                        <p class="mb-2">Total</p>
-                        <p class="mb-2"><i class="bi bi-currency-dollar"></i>€ {{ $store.state.cartTotal }}</p>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <span>CREDIT/DEBIT CARD PAYMENT</span>
-                                </div>
-                                <div class="col-md-6 text-right" style="margin-top: -5px;">
-                                    <img src="https://img.icons8.com/color/36/000000/visa.png">
-                                    <img src="https://img.icons8.com/color/36/000000/mastercard.png">
-                                    <img src="https://img.icons8.com/color/36/000000/amex.png">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body" style="height: 350px">
-                            <div class="form-group">
-                                <label for="cc-number" class="control-label">CARD NUMBER</label>
-                                <input id="cc-number" type="tel" class="input-lg form-control cc-number"
-                                    autocomplete="cc-number" placeholder="•••• •••• •••• ••••" maxlength="19"
-                                    pattern="[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}" required>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="cc-exp" class="control-label">CARD EXPIRY</label>
-                                        <input id="cc-exp" type="tel" class="input-lg form-control cc-exp"
-                                            autocomplete="cc-exp" placeholder="•• / ••" maxlength="5"
-                                            pattern="(0[1-9]|1[0-2])\/[0-9]{2}" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="cc-cvc" class="control-label">CARD CVC</label>
-                                        <input id="cc-cvc" type="tel" class="input-lg form-control cc-cvc"
-                                            autocomplete="off" placeholder="•••" maxlength="3" pattern="[0-9]{3}"
-                                            required>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="cardholder-name" class="control-label">CARD HOLDER NAME</label>
-                                <input type="text" class="input-lg form-control">
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <!-- New form for payment details -->
-                    <form @submit.prevent="handleCheckout">
-                        <div v-for="(field, label) in formFields" :key="label" class="mb-3">
-                            <label :for="label" class="form-label">{{ label }}</label>
-                            <input v-model="formData[label]" :type="field.type" class="form-control" :id="label">
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-success btn-lg form-control" style="font-size: .8rem;">
-                                MAKE PAYMENT
-                            </button>
-                        </div>
-                        <!-- 
-                        <button type="submit" class="btn btn-info btn-block btn-lg">Checkout</button> -->
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-</template>
-
 <script>
 import axios from 'axios';
 import { toast } from 'vue3-toastify';
@@ -242,4 +153,206 @@ export default {
 </script>
 
 
-<style scoped></style>
+
+
+<template>
+    <section class="myMargin">
+        <!-- Existing code ... -->
+                    <div class="col-lg-2 d-flex align-items-center" id="resi">
+                         
+                        <div class="col-lg-4 col-2 position-relative">
+                            <button type="button" class="btn btn-outline-light fs-5 position-absolute btn2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft" id="plus2">Recensioni o Rimborsi</button>
+                            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel">
+                                <div class="offcanvas-header">
+                                  <h6 id="offcanvasLeftLabel">Inserisci i tuoi dati personali</h6>
+                                  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                </div>
+                                <div class="offcanvas-body">
+                                    <form class="row g-3 form-control d-flex">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                          <label class="form-label">Nome</label>
+                                          <input type="text" class="form-control" aria-label="First name">
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                          <label class="form-label">Cognome</label>
+                                          <input type="text" class="form-control" id="Second name">
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                          <label for="inputEmail4" class="form-label">Email</label>
+                                          <div class="input-group">
+                                            <div class="input-group-text">@</div>
+                                            <input type="email" class="form-control" id="inputEmail4">
+                                          </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                          <label for="inputPassword4" class="form-label">Password</label>                    
+                                          <input type="password" class="form-control" id="inputPassword4">                                        
+                                        </div>
+                                     
+                                        <div class="col-12">
+                                            <label for="inputAddress" class="form-label">Lascia un tuo commento</label>
+                                            <input type="text" class="form-control" id="inputAddress">
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <label for="inputCity" class="form-label">Città</label>
+                                            <input type="text" class="form-control" id="inputCity">
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-8 col-8">
+                                            <label for="inputState" class="form-label">Stato</label>
+                                            <select id="inputState" class="form-select">
+                                              <option selected>Regioni</option>
+                                              <option>Italia</option>
+                                              <option>Regno Unito</option>
+                                              <option>Germania</option>
+                                              <option>Norvegia</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-le-2 col-md-2 col-sm-4 col-4">
+                                            <label for="inputZip" class="form-label">Numero Ordine</label>
+                                            <input type="text" class="form-control" id="inputZip">
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="formFile" class="form-label">inserisci una foto del prodotto</label>
+                                            <input class="form-control" type="file" id="formFile" placeholder="Nessun file selezionato">
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-check">
+                                              <input class="form-check-input" type="checkbox" id="gridCheck">
+                                              <label class="form-check-label" for="gridCheck">
+                                                Ricevi newsletter
+                                              </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <button type="submit" class="btn btn-primary">Salva</button>
+                                        </div>
+                                        <div class="col-3">
+                                            <button type="submit" class="btn btn-warning">Svuota</button>
+                                        </div>                                            
+                                      </form>
+                                </div>
+                              </div>
+                              
+                        </div>                    
+                    </div>
+
+
+        <div class="col-lg-5 offset-4">
+            <div class="card rounded-5 border-5 mb-0">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="mb-0">Cart details</h5>
+                        <i class="bi bi-cart3 h1"></i>
+                    </div>
+                    <hr class="my-4">
+                    <div class="d-flex justify-content-between">
+                        <p class="mb-2">Subtotal</p>
+                        <p class="mb-2"><i class="bi bi-currency-dollar"></i>€ {{ $store.state.cartTotal }}</p>
+                    </div>
+                    <div class="d-flex justify-content-between mb-4">
+                        <p class="mb-2">Total</p>
+                        <p class="mb-2"><i class="bi bi-currency-dollar"></i>€ {{ $store.state.cartTotal }}</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <span>CREDIT/DEBIT CARD PAYMENT</span>
+                                </div>
+                                <div class="col-md-6 text-right" style="margin-top: -5px;">
+                                    <img src="https://img.icons8.com/color/36/000000/visa.png">
+                                    <img src="https://img.icons8.com/color/36/000000/mastercard.png">
+                                    <img src="https://img.icons8.com/color/36/000000/amex.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body" style="height: 250px">
+                            <div class="form-group">
+                                <label for="cc-number" class="control-label">CARD NUMBER</label>
+                                <input id="cc-number" type="tel" class="input-lg form-control cc-number"
+                                    autocomplete="cc-number" placeholder="•••• •••• •••• ••••" maxlength="19"
+                                    pattern="[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}" required>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="cc-exp" class="control-label">CARD EXPIRY</label>
+                                        <input id="cc-exp" type="tel" class="input-lg form-control cc-exp"
+                                            autocomplete="cc-exp" placeholder="•• / ••" maxlength="5"
+                                            pattern="(0[1-9]|1[0-2])\/[0-9]{2}" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="cc-cvc" class="control-label">CARD CVC</label>
+                                        <input id="cc-cvc" type="tel" class="input-lg form-control cc-cvc"
+                                            autocomplete="off" placeholder="•••" maxlength="3" pattern="[0-9]{3}"
+                                            required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="cardholder-name" class="control-label">CARD HOLDER NAME</label>
+                                <input type="text" class="input-lg form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 d-flex align-items-center" id="order_a">
+                        <!-- <div class="col-lg-12 col-12">
+                            <span class="text-white fs_5"></span>  
+                        </div> -->
+                        <div class="col-lg-4 col-2">
+                            <button type="button" class="btn btn-outline-light fs-6 text-center" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" id="plus">TERMINA PAGAMENTO</button>
+                            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                                <div class="offcanvas-header">
+                                  <h6 id="offcanvasRightLabel">Inserisci i tuoi dati personali</h6>
+                                  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                </div>
+                                <div class="offcanvas-body">
+
+
+                                    <form @submit.prevent="handleCheckout">
+                                        <div v-for="(field, label) in formFields" :key="label" class="mb-3">
+                                            <label :for="label" class="form-label">{{ label }}</label>
+                                            <input v-model="formData[label]" :type="field.type" class="form-control" :id="label">
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-success btn-lg form-control" style="font-size: .8rem;">
+                                                MAKE PAYMENT
+                                            </button>
+                                        </div>
+                                         <!-- 
+                                         <button type="submit" class="btn btn-info btn-block btn-lg">Checkout</button> -->
+                                    </form>
+                                </div>
+                            </div>        
+                        </div>                    
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>
+
+
+
+
+<style scoped>
+.btn2{
+    top:200px;
+}
+.btn{
+    margin: 0 auto;
+}
+.card{
+background-color: rgba(0, 0, 0, 0.712);
+color: aliceblue;
+}
+section{
+margin-top: 100px;
+margin-bottom: 50px;
+}
+</style>

@@ -18,6 +18,17 @@ export default {
 		this.getFoodsByUser();
 	},
 	methods: {
+		goBack() {
+			const scrollPosition = window.scrollY;
+
+			// Naviga alla pagina precedente
+			this.$router.go(-1);
+
+			// Dopo il completamento della navigazione, posiziona la finestra nella posizione memorizzata
+			this.$nextTick(() => {
+				window.scrollTo(0, scrollPosition);
+			});
+		},
 		getFoodsByUser() {
 			const userId = this.$route.params.id;
 
@@ -40,8 +51,13 @@ export default {
 
 <template>
 	<div class="myMargin">
-		<img :src="logo" alt="">
-		<h1 class="text-center">il nostro menù</h1>
+		<div class="d-flex justify-content-center position-relative">
+			<a @click="goBack" class="text-body myBtn position-absolute" style="cursor: pointer;">
+				<i class="fas fa-long-arrow-alt-left me-2"><span>GO BACK</span></i>
+			</a>
+
+			<img src="/3.png" class="w-25">
+		</div>
 
 		<div class="container d-flex flex-wrap text-decoration-none">
 			<div class="ag-format-container" v-for="(food, index) in store.foodListByUser" :key="index">
@@ -49,10 +65,16 @@ export default {
 					<div class="ag-courses_item">
 						<a href="" @click="openModal(index)" class="ag-courses-item_link" data-bs-toggle="modal"
 							:data-bs-target="'#exampleModal' + index">
-							<div class="ag-courses-item_bg"></div>
+							<div class="ag-courses-item_bg">
+								<img :src="logo" alt="">
+
+							</div>
 
 							<div class="ag-courses-item_title">
 								<h5>{{ food.name }}</h5>
+							</div>
+
+							<div class="ag-courses-item_date-box">
 								<img :src="food.image" class="w-100" />
 							</div>
 
@@ -64,8 +86,8 @@ export default {
 								<div class="card-footer text-center ag-courses-item_date"></div>
 							</div>
 						</a>
-						<div class="bg-white">
-							<div class="d-flex justify-content-between align-items-center cart">
+						<div class="bg-card">
+							<div class="d-flex justify-content-around align-items-center cart">
 								<CartBTN :food="food" />
 							</div>
 						</div>
@@ -102,6 +124,22 @@ export default {
 </template>
 
 <style scoped>
+span {
+	color: lightcyan;
+}
+
+.bg-card {
+	background-color: #482883;
+}
+
+.myBtn {
+	border: 2px solid lightcyan;
+
+	border-radius: 20px;
+	left: 100px;
+	top: 100px;
+}
+
 .btn {
 	background-color: #fa8c31;
 	border: 2px solid indigo;
@@ -136,10 +174,6 @@ h1 {
 	}
 }
 
-body {
-	background-color: #000;
-}
-
 .ag-courses_box {
 	align-items: flex-start;
 	/* -ms-flex-wrap: wrap; */
@@ -160,7 +194,7 @@ body {
 .ag-courses-item_link {
 	display: block;
 	padding: 30px 20px;
-	background-color: #121212;
+	background-color: #472883f5;
 	overflow: hidden;
 	text-decoration: none;
 	position: relative;
@@ -180,7 +214,6 @@ body {
 
 .ag-courses-item_title {
 	max-height: 270px;
-	margin: 0 0 25px;
 
 	overflow: hidden;
 
@@ -195,11 +228,6 @@ body {
 		height: 3rem;
 	}
 
-	img {
-		height: 5.7em;
-		object-fit: cover;
-		border-radius: 1em;
-	}
 }
 
 .ag-courses-item_date-box {
@@ -222,7 +250,7 @@ body {
 .ag-courses-item_bg {
 	height: 128px;
 	width: 128px;
-	background-color: #f9b234;
+	background-color: #FC3966;
 
 	z-index: 1;
 	position: absolute;
