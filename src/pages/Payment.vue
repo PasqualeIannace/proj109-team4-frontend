@@ -398,8 +398,6 @@ export default {
 .myVH {
     height: 64.5vh;
 }
-
-#offcanvasRight{
 #offcanvasRight , #offcanvasLeft{
     background-image: url(/prova3.png);
 }
