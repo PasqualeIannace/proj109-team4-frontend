@@ -105,14 +105,14 @@ export default {
 									aria-label="Close"></button>
 							</div>
 							<div class="modal-body">
+								<img :src="food.image" class="w-100 modal-img" />
+								<h5 class="fw-bolder">INGREDIENTI</h5>
 								<p>{{ food.ingredients }}</p>
+								<h5 class="fw-bolder">DESCRIZIONE</h5>
 								<p>{{ food.description }}</p>
 							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-									Close
-								</button>
-							</div>
+							<!-- <div class="modal-footer">
+							</div> -->
 						</div>
 					</div>
 				</div>
@@ -157,6 +157,11 @@ p {
 .modal-header,
 .modal-footer {
 	background-color: #FC3966;
+}
+
+.modal-img {
+	border-radius: 1em;
+	margin-bottom: 1em;
 }
 
 h1 {
